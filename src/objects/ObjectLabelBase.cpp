@@ -655,7 +655,8 @@ namespace aprilui
 		{
 			if (this->textKey != "")
 			{
-				this->setTextKey(this->textKey);
+				hstr textKey = this->textKey; // this ensures that textKey actually changes because it's passed as chstr
+				this->setTextKey(textKey);
 				this->_autoScaleDirty = true;
 			}
 		}
