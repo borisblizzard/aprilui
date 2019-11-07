@@ -2453,7 +2453,7 @@ namespace aprilui
 			}
 			if (uFormat[index + 1] != 's')
 			{
-				hlog::errorf(logTag, "Unsupported formatting '%%%c'!", uFormat[index + 1]);
+				hlog::errorf(logTag, "Unsupported formatting '%%%s'!", hstr::fromUnicode(uFormat[index + 1]).cStr());
 				return false;
 			}
 			indices += currentIndex + index;
