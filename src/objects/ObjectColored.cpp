@@ -25,7 +25,8 @@ namespace aprilui
 		colorTopRight(april::Color::White),
 		colorBottomLeft(april::Color::White),
 		colorBottomRight(april::Color::White),
-		useAdditionalColors(false)
+		useAdditionalColors(false),
+		ignoreMainColorAlpha(false)
 	{
 	}
 
@@ -36,6 +37,7 @@ namespace aprilui
 		this->colorBottomLeft = other.colorBottomLeft;
 		this->colorBottomRight = other.colorBottomRight;
 		this->useAdditionalColors = other.useAdditionalColors;
+		this->ignoreMainColorAlpha = other.ignoreMainColorAlpha;
 	}
 
 	Object* Colored::createInstance(chstr name)
@@ -64,6 +66,7 @@ namespace aprilui
 			Colored::_propertyDescriptions["blue_bottom_right"] = PropertyDescription("blue_bottom_right", PropertyDescription::Type::UChar);
 			Colored::_propertyDescriptions["alpha_bottom_right"] = PropertyDescription("alpha_bottom_right", PropertyDescription::Type::UChar);
 			Colored::_propertyDescriptions["use_additional_colors"] = PropertyDescription("use_additional_colors", PropertyDescription::Type::Bool);
+			Colored::_propertyDescriptions["ignore_main_color_alpha"] = PropertyDescription("ignore_main_color_alpha", PropertyDescription::Type::Bool);
 		}
 		return Colored::_propertyDescriptions;
 	}
@@ -89,6 +92,7 @@ namespace aprilui
 			Colored::_getters["blue_bottom_right"] = new PropertyDescription::GetUChar<Colored>(&Colored::getBlueBottomRight);
 			Colored::_getters["alpha_bottom_right"] = new PropertyDescription::GetUChar<Colored>(&Colored::getAlphaBottomRight);
 			Colored::_getters["use_additional_colors"] = new PropertyDescription::Get<Colored, bool>(&Colored::isUseAdditionalColors);
+			Colored::_getters["ignore_main_color_alpha"] = new PropertyDescription::Get<Colored, bool>(&Colored::isIgnoreMainColorAlpha);
 		}
 		return Colored::_getters;
 	}
@@ -114,6 +118,7 @@ namespace aprilui
 			Colored::_setters["blue_bottom_right"] = new PropertyDescription::SetUChar<Colored>(&Colored::setBlueBottomRight);
 			Colored::_setters["alpha_bottom_right"] = new PropertyDescription::SetUChar<Colored>(&Colored::setAlphaBottomRight);
 			Colored::_setters["use_additional_colors"] = new PropertyDescription::Set<Colored, bool>(&Colored::setUseAdditionalColors);
+			Colored::_setters["ignore_main_color_alpha"] = new PropertyDescription::Set<Colored, bool>(&Colored::setIgnoreMainColorAlpha);
 		}
 		return Colored::_setters;
 	}

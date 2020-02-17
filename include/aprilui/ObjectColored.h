@@ -54,12 +54,14 @@ namespace aprilui
 		HL_DEFINE_GETSET(unsigned char, colorBottomRight.b, BlueBottomRight);
 		HL_DEFINE_GETSET(unsigned char, colorBottomRight.a, AlphaBottomRight);
 		HL_DEFINE_ISSET(useAdditionalColors, UseAdditionalColors);
+		HL_DEFINE_ISSET(ignoreMainColorAlpha, IgnoreMainColorAlpha);
 
 	protected:
 		april::Color colorTopRight;
 		april::Color colorBottomLeft;
 		april::Color colorBottomRight;
 		bool useAdditionalColors;
+		bool ignoreMainColorAlpha;
 
 		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const;
 		hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const;

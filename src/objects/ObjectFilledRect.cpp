@@ -48,10 +48,20 @@ namespace aprilui
 		}
 		else
 		{
+			float mainColorAlpha = this->color.a_f();
+			april::Color colorTopRight = this->_makeDrawColor(this->colorTopRight);
+			april::Color colorBottomLeft = this->_makeDrawColor(this->colorBottomLeft);
+			april::Color colorBottomRight = this->_makeDrawColor(this->colorBottomRight);
+			if (this->ignoreMainColorAlpha)
+			{
+				colorTopRight.a = (mainColorAlpha > 0.0f ? (unsigned char)hclamp((float)colorTopRight.a / mainColorAlpha, 0.0f, 255.0f) : 255);
+				colorBottomLeft.a = (mainColorAlpha > 0.0f ? (unsigned char)hclamp((float)colorBottomLeft.a / mainColorAlpha, 0.0f, 255.0f) : 255);
+				colorBottomRight.a = (mainColorAlpha > 0.0f ? (unsigned char)hclamp((float)colorBottomRight.a / mainColorAlpha, 0.0f, 255.0f) : 255);
+			}
 			this->vertices[0].color = colorTopLeft;
-			this->vertices[1].color = this->vertices[3].color = april::rendersys->getNativeColorUInt(this->_makeDrawColor(april::Color(this->colorTopRight, (unsigned char)(this->colorTopRight.a_f() * this->color.a))));
-			this->vertices[2].color = this->vertices[4].color = april::rendersys->getNativeColorUInt(this->_makeDrawColor(april::Color(this->colorBottomLeft, (unsigned char)(this->colorBottomLeft.a_f() * this->color.a)))); 
-			this->vertices[5].color = april::rendersys->getNativeColorUInt(this->_makeDrawColor(april::Color(this->colorBottomRight, (unsigned char)(this->colorBottomRight.a_f() * this->color.a))));
+			this->vertices[1].color = this->vertices[3].color = april::rendersys->getNativeColorUInt(colorTopRight);
+			this->vertices[2].color = this->vertices[4].color = april::rendersys->getNativeColorUInt(colorBottomLeft);
+			this->vertices[5].color = april::rendersys->getNativeColorUInt(colorBottomRight);
 		}
 		april::rendersys->setBlendMode(april::BlendMode::Alpha);
 		april::rendersys->setColorMode(april::ColorMode::Multiply);

@@ -1324,7 +1324,7 @@ namespace aprilui
 		april::Color color = this->color;
 		if (this->inheritAlpha)
 		{
-			color.a = 255; // required, because this->_makeDrawColor(color) will already apply the derived object alpha
+			color.a = 255; // required because this->_makeDrawColor(color) will already apply the derived object alpha
 		}
 		return this->_makeDrawColor(color);
 	}
