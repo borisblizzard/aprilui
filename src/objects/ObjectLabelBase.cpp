@@ -703,12 +703,12 @@ namespace aprilui
 			if (!horizontal.isWrapped())
 			{
 				size.x = atres::renderer->getTextWidth(fontName, text);
-				float newY = atres::renderer->getTextHeight(fontName, text, size.x);
+				float newY = atres::renderer->getTextHeight(fontName, text, size.x, atres::Horizontal::Left);
 				int i = 0;
 				while (size.y * SAFE_AUTO_SCALE_CHECK_VALUE < newY && i < MAX_AUTO_SCALE_STEPS)
 				{
 					size.x *= SAFE_AUTO_SCALE_FACTOR;
-					newY = atres::renderer->getTextHeight(fontName, text, size.x);
+					newY = atres::renderer->getTextHeight(fontName, text, size.x, atres::Horizontal::Left);
 					++i;
 				}
 				size.y = newY;
