@@ -156,7 +156,7 @@ namespace aprilui
 
 	void Animator::setDelay(const float& value)
 	{
-		this->delay = hmax(value, 0.0f);
+		this->originalDelay = this->delay = hmax(value, 0.0f);
 	}
 	
 	void Animator::setSpeed(const float& value)
@@ -345,7 +345,6 @@ namespace aprilui
 			}
 		}
 		result *= 1.0 + time * habs(this->speed) * this->multiplier;
-
 		if (this->discreteStep > 0)
 		{
 			if (this->discreteStepMode == DiscreteStepMode::Floor)
@@ -372,6 +371,7 @@ namespace aprilui
 	{
 		this->timer = 0.0;
 		this->update(0.0f);
+		this->delay = this->originalDelay; // comes after to make sure state is reset in update
 	}
 	
 	hstr Animator::getProperty(chstr name)

@@ -57,6 +57,7 @@ namespace aprilui
 		HL_DEFINE_GETSET(double, timer, Timer);
 		HL_DEFINE_GET(float, delay, Delay);
 		void setDelay(const float& value);
+		HL_DEFINE_GET(float, originalDelay, OriginalDelay);
 		HL_DEFINE_GETSET(float, periods, Periods);
 		HL_DEFINE_GETSET(float, amplitude, Amplitude);
 		HL_DEFINE_GET(float, speed, Speed);
@@ -95,6 +96,7 @@ namespace aprilui
 		AnimationFunction animationFunction;
 		double timer;
 		float delay;
+		float originalDelay;
 		float periods;
 		float amplitude;
 		float speed;
