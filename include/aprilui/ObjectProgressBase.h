@@ -66,12 +66,6 @@ namespace aprilui
 		bool trySetMaskImageByName(chstr name);
 		virtual bool trySetImageByName(chstr name) = 0;
 
-#ifndef DOXYGEN_SHOULD_SKIP_THIS
-		HL_DEPRECATED("Deprecated API. Use setProgressSymbolicColor() instead.") void setSymbolicProgressColor(chstr value) { this->setProgressSymbolicColor(value); }
-		HL_DEPRECATED("Deprecated API. Use setAntiProgressSymbolicColor() instead.") void setSymbolicAntiProgressColor(chstr value) { this->setAntiProgressSymbolicColor(value); }
-		HL_DEPRECATED("Deprecated API. Use setMaskSymbolicColor() instead.") void setSymbolicMaskColor(chstr value) { this->setMaskSymbolicColor(value); }
-#endif
-
 	protected:
 		BaseImage* progressImage;
 		hstr progressImageName;
