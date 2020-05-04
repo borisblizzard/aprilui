@@ -68,34 +68,6 @@
 #define CREATE_DYNAMIC_ANIMATOR(type, offset, target, speed) \
 	CREATE_DELAYED_DYNAMIC_ANIMATOR(type, offset, target, speed, 0.0f);
 
-#define CREATE_DYNAMIC_ANIMATE(type) \
-	Animator* animator ## type = new Animators::type(april::generateName("dynamic_animator_")); \
-	this->dynamicAnimators += animator ## type; \
-	animator ## type->parent = this; \
-	animator ## type->setOffset(offset); \
-	animator ## type->setAmplitude(amplitude); \
-	animator ## type->setAnimationFunction(function); \
-	if (durationPeriods >= 0.0f) \
-	{ \
-		animator ## type->setSpeed(speed * durationPeriods); \
-		animator ## type->setPeriods(startPeriods + durationPeriods); \
-		animator ## type->setPeriodsTimer(startPeriods); \
-	} \
-	else \
-	{ \
-		animator ## type->setSpeed(speed); \
-		animator ## type->setPeriods(-1.0f); \
-		animator ## type->setPeriodsTimer(startPeriods); \
-	} \
-	animator ## type->setDelay(delay); \
-
-#define DEFINE_DYNAMIC_ANIMATE(functionName, type) \
-	Animator* Object::functionName(float offset, float amplitude, float speed, Animator::AnimationFunction function, float startPeriods, float durationPeriods, float delay) \
-	{ \
-		CREATE_DYNAMIC_ANIMATE(type); \
-		return animator ## type; \
-	}
-
 namespace aprilui
 {
 	HL_ENUM_CLASS_DEFINE(Object::HitTest,

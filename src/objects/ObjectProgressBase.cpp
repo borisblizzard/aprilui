@@ -151,7 +151,7 @@ namespace aprilui
 	{
 		this->setMaskColor(aprilui::_makeColor(value));
 	}
-	
+
 	april::Color ProgressBase::_makeDrawProgressColor() const
 	{
 		return this->_makeDrawColor(this->progressColor);	

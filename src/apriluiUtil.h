@@ -30,6 +30,36 @@
 	exception; \
 	returnCode;
 
+#define CREATE_DYNAMIC_ANIMATE(type) \
+	Animator* animator ## type = new Animators::type(april::generateName("dynamic_animator_")); \
+	this->dynamicAnimators += animator ## type; \
+	animator ## type->parent = this; \
+	animator ## type->setOffset(offset); \
+	animator ## type->setAmplitude(amplitude); \
+	animator ## type->setAnimationFunction(function); \
+	if (durationPeriods >= 0.0f) \
+	{ \
+		animator ## type->setSpeed(speed * durationPeriods); \
+		animator ## type->setPeriods(startPeriods + durationPeriods); \
+		animator ## type->setPeriodsTimer(startPeriods); \
+	} \
+	else \
+	{ \
+		animator ## type->setSpeed(speed); \
+		animator ## type->setPeriods(-1.0f); \
+		animator ## type->setPeriodsTimer(startPeriods); \
+	} \
+	animator ## type->setDelay(delay); \
+
+#define DEFINE_DYNAMIC_ANIMATE_CLASS(classe, functionName, type) \
+	Animator* classe::functionName(float offset, float amplitude, float speed, Animator::AnimationFunction function, float startPeriods, float durationPeriods, float delay) \
+	{ \
+		CREATE_DYNAMIC_ANIMATE(type); \
+		return animator ## type; \
+	}
+
+#define DEFINE_DYNAMIC_ANIMATE(functionName, type) DEFINE_DYNAMIC_ANIMATE_CLASS(Object, functionName, type)
+
 namespace aprilui
 {
 	extern bool textureFilesDebugExceptionsEnabled;

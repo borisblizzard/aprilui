@@ -21,6 +21,9 @@
 
 namespace aprilui
 {
+	class ProgressBar;
+	class ProgressCircle;
+
 	class apriluiExport Animator : public BaseObject
 	{
 		APRILUI_CLONEABLE_ABSTRACT(Animator)
@@ -46,6 +49,8 @@ namespace aprilui
 		));
 
 		friend class BaseObject;
+		friend class ProgressBar;
+		friend class ProgressCircle;
 
 		Animator(chstr name);
 		inline hstr getClassName() const { return "Animator"; }

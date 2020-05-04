@@ -10,6 +10,8 @@
 #include <gtypes/Rectangle.h>
 #include <hltypes/hstring.h>
 
+#include "AnimatorProgressChanger.h"
+#include "apriluiUtil.h"
 #include "BaseImage.h"
 #include "Dataset.h"
 #include "ObjectProgressCircle.h"
@@ -303,4 +305,6 @@ namespace aprilui
 		return ImageBox::setProperty(name, value);
 	}
 	
+	DEFINE_DYNAMIC_ANIMATE_CLASS(ProgressCircle, animateProgress, ProgressChanger);
+
 }

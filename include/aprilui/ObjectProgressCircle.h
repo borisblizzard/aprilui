@@ -23,6 +23,8 @@
 
 namespace aprilui
 {
+	class Animator;
+
 	class apriluiExport ProgressCircle : public ImageBox, public ProgressBase
 	{
 		APRILUI_CLONEABLE(ProgressCircle);
@@ -61,6 +63,8 @@ namespace aprilui
 
 		hstr getProperty(chstr name);
 		bool setProperty(chstr name, chstr value);
+
+		Animator* animateProgress(float offset, float amplitude, float speed, Animator::AnimationFunction function, float startPeriods = 0.0f, float durationPeriods = -1.0f, float delay = 0.0f);
 
 	protected:
 		Direction direction;

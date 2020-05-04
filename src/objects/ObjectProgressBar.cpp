@@ -9,6 +9,8 @@
 #include <gtypes/Rectangle.h>
 #include <hltypes/hstring.h>
 
+#include "AnimatorProgressChanger.h"
+#include "apriluiUtil.h"
 #include "BaseImage.h"
 #include "Dataset.h"
 #include "Image.h"
@@ -357,5 +359,7 @@ namespace aprilui
 			this->triggerEvent(Event::SetProgressValue);
 		}
 	}
+
+	DEFINE_DYNAMIC_ANIMATE_CLASS(ProgressBar, animateProgress, ProgressChanger);
 
 }
