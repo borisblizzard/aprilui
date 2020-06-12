@@ -2186,7 +2186,7 @@ namespace aprilui
 		ASSERT_NO_ASYNC_LOADING(reloadTextures, ());
 		foreach_m (aprilui::Texture*, it, this->textures)
 		{
-			it->second->reload(this->_makeLocalizedTextureName(it->second->getOriginalFilename()));
+			it->second->reload(this->_makeLocalizedTextureName(it->second->getLogicalFilename()));
 		}
 	}
 

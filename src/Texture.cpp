@@ -22,11 +22,11 @@ namespace aprilui
 	Texture::Texture(chstr name, chstr filename, april::Texture* texture, bool managed)
 	{
 		this->name = name;
-		this->originalFilename = filename;
+		this->logicalFilename = filename;
 		this->filename = texture->getFilename();
 		if (this->filename == "")
 		{
-			this->filename = this->originalFilename;
+			this->filename = this->logicalFilename;
 		}
 		this->texture = texture;
 		this->loadMode = texture->getLoadMode();
@@ -243,7 +243,7 @@ namespace aprilui
 
 	void Texture::reload(chstr filename)
 	{
-		if (this->originalFilename != filename)
+		if (this->filename != filename)
 		{
 			if (this->texture != NULL)
 			{
@@ -256,7 +256,7 @@ namespace aprilui
 			{
 				__THROW_EXCEPTION(ResourceFileCouldNotOpenException(filename), aprilui::textureFilesDebugExceptionsEnabled, return);
 			}
-			this->originalFilename = filename;
+			this->filename = filename;
 			this->setTexture(texture);
 		}
 	}

@@ -32,7 +32,7 @@ namespace aprilui
 		~Texture();
 
 		HL_DEFINE_GET(hstr, name, Name);
-		HL_DEFINE_GET(hstr, originalFilename, OriginalFilename);
+		HL_DEFINE_GET(hstr, logicalFilename, LogicalFilename);
 		HL_DEFINE_GET(hstr, filename, Filename);
 		HL_DEFINE_GET(april::Texture*, texture, Texture);
 		void setTexture(april::Texture* const& value);
@@ -66,7 +66,7 @@ namespace aprilui
 		
 	protected:
 		hstr name;
-		hstr originalFilename;
+		hstr logicalFilename;
 		hstr filename;
 		april::Texture* texture;
 		april::Texture::LoadMode loadMode;
