@@ -59,7 +59,7 @@ namespace aprilui
 		bool load(bool ignoreDynamicLinks = false);
 		bool loadAsync(bool ignoreDynamicLinks = false);
 		void unload();
-		void reload(chstr filename);
+		void reload(chstr localizedFilename);
 		
 		void addLink(Texture* link);
 		void removeLink(Texture* link);
@@ -67,6 +67,7 @@ namespace aprilui
 	protected:
 		hstr name;
 		hstr logicalFilename;
+		hstr localizedFilename;
 		hstr filename;
 		april::Texture* texture;
 		april::Texture::LoadMode loadMode;

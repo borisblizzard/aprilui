@@ -7,6 +7,7 @@
 /// the terms of the BSD license: http://opensource.org/licenses/BSD-3-Clause
 
 #include <april/RenderSystem.h>
+#include <hltypes/hfile.h>
 
 #include "aprilui.h"
 #include "apriluiUtil.h"
@@ -28,6 +29,7 @@ namespace aprilui
 		{
 			this->filename = this->logicalFilename;
 		}
+		this->localizedFilename = hfile::withoutExtension(this->filename);
 		this->texture = texture;
 		this->loadMode = texture->getLoadMode();
 		this->managed = managed;
@@ -241,9 +243,9 @@ namespace aprilui
 		}
 	}
 
-	void Texture::reload(chstr filename)
+	void Texture::reload(chstr localizedFilename)
 	{
-		if (this->filename != filename)
+		if (this->localizedFilename != localizedFilename)
 		{
 			if (this->texture != NULL)
 			{
@@ -251,12 +253,13 @@ namespace aprilui
 			}
 			this->texture = NULL;
 			this->unusedTime = 0.0f;
-			april::Texture* texture = april::rendersys->createTextureFromResource(filename, april::Texture::Type::Immutable, this->loadMode);
+			april::Texture* texture = april::rendersys->createTextureFromResource(localizedFilename, april::Texture::Type::Immutable, this->loadMode);
 			if (texture == NULL)
 			{
-				__THROW_EXCEPTION(ResourceFileCouldNotOpenException(filename), aprilui::textureFilesDebugExceptionsEnabled, return);
+				__THROW_EXCEPTION(ResourceFileCouldNotOpenException(localizedFilename), aprilui::textureFilesDebugExceptionsEnabled, return);
 			}
-			this->filename = filename;
+			this->filename = texture->getFilename();
+			this->localizedFilename = localizedFilename;
 			this->setTexture(texture);
 		}
 	}
