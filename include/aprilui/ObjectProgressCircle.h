@@ -64,7 +64,41 @@ namespace aprilui
 		hstr getProperty(chstr name);
 		bool setProperty(chstr name, chstr value);
 
+		Animator* changeProgress(float value, float speed);
+		Animator* fadeProgressRed(unsigned char r, float speed);
+		Animator* fadeProgressGreen(unsigned char g, float speed);
+		Animator* fadeProgressBlue(unsigned char b, float speed);
+		Animator* fadeProgressAlpha(unsigned char a, float speed);
+		Animator* fadeAntiProgressRed(unsigned char r, float speed);
+		Animator* fadeAntiProgressGreen(unsigned char g, float speed);
+		Animator* fadeAntiProgressBlue(unsigned char b, float speed);
+		Animator* fadeAntiProgressAlpha(unsigned char a, float speed);
+		void fadeProgressColor(unsigned char r, unsigned char g, unsigned char b, unsigned char a, float speed);
+		void fadeProgressColor(const april::Color& color, float speed);
+		void fadeAntiProgressColor(unsigned char r, unsigned char g, unsigned char b, unsigned char a, float speed);
+		void fadeAntiProgressColor(const april::Color& color, float speed);
+
+		Animator* changeProgressQueue(float value, float speed, float delay = 0.0f);
+		Animator* fadeProgressRedQueue(unsigned char r, float speed, float delay = 0.0f);
+		Animator* fadeProgressGreenQueue(unsigned char g, float speed, float delay = 0.0f);
+		Animator* fadeProgressBlueQueue(unsigned char b, float speed, float delay = 0.0f);
+		Animator* fadeProgressAlphaQueue(unsigned char a, float speed, float delay = 0.0f);
+		Animator* fadeAntiProgressRedQueue(unsigned char r, float speed, float delay = 0.0f);
+		Animator* fadeAntiProgressGreenQueue(unsigned char g, float speed, float delay = 0.0f);
+		Animator* fadeAntiProgressBlueQueue(unsigned char b, float speed, float delay = 0.0f);
+		Animator* fadeAntiProgressAlphaQueue(unsigned char a, float speed, float delay = 0.0f);
+		void fadeProgressColorQueue(unsigned char r, unsigned char g, unsigned char b, unsigned char a, float speed, float delay = 0.0f);
+		void fadeProgressColorQueue(const april::Color& color, float speed, float delay = 0.0f);
+		void fadeAntiProgressColorQueue(unsigned char r, unsigned char g, unsigned char b, unsigned char a, float speed, float delay = 0.0f);
+		void fadeAntiProgressColorQueue(const april::Color& color, float speed, float delay = 0.0f);
+
 		Animator* animateProgress(float offset, float amplitude, float speed, Animator::AnimationFunction function, float startPeriods = 0.0f, float durationPeriods = -1.0f, float delay = 0.0f);
+		harray<Animator*> animateProgressColor(float offset, float amplitude, float speed, Animator::AnimationFunction function, float startPeriods = 0.0f, float durationPeriods = -1.0f, float delay = 0.0f);
+		harray<Animator*> animateAntiProgressColor(float offset, float amplitude, float speed, Animator::AnimationFunction function, float startPeriods = 0.0f, float durationPeriods = -1.0f, float delay = 0.0f);
+
+		void animateStopProgress();
+		void animateStopProgressColor();
+		void animateStopAntiProgressColor();
 
 	protected:
 		Direction direction;

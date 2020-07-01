@@ -266,6 +266,30 @@
     <ClCompile Include="..\..\src\objects\ObjectColored.cpp">
       <Filter>Source Files\Objects</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\animators\AnimatorAntiProgressAlphaChanger.cpp">
+      <Filter>Source Files\Animators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\animators\AnimatorAntiProgressBlueChanger.cpp">
+      <Filter>Source Files\Animators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\animators\AnimatorAntiProgressGreenChanger.cpp">
+      <Filter>Source Files\Animators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\animators\AnimatorAntiProgressRedChanger.cpp">
+      <Filter>Source Files\Animators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\animators\AnimatorProgressAlphaChanger.cpp">
+      <Filter>Source Files\Animators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\animators\AnimatorProgressBlueChanger.cpp">
+      <Filter>Source Files\Animators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\animators\AnimatorProgressGreenChanger.cpp">
+      <Filter>Source Files\Animators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\animators\AnimatorProgressRedChanger.cpp">
+      <Filter>Source Files\Animators</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\aprilui\Animators.h">
@@ -519,6 +543,30 @@
     </ClInclude>
     <ClInclude Include="..\..\include\aprilui\ObjectColored.h">
       <Filter>Header Files\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\aprilui\AnimatorAntiProgressAlphaChanger.h">
+      <Filter>Header Files\Animators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\aprilui\AnimatorAntiProgressBlueChanger.h">
+      <Filter>Header Files\Animators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\aprilui\AnimatorAntiProgressGreenChanger.h">
+      <Filter>Header Files\Animators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\aprilui\AnimatorAntiProgressRedChanger.h">
+      <Filter>Header Files\Animators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\aprilui\AnimatorProgressAlphaChanger.h">
+      <Filter>Header Files\Animators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\aprilui\AnimatorProgressBlueChanger.h">
+      <Filter>Header Files\Animators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\aprilui\AnimatorProgressGreenChanger.h">
+      <Filter>Header Files\Animators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\aprilui\AnimatorProgressRedChanger.h">
+      <Filter>Header Files\Animators</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

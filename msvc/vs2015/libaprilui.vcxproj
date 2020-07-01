@@ -31,9 +31,17 @@
   <Import Project="..\..\..\hltypes\msvc\vs2015\props-generic\build-defaults.props" />
   <Import Project="props\configuration.props" />
   <ItemGroup>
+    <ClCompile Include="..\..\src\animators\AnimatorAntiProgressAlphaChanger.cpp" />
+    <ClCompile Include="..\..\src\animators\AnimatorAntiProgressBlueChanger.cpp" />
+    <ClCompile Include="..\..\src\animators\AnimatorAntiProgressGreenChanger.cpp" />
+    <ClCompile Include="..\..\src\animators\AnimatorAntiProgressRedChanger.cpp" />
     <ClCompile Include="..\..\src\animators\AnimatorPivotMoverX.cpp" />
     <ClCompile Include="..\..\src\animators\AnimatorPivotMoverY.cpp" />
+    <ClCompile Include="..\..\src\animators\AnimatorProgressAlphaChanger.cpp" />
+    <ClCompile Include="..\..\src\animators\AnimatorProgressBlueChanger.cpp" />
     <ClCompile Include="..\..\src\animators\AnimatorProgressChanger.cpp" />
+    <ClCompile Include="..\..\src\animators\AnimatorProgressGreenChanger.cpp" />
+    <ClCompile Include="..\..\src\animators\AnimatorProgressRedChanger.cpp" />
     <ClCompile Include="..\..\src\animators\AnimatorResizerX.cpp" />
     <ClCompile Include="..\..\src\animators\AnimatorResizerY.cpp" />
     <ClCompile Include="..\..\src\animators\AnimatorScalerX.cpp" />
@@ -111,9 +119,17 @@
     <ClCompile Include="..\..\src\Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\include\aprilui\AnimatorAntiProgressAlphaChanger.h" />
+    <ClInclude Include="..\..\include\aprilui\AnimatorAntiProgressBlueChanger.h" />
+    <ClInclude Include="..\..\include\aprilui\AnimatorAntiProgressGreenChanger.h" />
+    <ClInclude Include="..\..\include\aprilui\AnimatorAntiProgressRedChanger.h" />
     <ClInclude Include="..\..\include\aprilui\AnimatorPivotMoverX.h" />
     <ClInclude Include="..\..\include\aprilui\AnimatorPivotMoverY.h" />
+    <ClInclude Include="..\..\include\aprilui\AnimatorProgressAlphaChanger.h" />
+    <ClInclude Include="..\..\include\aprilui\AnimatorProgressBlueChanger.h" />
     <ClInclude Include="..\..\include\aprilui\AnimatorProgressChanger.h" />
+    <ClInclude Include="..\..\include\aprilui\AnimatorProgressGreenChanger.h" />
+    <ClInclude Include="..\..\include\aprilui\AnimatorProgressRedChanger.h" />
     <ClInclude Include="..\..\include\aprilui\AnimatorResizerX.h" />
     <ClInclude Include="..\..\include\aprilui\AnimatorResizerY.h" />
     <ClInclude Include="..\..\include\aprilui\AnimatorScalerX.h" />

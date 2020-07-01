@@ -14,6 +14,10 @@
 #define APRILUI_ANIMATORS_H
 
 #include "AnimatorAlphaChanger.h"
+#include "AnimatorAntiProgressAlphaChanger.h"
+#include "AnimatorAntiProgressBlueChanger.h"
+#include "AnimatorAntiProgressGreenChanger.h"
+#include "AnimatorAntiProgressRedChanger.h"
 #include "AnimatorBlueChanger.h"
 #include "AnimatorFrameAnimation.h"
 #include "AnimatorGreenChanger.h"
@@ -21,7 +25,11 @@
 #include "AnimatorMoverY.h"
 #include "AnimatorPivotMoverX.h"
 #include "AnimatorPivotMoverY.h"
+#include "AnimatorProgressAlphaChanger.h"
+#include "AnimatorProgressBlueChanger.h"
 #include "AnimatorProgressChanger.h"
+#include "AnimatorProgressGreenChanger.h"
+#include "AnimatorProgressRedChanger.h"
 #include "AnimatorRedChanger.h"
 #include "AnimatorRotator.h"
 #include "AnimatorResizerX.h"

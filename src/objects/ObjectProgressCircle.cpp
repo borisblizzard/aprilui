@@ -10,7 +10,7 @@
 #include <gtypes/Rectangle.h>
 #include <hltypes/hstring.h>
 
-#include "AnimatorProgressChanger.h"
+#include "Animators.h"
 #include "apriluiUtil.h"
 #include "BaseImage.h"
 #include "Dataset.h"
@@ -305,6 +305,252 @@ namespace aprilui
 		return ImageBox::setProperty(name, value);
 	}
 	
+	Animator* ProgressCircle::changeProgress(float value, float speed)
+	{
+		REMOVE_EXISTING_ANIMATORS(ProgressChanger);
+		CREATE_DYNAMIC_ANIMATOR(ProgressChanger, this->progress, value, speed);
+		return animatorProgressChanger;
+	}
+
+	Animator* ProgressCircle::fadeProgressRed(unsigned char r, float speed)
+	{
+		REMOVE_EXISTING_ANIMATORS(ProgressRedChanger);
+		CREATE_DYNAMIC_ANIMATOR(ProgressRedChanger, (float)this->progressColor.r, (float)r, speed);
+		return animatorProgressRedChanger;
+	}
+
+	Animator* ProgressCircle::fadeProgressGreen(unsigned char g, float speed)
+	{
+		REMOVE_EXISTING_ANIMATORS(ProgressGreenChanger);
+		CREATE_DYNAMIC_ANIMATOR(ProgressGreenChanger, (float)this->progressColor.g, (float)g, speed);
+		return animatorProgressGreenChanger;
+	}
+
+	Animator* ProgressCircle::fadeProgressBlue(unsigned char b, float speed)
+	{
+		REMOVE_EXISTING_ANIMATORS(ProgressBlueChanger);
+		CREATE_DYNAMIC_ANIMATOR(ProgressBlueChanger, (float)this->progressColor.b, (float)b, speed);
+		return animatorProgressBlueChanger;
+	}
+
+	Animator* ProgressCircle::fadeProgressAlpha(unsigned char a, float speed)
+	{
+		REMOVE_EXISTING_ANIMATORS(ProgressAlphaChanger);
+		CREATE_DYNAMIC_ANIMATOR(ProgressAlphaChanger, (float)this->progressColor.a, (float)a, speed);
+		return animatorProgressAlphaChanger;
+	}
+
+	Animator* ProgressCircle::fadeAntiProgressRed(unsigned char r, float speed)
+	{
+		REMOVE_EXISTING_ANIMATORS(AntiProgressRedChanger);
+		CREATE_DYNAMIC_ANIMATOR(AntiProgressRedChanger, (float)this->antiProgressColor.r, (float)r, speed);
+		return animatorAntiProgressRedChanger;
+	}
+
+	Animator* ProgressCircle::fadeAntiProgressGreen(unsigned char g, float speed)
+	{
+		REMOVE_EXISTING_ANIMATORS(AntiProgressGreenChanger);
+		CREATE_DYNAMIC_ANIMATOR(AntiProgressGreenChanger, (float)this->antiProgressColor.g, (float)g, speed);
+		return animatorAntiProgressGreenChanger;
+	}
+
+	Animator* ProgressCircle::fadeAntiProgressBlue(unsigned char b, float speed)
+	{
+		REMOVE_EXISTING_ANIMATORS(AntiProgressBlueChanger);
+		CREATE_DYNAMIC_ANIMATOR(AntiProgressBlueChanger, (float)this->antiProgressColor.b, (float)b, speed);
+		return animatorAntiProgressBlueChanger;
+	}
+
+	Animator* ProgressCircle::fadeAntiProgressAlpha(unsigned char a, float speed)
+	{
+		REMOVE_EXISTING_ANIMATORS(AntiProgressAlphaChanger);
+		CREATE_DYNAMIC_ANIMATOR(AntiProgressAlphaChanger, (float)this->antiProgressColor.a, (float)a, speed);
+		return animatorAntiProgressAlphaChanger;
+	}
+
+	void ProgressCircle::fadeProgressColor(unsigned char r, unsigned char g, unsigned char b, unsigned char a, float speed)
+	{
+		REMOVE_EXISTING_ANIMATORS(ProgressRedChanger);
+		REMOVE_EXISTING_ANIMATORS(ProgressGreenChanger);
+		REMOVE_EXISTING_ANIMATORS(ProgressBlueChanger);
+		REMOVE_EXISTING_ANIMATORS(ProgressAlphaChanger);
+		CREATE_DYNAMIC_ANIMATOR(ProgressRedChanger, (float)this->progressColor.r, (float)r, speed);
+		CREATE_DYNAMIC_ANIMATOR(ProgressGreenChanger, (float)this->progressColor.g, (float)g, speed);
+		CREATE_DYNAMIC_ANIMATOR(ProgressBlueChanger, (float)this->progressColor.b, (float)b, speed);
+		CREATE_DYNAMIC_ANIMATOR(ProgressAlphaChanger, (float)this->progressColor.a, (float)a, speed);
+	}
+
+	void ProgressCircle::fadeProgressColor(const april::Color& color, float speed)
+	{
+		REMOVE_EXISTING_ANIMATORS(ProgressRedChanger);
+		REMOVE_EXISTING_ANIMATORS(ProgressGreenChanger);
+		REMOVE_EXISTING_ANIMATORS(ProgressBlueChanger);
+		REMOVE_EXISTING_ANIMATORS(ProgressAlphaChanger);
+		CREATE_DYNAMIC_ANIMATOR(ProgressRedChanger, (float)this->progressColor.r, (float)color.r, speed);
+		CREATE_DYNAMIC_ANIMATOR(ProgressGreenChanger, (float)this->progressColor.g, (float)color.g, speed);
+		CREATE_DYNAMIC_ANIMATOR(ProgressBlueChanger, (float)this->progressColor.b, (float)color.b, speed);
+		CREATE_DYNAMIC_ANIMATOR(ProgressAlphaChanger, (float)this->progressColor.a, (float)color.a, speed);
+	}
+
+	void ProgressCircle::fadeAntiProgressColor(unsigned char r, unsigned char g, unsigned char b, unsigned char a, float speed)
+	{
+		REMOVE_EXISTING_ANIMATORS(AntiProgressRedChanger);
+		REMOVE_EXISTING_ANIMATORS(AntiProgressGreenChanger);
+		REMOVE_EXISTING_ANIMATORS(AntiProgressBlueChanger);
+		REMOVE_EXISTING_ANIMATORS(AntiProgressAlphaChanger);
+		CREATE_DYNAMIC_ANIMATOR(AntiProgressRedChanger, (float)this->antiProgressColor.r, (float)r, speed);
+		CREATE_DYNAMIC_ANIMATOR(AntiProgressGreenChanger, (float)this->antiProgressColor.g, (float)g, speed);
+		CREATE_DYNAMIC_ANIMATOR(AntiProgressBlueChanger, (float)this->antiProgressColor.b, (float)b, speed);
+		CREATE_DYNAMIC_ANIMATOR(AntiProgressAlphaChanger, (float)this->antiProgressColor.a, (float)a, speed);
+	}
+
+	void ProgressCircle::fadeAntiProgressColor(const april::Color& color, float speed)
+	{
+		REMOVE_EXISTING_ANIMATORS(AntiProgressRedChanger);
+		REMOVE_EXISTING_ANIMATORS(AntiProgressGreenChanger);
+		REMOVE_EXISTING_ANIMATORS(AntiProgressBlueChanger);
+		REMOVE_EXISTING_ANIMATORS(AntiProgressAlphaChanger);
+		CREATE_DYNAMIC_ANIMATOR(AntiProgressRedChanger, (float)this->antiProgressColor.r, (float)color.r, speed);
+		CREATE_DYNAMIC_ANIMATOR(AntiProgressGreenChanger, (float)this->antiProgressColor.g, (float)color.g, speed);
+		CREATE_DYNAMIC_ANIMATOR(AntiProgressBlueChanger, (float)this->antiProgressColor.b, (float)color.b, speed);
+		CREATE_DYNAMIC_ANIMATOR(AntiProgressAlphaChanger, (float)this->antiProgressColor.a, (float)color.a, speed);
+	}
+
+	Animator* ProgressCircle::changeProgressQueue(float value, float speed, float delay)
+	{
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(ProgressChanger, this->progress, value, speed, delay);
+		return animatorProgressChanger;
+	}
+
+	Animator* ProgressCircle::fadeProgressRedQueue(unsigned char r, float speed, float delay)
+	{
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(ProgressRedChanger, (float)this->progressColor.r, (float)r, speed, delay);
+		return animatorProgressRedChanger;
+	}
+
+	Animator* ProgressCircle::fadeProgressGreenQueue(unsigned char g, float speed, float delay)
+	{
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(ProgressGreenChanger, (float)this->progressColor.g, (float)g, speed, delay);
+		return animatorProgressGreenChanger;
+	}
+
+	Animator* ProgressCircle::fadeProgressBlueQueue(unsigned char b, float speed, float delay)
+	{
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(ProgressBlueChanger, (float)this->progressColor.b, (float)b, speed, delay);
+		return animatorProgressBlueChanger;
+	}
+
+	Animator* ProgressCircle::fadeProgressAlphaQueue(unsigned char a, float speed, float delay)
+	{
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(ProgressAlphaChanger, (float)this->progressColor.a, (float)a, speed, delay);
+		return animatorProgressAlphaChanger;
+	}
+
+	Animator* ProgressCircle::fadeAntiProgressRedQueue(unsigned char r, float speed, float delay)
+	{
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(AntiProgressRedChanger, (float)this->antiProgressColor.r, (float)r, speed, delay);
+		return animatorAntiProgressRedChanger;
+	}
+
+	Animator* ProgressCircle::fadeAntiProgressGreenQueue(unsigned char g, float speed, float delay)
+	{
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(AntiProgressGreenChanger, (float)this->antiProgressColor.g, (float)g, speed, delay);
+		return animatorAntiProgressGreenChanger;
+	}
+
+	Animator* ProgressCircle::fadeAntiProgressBlueQueue(unsigned char b, float speed, float delay)
+	{
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(AntiProgressBlueChanger, (float)this->antiProgressColor.b, (float)b, speed, delay);
+		return animatorAntiProgressBlueChanger;
+	}
+
+	Animator* ProgressCircle::fadeAntiProgressAlphaQueue(unsigned char a, float speed, float delay)
+	{
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(AntiProgressAlphaChanger, (float)this->antiProgressColor.a, (float)a, speed, delay);
+		return animatorAntiProgressAlphaChanger;
+	}
+
+	void ProgressCircle::fadeProgressColorQueue(unsigned char r, unsigned char g, unsigned char b, unsigned char a, float speed, float delay)
+	{
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(ProgressRedChanger, (float)this->progressColor.r, (float)r, speed, delay);
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(ProgressGreenChanger, (float)this->progressColor.g, (float)g, speed, delay);
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(ProgressBlueChanger, (float)this->progressColor.b, (float)b, speed, delay);
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(ProgressAlphaChanger, (float)this->progressColor.a, (float)a, speed, delay);
+	}
+
+	void ProgressCircle::fadeProgressColorQueue(const april::Color& color, float speed, float delay)
+	{
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(ProgressRedChanger, (float)this->progressColor.r, (float)color.r, speed, delay);
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(ProgressGreenChanger, (float)this->progressColor.g, (float)color.g, speed, delay);
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(ProgressBlueChanger, (float)this->progressColor.b, (float)color.b, speed, delay);
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(ProgressAlphaChanger, (float)this->progressColor.a, (float)color.a, speed, delay);
+	}
+
+	void ProgressCircle::fadeAntiProgressColorQueue(unsigned char r, unsigned char g, unsigned char b, unsigned char a, float speed, float delay)
+	{
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(AntiProgressRedChanger, (float)this->antiProgressColor.r, (float)r, speed, delay);
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(AntiProgressGreenChanger, (float)this->antiProgressColor.g, (float)g, speed, delay);
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(AntiProgressBlueChanger, (float)this->antiProgressColor.b, (float)b, speed, delay);
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(AntiProgressAlphaChanger, (float)this->antiProgressColor.a, (float)a, speed, delay);
+	}
+
+	void ProgressCircle::fadeAntiProgressColorQueue(const april::Color& color, float speed, float delay)
+	{
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(AntiProgressRedChanger, (float)this->antiProgressColor.r, (float)color.r, speed, delay);
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(AntiProgressGreenChanger, (float)this->antiProgressColor.g, (float)color.g, speed, delay);
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(AntiProgressBlueChanger, (float)this->antiProgressColor.b, (float)color.b, speed, delay);
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(AntiProgressAlphaChanger, (float)this->antiProgressColor.a, (float)color.a, speed, delay);
+	}
+
 	DEFINE_DYNAMIC_ANIMATE_CLASS(ProgressCircle, animateProgress, ProgressChanger);
+
+	harray<Animator*> ProgressCircle::animateProgressColor(float offset, float amplitude, float speed, Animator::AnimationFunction function, float startPeriods, float durationPeriods, float delay)
+	{
+		harray<Animator*> result;
+		CREATE_DYNAMIC_ANIMATE(ProgressRedChanger);
+		CREATE_DYNAMIC_ANIMATE(ProgressGreenChanger);
+		CREATE_DYNAMIC_ANIMATE(ProgressBlueChanger);
+		CREATE_DYNAMIC_ANIMATE(ProgressAlphaChanger);
+		result += animatorProgressRedChanger;
+		result += animatorProgressGreenChanger;
+		result += animatorProgressBlueChanger;
+		result += animatorProgressAlphaChanger;
+		return result;
+	}
+
+	harray<Animator*> ProgressCircle::animateAntiProgressColor(float offset, float amplitude, float speed, Animator::AnimationFunction function, float startPeriods, float durationPeriods, float delay)
+	{
+		harray<Animator*> result;
+		CREATE_DYNAMIC_ANIMATE(AntiProgressRedChanger);
+		CREATE_DYNAMIC_ANIMATE(AntiProgressGreenChanger);
+		CREATE_DYNAMIC_ANIMATE(AntiProgressBlueChanger);
+		CREATE_DYNAMIC_ANIMATE(AntiProgressAlphaChanger);
+		result += animatorAntiProgressRedChanger;
+		result += animatorAntiProgressGreenChanger;
+		result += animatorAntiProgressBlueChanger;
+		result += animatorAntiProgressAlphaChanger;
+		return result;
+	}
+
+	void ProgressCircle::animateStopProgress()
+	{
+		REMOVE_EXISTING_ANIMATORS(ProgressChanger);
+	}
+
+	void ProgressCircle::animateStopProgressColor()
+	{
+		REMOVE_EXISTING_ANIMATORS(ProgressRedChanger);
+		REMOVE_EXISTING_ANIMATORS(ProgressGreenChanger);
+		REMOVE_EXISTING_ANIMATORS(ProgressBlueChanger);
+		REMOVE_EXISTING_ANIMATORS(ProgressAlphaChanger);
+	}
+
+	void ProgressCircle::animateStopAntiProgressColor()
+	{
+		REMOVE_EXISTING_ANIMATORS(AntiProgressRedChanger);
+		REMOVE_EXISTING_ANIMATORS(AntiProgressGreenChanger);
+		REMOVE_EXISTING_ANIMATORS(AntiProgressBlueChanger);
+		REMOVE_EXISTING_ANIMATORS(AntiProgressAlphaChanger);
+	}
 
 }

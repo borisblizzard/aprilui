@@ -29,45 +29,6 @@
 #include "Exception.h"
 #include "ObjectCallbackObject.h"
 
-#define REMOVE_EXISTING_ANIMATORS(name) \
-	int i ## name = 0; \
-	Animators::name* removeAnimator ## name; \
-	while (i ## name < this->dynamicAnimators.size()) \
-	{ \
-		removeAnimator ## name = dynamic_cast<Animators::name*>(this->dynamicAnimators[i ## name]); \
-		if (removeAnimator ## name != NULL) \
-		{ \
-			delete removeAnimator ## name; \
-			this->dynamicAnimators.removeAt(i ## name); \
-		} \
-		else \
-		{ \
-			++(i ## name); \
-		} \
-	}
-
-#define CREATE_DELAYED_DYNAMIC_ANIMATOR(type, offset, target, speed, delay) \
-	Animator* animator ## type = new Animators::type(april::generateName("dynamic_animator_")); \
-	this->dynamicAnimators += animator ## type; \
-	animator ## type->parent = this; \
-	animator ## type->setSpeed(speed); \
-	animator ## type->setPeriods(1.0f); \
-	if (delay == 0.0f) \
-	{ \
-		animator ## type->setOffset(offset); \
-		animator ## type->setAmplitude(target - offset); \
-	} \
-	else \
-	{ \
-		animator ## type->setTarget(target); \
-		animator ## type->setUseTarget(true); \
-		animator ## type->setInheritValue(true); \
-		animator ## type->setDelay(delay); \
-	}
-
-#define CREATE_DYNAMIC_ANIMATOR(type, offset, target, speed) \
-	CREATE_DELAYED_DYNAMIC_ANIMATOR(type, offset, target, speed, 0.0f);
-
 namespace aprilui
 {
 	HL_ENUM_CLASS_DEFINE(Object::HitTest,
