@@ -92,6 +92,30 @@
 		84E5261A21C9226F00DECF79 /* ColorImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84E5261821C9226600DECF79 /* ColorImage.cpp */; };
 		84E5261B21C9226F00DECF79 /* ColorImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84E5261821C9226600DECF79 /* ColorImage.cpp */; };
 		84E5261C21C9227400DECF79 /* ColorImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84E5261821C9226600DECF79 /* ColorImage.cpp */; };
+		A18B9D8124C98F7200ED3B52 /* AnimatorProgressBlueChanger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A18B9D7924C98F7100ED3B52 /* AnimatorProgressBlueChanger.cpp */; };
+		A18B9D8224C98F7200ED3B52 /* AnimatorProgressBlueChanger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A18B9D7924C98F7100ED3B52 /* AnimatorProgressBlueChanger.cpp */; };
+		A18B9D8324C98F7200ED3B52 /* AnimatorProgressAlphaChanger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A18B9D7A24C98F7200ED3B52 /* AnimatorProgressAlphaChanger.cpp */; };
+		A18B9D8424C98F7200ED3B52 /* AnimatorProgressAlphaChanger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A18B9D7A24C98F7200ED3B52 /* AnimatorProgressAlphaChanger.cpp */; };
+		A18B9D8524C98F7200ED3B52 /* AnimatorAntiProgressBlueChanger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A18B9D7B24C98F7200ED3B52 /* AnimatorAntiProgressBlueChanger.cpp */; };
+		A18B9D8624C98F7200ED3B52 /* AnimatorAntiProgressBlueChanger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A18B9D7B24C98F7200ED3B52 /* AnimatorAntiProgressBlueChanger.cpp */; };
+		A18B9D8724C98F7200ED3B52 /* AnimatorAntiProgressGreenChanger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A18B9D7C24C98F7200ED3B52 /* AnimatorAntiProgressGreenChanger.cpp */; };
+		A18B9D8824C98F7200ED3B52 /* AnimatorAntiProgressGreenChanger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A18B9D7C24C98F7200ED3B52 /* AnimatorAntiProgressGreenChanger.cpp */; };
+		A18B9D8924C98F7200ED3B52 /* AnimatorProgressRedChanger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A18B9D7D24C98F7200ED3B52 /* AnimatorProgressRedChanger.cpp */; };
+		A18B9D8A24C98F7200ED3B52 /* AnimatorProgressRedChanger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A18B9D7D24C98F7200ED3B52 /* AnimatorProgressRedChanger.cpp */; };
+		A18B9D8B24C98F7200ED3B52 /* AnimatorProgressGreenChanger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A18B9D7E24C98F7200ED3B52 /* AnimatorProgressGreenChanger.cpp */; };
+		A18B9D8C24C98F7200ED3B52 /* AnimatorProgressGreenChanger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A18B9D7E24C98F7200ED3B52 /* AnimatorProgressGreenChanger.cpp */; };
+		A18B9D8D24C98F7200ED3B52 /* AnimatorAntiProgressAlphaChanger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A18B9D7F24C98F7200ED3B52 /* AnimatorAntiProgressAlphaChanger.cpp */; };
+		A18B9D8E24C98F7200ED3B52 /* AnimatorAntiProgressAlphaChanger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A18B9D7F24C98F7200ED3B52 /* AnimatorAntiProgressAlphaChanger.cpp */; };
+		A18B9D8F24C98F7200ED3B52 /* AnimatorAntiProgressRedChanger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A18B9D8024C98F7200ED3B52 /* AnimatorAntiProgressRedChanger.cpp */; };
+		A18B9D9024C98F7200ED3B52 /* AnimatorAntiProgressRedChanger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A18B9D8024C98F7200ED3B52 /* AnimatorAntiProgressRedChanger.cpp */; };
+		A18B9D9924C98F8500ED3B52 /* AnimatorAntiProgressBlueChanger.h in Headers */ = {isa = PBXBuildFile; fileRef = A18B9D9124C98F8500ED3B52 /* AnimatorAntiProgressBlueChanger.h */; };
+		A18B9D9A24C98F8500ED3B52 /* AnimatorAntiProgressRedChanger.h in Headers */ = {isa = PBXBuildFile; fileRef = A18B9D9224C98F8500ED3B52 /* AnimatorAntiProgressRedChanger.h */; };
+		A18B9D9B24C98F8500ED3B52 /* AnimatorAntiProgressAlphaChanger.h in Headers */ = {isa = PBXBuildFile; fileRef = A18B9D9324C98F8500ED3B52 /* AnimatorAntiProgressAlphaChanger.h */; };
+		A18B9D9C24C98F8500ED3B52 /* AnimatorProgressBlueChanger.h in Headers */ = {isa = PBXBuildFile; fileRef = A18B9D9424C98F8500ED3B52 /* AnimatorProgressBlueChanger.h */; };
+		A18B9D9D24C98F8500ED3B52 /* AnimatorProgressRedChanger.h in Headers */ = {isa = PBXBuildFile; fileRef = A18B9D9524C98F8500ED3B52 /* AnimatorProgressRedChanger.h */; };
+		A18B9D9E24C98F8500ED3B52 /* AnimatorAntiProgressGreenChanger.h in Headers */ = {isa = PBXBuildFile; fileRef = A18B9D9624C98F8500ED3B52 /* AnimatorAntiProgressGreenChanger.h */; };
+		A18B9D9F24C98F8500ED3B52 /* AnimatorProgressGreenChanger.h in Headers */ = {isa = PBXBuildFile; fileRef = A18B9D9724C98F8500ED3B52 /* AnimatorProgressGreenChanger.h */; };
+		A18B9DA024C98F8500ED3B52 /* AnimatorProgressAlphaChanger.h in Headers */ = {isa = PBXBuildFile; fileRef = A18B9D9824C98F8500ED3B52 /* AnimatorProgressAlphaChanger.h */; };
 		B45603D61B5681EF00DF8047 /* AnimatorPivotMoverX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B45603D41B5681EF00DF8047 /* AnimatorPivotMoverX.cpp */; };
 		B45603D71B5681EF00DF8047 /* AnimatorPivotMoverX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B45603D41B5681EF00DF8047 /* AnimatorPivotMoverX.cpp */; };
 		B45603D81B5681EF00DF8047 /* AnimatorPivotMoverX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B45603D41B5681EF00DF8047 /* AnimatorPivotMoverX.cpp */; };
@@ -434,6 +458,22 @@
 		84E5261821C9226600DECF79 /* ColorImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ColorImage.cpp; sourceTree = "<group>"; };
 		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DC2EF5B0486A6940098B216 /* aprilui.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = aprilui.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A18B9D7924C98F7100ED3B52 /* AnimatorProgressBlueChanger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatorProgressBlueChanger.cpp; sourceTree = "<group>"; };
+		A18B9D7A24C98F7200ED3B52 /* AnimatorProgressAlphaChanger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatorProgressAlphaChanger.cpp; sourceTree = "<group>"; };
+		A18B9D7B24C98F7200ED3B52 /* AnimatorAntiProgressBlueChanger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatorAntiProgressBlueChanger.cpp; sourceTree = "<group>"; };
+		A18B9D7C24C98F7200ED3B52 /* AnimatorAntiProgressGreenChanger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatorAntiProgressGreenChanger.cpp; sourceTree = "<group>"; };
+		A18B9D7D24C98F7200ED3B52 /* AnimatorProgressRedChanger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatorProgressRedChanger.cpp; sourceTree = "<group>"; };
+		A18B9D7E24C98F7200ED3B52 /* AnimatorProgressGreenChanger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatorProgressGreenChanger.cpp; sourceTree = "<group>"; };
+		A18B9D7F24C98F7200ED3B52 /* AnimatorAntiProgressAlphaChanger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatorAntiProgressAlphaChanger.cpp; sourceTree = "<group>"; };
+		A18B9D8024C98F7200ED3B52 /* AnimatorAntiProgressRedChanger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatorAntiProgressRedChanger.cpp; sourceTree = "<group>"; };
+		A18B9D9124C98F8500ED3B52 /* AnimatorAntiProgressBlueChanger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimatorAntiProgressBlueChanger.h; path = include/aprilui/AnimatorAntiProgressBlueChanger.h; sourceTree = "<group>"; };
+		A18B9D9224C98F8500ED3B52 /* AnimatorAntiProgressRedChanger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimatorAntiProgressRedChanger.h; path = include/aprilui/AnimatorAntiProgressRedChanger.h; sourceTree = "<group>"; };
+		A18B9D9324C98F8500ED3B52 /* AnimatorAntiProgressAlphaChanger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimatorAntiProgressAlphaChanger.h; path = include/aprilui/AnimatorAntiProgressAlphaChanger.h; sourceTree = "<group>"; };
+		A18B9D9424C98F8500ED3B52 /* AnimatorProgressBlueChanger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimatorProgressBlueChanger.h; path = include/aprilui/AnimatorProgressBlueChanger.h; sourceTree = "<group>"; };
+		A18B9D9524C98F8500ED3B52 /* AnimatorProgressRedChanger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimatorProgressRedChanger.h; path = include/aprilui/AnimatorProgressRedChanger.h; sourceTree = "<group>"; };
+		A18B9D9624C98F8500ED3B52 /* AnimatorAntiProgressGreenChanger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimatorAntiProgressGreenChanger.h; path = include/aprilui/AnimatorAntiProgressGreenChanger.h; sourceTree = "<group>"; };
+		A18B9D9724C98F8500ED3B52 /* AnimatorProgressGreenChanger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimatorProgressGreenChanger.h; path = include/aprilui/AnimatorProgressGreenChanger.h; sourceTree = "<group>"; };
+		A18B9D9824C98F8500ED3B52 /* AnimatorProgressAlphaChanger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimatorProgressAlphaChanger.h; path = include/aprilui/AnimatorProgressAlphaChanger.h; sourceTree = "<group>"; };
 		B45603D41B5681EF00DF8047 /* AnimatorPivotMoverX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatorPivotMoverX.cpp; sourceTree = "<group>"; };
 		B45603D51B5681EF00DF8047 /* AnimatorPivotMoverY.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatorPivotMoverY.cpp; sourceTree = "<group>"; };
 		B45603DC1B56820F00DF8047 /* AnimatorPivotMoverX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimatorPivotMoverX.h; path = include/aprilui/AnimatorPivotMoverX.h; sourceTree = "<group>"; };
@@ -671,6 +711,14 @@
 		7F6D54811201B06200A2BDF6 /* Animators */ = {
 			isa = PBXGroup;
 			children = (
+				A18B9D7F24C98F7200ED3B52 /* AnimatorAntiProgressAlphaChanger.cpp */,
+				A18B9D7B24C98F7200ED3B52 /* AnimatorAntiProgressBlueChanger.cpp */,
+				A18B9D7C24C98F7200ED3B52 /* AnimatorAntiProgressGreenChanger.cpp */,
+				A18B9D8024C98F7200ED3B52 /* AnimatorAntiProgressRedChanger.cpp */,
+				A18B9D7A24C98F7200ED3B52 /* AnimatorProgressAlphaChanger.cpp */,
+				A18B9D7924C98F7100ED3B52 /* AnimatorProgressBlueChanger.cpp */,
+				A18B9D7E24C98F7200ED3B52 /* AnimatorProgressGreenChanger.cpp */,
+				A18B9D7D24C98F7200ED3B52 /* AnimatorProgressRedChanger.cpp */,
 				B45603D41B5681EF00DF8047 /* AnimatorPivotMoverX.cpp */,
 				B45603D51B5681EF00DF8047 /* AnimatorPivotMoverY.cpp */,
 				D1F3C6FC1B148B14004BBD22 /* AnimatorZOrderChanger.cpp */,
@@ -809,6 +857,14 @@
 		C942B3F113278C3300C1D1E8 /* Animators */ = {
 			isa = PBXGroup;
 			children = (
+				A18B9D9324C98F8500ED3B52 /* AnimatorAntiProgressAlphaChanger.h */,
+				A18B9D9124C98F8500ED3B52 /* AnimatorAntiProgressBlueChanger.h */,
+				A18B9D9624C98F8500ED3B52 /* AnimatorAntiProgressGreenChanger.h */,
+				A18B9D9224C98F8500ED3B52 /* AnimatorAntiProgressRedChanger.h */,
+				A18B9D9824C98F8500ED3B52 /* AnimatorProgressAlphaChanger.h */,
+				A18B9D9424C98F8500ED3B52 /* AnimatorProgressBlueChanger.h */,
+				A18B9D9724C98F8500ED3B52 /* AnimatorProgressGreenChanger.h */,
+				A18B9D9524C98F8500ED3B52 /* AnimatorProgressRedChanger.h */,
 				B45603DC1B56820F00DF8047 /* AnimatorPivotMoverX.h */,
 				B45603DD1B56820F00DF8047 /* AnimatorPivotMoverY.h */,
 				D1F3C7001B148B23004BBD22 /* AnimatorZOrderChanger.h */,
@@ -967,7 +1023,9 @@
 				7F7A4A98129D217700E0ED12 /* CompositeImage.h in Headers */,
 				7FA3014612B647E200F71E5E /* AnimatorAlphaChanger.h in Headers */,
 				B45603DF1B56820F00DF8047 /* AnimatorPivotMoverY.h in Headers */,
+				A18B9DA024C98F8500ED3B52 /* AnimatorProgressAlphaChanger.h in Headers */,
 				7FA3014812B647E200F71E5E /* AnimatorMoverX.h in Headers */,
+				A18B9D9E24C98F8500ED3B52 /* AnimatorAntiProgressGreenChanger.h in Headers */,
 				7FA3014912B647E200F71E5E /* AnimatorMoverY.h in Headers */,
 				7FA3014C12B647E200F71E5E /* ObjectButtonBase.h in Headers */,
 				7F1B524F12E471B800E958D8 /* apriluiExport.h in Headers */,
@@ -975,8 +1033,11 @@
 				7F1B525112E471B800E958D8 /* AnimatorGreenChanger.h in Headers */,
 				7F1B525212E471B800E958D8 /* AnimatorRedChanger.h in Headers */,
 				7F1B525312E471B800E958D8 /* aprilui.h in Headers */,
+				A18B9D9924C98F8500ED3B52 /* AnimatorAntiProgressBlueChanger.h in Headers */,
 				7F1B525412E471B800E958D8 /* ObjectContainer.h in Headers */,
 				7FDB989A131BA90C0064B968 /* AnimatorResizerX.h in Headers */,
+				A18B9D9B24C98F8500ED3B52 /* AnimatorAntiProgressAlphaChanger.h in Headers */,
+				A18B9D9D24C98F8500ED3B52 /* AnimatorProgressRedChanger.h in Headers */,
 				7FDB989B131BA90C0064B968 /* AnimatorResizerY.h in Headers */,
 				7FDB989C131BA90C0064B968 /* EventUtils.h in Headers */,
 				C98E1DC114C823F200CB9F1C /* ObjectScrollArea.h in Headers */,
@@ -985,6 +1046,7 @@
 				C98E1DC714C823F200CB9F1C /* ObjectScrollBarV.h in Headers */,
 				7FDB989D131BA90C0064B968 /* MemberCallbackEvent.h in Headers */,
 				D1BA0FC716BFD81F0085EE2B /* ObjectProgressBar.h in Headers */,
+				A18B9D9F24C98F8500ED3B52 /* AnimatorProgressGreenChanger.h in Headers */,
 				7FDAF2F1131CF15A006CBC59 /* AnimatorScalerX.h in Headers */,
 				7FDAF2F2131CF15A006CBC59 /* AnimatorScalerY.h in Headers */,
 				D1C2083A15FDC57000AB5DCA /* AnimatorCenterMoverX.h in Headers */,
@@ -1006,12 +1068,14 @@
 				D18CB6291902CE1C0071C391 /* ObjectScrollBarButtonSlider.h in Headers */,
 				D12C44961A3583470025EBF5 /* BaseImage.h in Headers */,
 				D12C44941A3583470025EBF5 /* AnimatorTileScrollerX.h in Headers */,
+				A18B9D9C24C98F8500ED3B52 /* AnimatorProgressBlueChanger.h in Headers */,
 				D12C44971A3583470025EBF5 /* SkinImage.h in Headers */,
 				D12C44951A3583470025EBF5 /* AnimatorTileScrollerY.h in Headers */,
 				D1147B531A3B49B500C592A4 /* ObjectGridViewRow.h in Headers */,
 				8478B5C321ECD8BF009523ED /* ObjectColored.h in Headers */,
 				B4B5DC261C04615A003BC59E /* Style.h in Headers */,
 				D1147B521A3B49B500C592A4 /* ObjectGridViewCell.h in Headers */,
+				A18B9D9A24C98F8500ED3B52 /* AnimatorAntiProgressRedChanger.h in Headers */,
 				D1147B511A3B49B500C592A4 /* ObjectGridView.h in Headers */,
 				D1147B541A3B49B500C592A4 /* ObjectGridViewRowTemplate.h in Headers */,
 				D1B061371A5182600062D851 /* ObjectFilledRect.h in Headers */,
@@ -1248,7 +1312,9 @@
 				B4B5DC281C046165003BC59E /* Style.cpp in Sources */,
 				D1522E7B140F6A6B0012F290 /* aprilui.cpp in Sources */,
 				8478B5C721ECD8D4009523ED /* ObjectColored.cpp in Sources */,
+				A18B9D8824C98F7200ED3B52 /* AnimatorAntiProgressGreenChanger.cpp in Sources */,
 				D1522E7C140F6A6B0012F290 /* EventArgs.cpp in Sources */,
+				A18B9D8A24C98F7200ED3B52 /* AnimatorProgressRedChanger.cpp in Sources */,
 				D18CB6181902CE040071C391 /* ObjectScrollBarButtonBackground.cpp in Sources */,
 				D12C44881A35831C0025EBF5 /* BaseImage.cpp in Sources */,
 				D18CB61B1902CE040071C391 /* ObjectScrollBarButtonBackward.cpp in Sources */,
@@ -1270,10 +1336,13 @@
 				D12C448B1A35831C0025EBF5 /* SkinImage.cpp in Sources */,
 				D1522E87140F6A6B0012F290 /* AnimatorBlueChanger.cpp in Sources */,
 				D140387F18EAF8150092608C /* ObjectProgressBase.cpp in Sources */,
+				A18B9D8C24C98F7200ED3B52 /* AnimatorProgressGreenChanger.cpp in Sources */,
 				D1522E88140F6A6B0012F290 /* AnimatorGreenChanger.cpp in Sources */,
+				A18B9D9024C98F7200ED3B52 /* AnimatorAntiProgressRedChanger.cpp in Sources */,
 				D1522E89140F6A6B0012F290 /* AnimatorRedChanger.cpp in Sources */,
 				D1522E8A140F6A6B0012F290 /* AnimatorAlphaChanger.cpp in Sources */,
 				D1522E8B140F6A6B0012F290 /* AnimatorMoverX.cpp in Sources */,
+				A18B9D8424C98F7200ED3B52 /* AnimatorProgressAlphaChanger.cpp in Sources */,
 				D1522E8C140F6A6B0012F290 /* AnimatorMoverY.cpp in Sources */,
 				B45603DB1B5681EF00DF8047 /* AnimatorPivotMoverY.cpp in Sources */,
 				D1522E8D140F6A6B0012F290 /* Animator.cpp in Sources */,
@@ -1303,6 +1372,7 @@
 				D1522E99140F6A6B0012F290 /* ObjectLabel.cpp in Sources */,
 				D146B5271A273A5200002ED6 /* ObjectSelectionContainer.cpp in Sources */,
 				D1522E9A140F6A6B0012F290 /* ObjectLabelBase.cpp in Sources */,
+				A18B9D8E24C98F7200ED3B52 /* AnimatorAntiProgressAlphaChanger.cpp in Sources */,
 				D1522E9D140F6A6B0012F290 /* ObjectTextImageButton.cpp in Sources */,
 				D1522E9E140F6A6B0012F290 /* ObjectToggleButton.cpp in Sources */,
 				D1522E9F140F6A6B0012F290 /* CallbackEvent.cpp in Sources */,
@@ -1316,9 +1386,11 @@
 				C98E1DB914C823D300CB9F1C /* ObjectScrollBarH.cpp in Sources */,
 				D1147B491A3B499C00C592A4 /* ObjectGridViewRow.cpp in Sources */,
 				D1B061341A51824B0062D851 /* ObjectRect.cpp in Sources */,
+				A18B9D8624C98F7200ED3B52 /* AnimatorAntiProgressBlueChanger.cpp in Sources */,
 				C98E1DBB14C823D300CB9F1C /* ObjectScrollBarV.cpp in Sources */,
 				C93D4A7514F288D30097AB06 /* apriluiUtil.cpp in Sources */,
 				D16E990E158BE53800C058CE /* EventReceiver.cpp in Sources */,
+				A18B9D8224C98F7200ED3B52 /* AnimatorProgressBlueChanger.cpp in Sources */,
 				D16E9910158BE53800C058CE /* Texture.cpp in Sources */,
 				B45603D81B5681EF00DF8047 /* AnimatorPivotMoverX.cpp in Sources */,
 				D1BA0FC516BFD80F0085EE2B /* ObjectProgressBar.cpp in Sources */,
@@ -1341,7 +1413,9 @@
 				B4B5DC271C046165003BC59E /* Style.cpp in Sources */,
 				D1F27B2C177A2FCA00E5C131 /* aprilui.cpp in Sources */,
 				8478B5C621ECD8D4009523ED /* ObjectColored.cpp in Sources */,
+				A18B9D8724C98F7200ED3B52 /* AnimatorAntiProgressGreenChanger.cpp in Sources */,
 				D1F27B2D177A2FCA00E5C131 /* EventArgs.cpp in Sources */,
+				A18B9D8924C98F7200ED3B52 /* AnimatorProgressRedChanger.cpp in Sources */,
 				D18CB6171902CE040071C391 /* ObjectScrollBarButtonBackground.cpp in Sources */,
 				D12C44871A35831C0025EBF5 /* BaseImage.cpp in Sources */,
 				D18CB61A1902CE040071C391 /* ObjectScrollBarButtonBackward.cpp in Sources */,
@@ -1363,10 +1437,13 @@
 				D12C448A1A35831C0025EBF5 /* SkinImage.cpp in Sources */,
 				D1F27B38177A2FCA00E5C131 /* AnimatorBlueChanger.cpp in Sources */,
 				D140387E18EAF8150092608C /* ObjectProgressBase.cpp in Sources */,
+				A18B9D8B24C98F7200ED3B52 /* AnimatorProgressGreenChanger.cpp in Sources */,
 				D1F27B39177A2FCA00E5C131 /* AnimatorGreenChanger.cpp in Sources */,
+				A18B9D8F24C98F7200ED3B52 /* AnimatorAntiProgressRedChanger.cpp in Sources */,
 				D1F27B3A177A2FCA00E5C131 /* AnimatorRedChanger.cpp in Sources */,
 				D1F27B3B177A2FCA00E5C131 /* AnimatorAlphaChanger.cpp in Sources */,
 				D1F27B3C177A2FCA00E5C131 /* AnimatorMoverX.cpp in Sources */,
+				A18B9D8324C98F7200ED3B52 /* AnimatorProgressAlphaChanger.cpp in Sources */,
 				D1F27B3D177A2FCA00E5C131 /* AnimatorMoverY.cpp in Sources */,
 				B45603DA1B5681EF00DF8047 /* AnimatorPivotMoverY.cpp in Sources */,
 				D1F27B3E177A2FCA00E5C131 /* Animator.cpp in Sources */,
@@ -1396,6 +1473,7 @@
 				D1F27B49177A2FCA00E5C131 /* ObjectLabel.cpp in Sources */,
 				D146B5261A273A5200002ED6 /* ObjectSelectionContainer.cpp in Sources */,
 				D1F27B4A177A2FCA00E5C131 /* ObjectLabelBase.cpp in Sources */,
+				A18B9D8D24C98F7200ED3B52 /* AnimatorAntiProgressAlphaChanger.cpp in Sources */,
 				D1F27B4D177A2FCA00E5C131 /* ObjectTextImageButton.cpp in Sources */,
 				D1F27B4E177A2FCA00E5C131 /* ObjectToggleButton.cpp in Sources */,
 				D1F27B4F177A2FCA00E5C131 /* CallbackEvent.cpp in Sources */,
@@ -1409,9 +1487,11 @@
 				D1F27B54177A2FCA00E5C131 /* ObjectScrollBarH.cpp in Sources */,
 				D1147B481A3B499C00C592A4 /* ObjectGridViewRow.cpp in Sources */,
 				D1B061331A51824B0062D851 /* ObjectRect.cpp in Sources */,
+				A18B9D8524C98F7200ED3B52 /* AnimatorAntiProgressBlueChanger.cpp in Sources */,
 				D1F27B55177A2FCA00E5C131 /* ObjectScrollBarV.cpp in Sources */,
 				D1F27B56177A2FCA00E5C131 /* apriluiUtil.cpp in Sources */,
 				D1F27B57177A2FCA00E5C131 /* EventReceiver.cpp in Sources */,
+				A18B9D8124C98F7200ED3B52 /* AnimatorProgressBlueChanger.cpp in Sources */,
 				D1F27B58177A2FCA00E5C131 /* Texture.cpp in Sources */,
 				B45603D71B5681EF00DF8047 /* AnimatorPivotMoverX.cpp in Sources */,
 				D1F27B5B177A2FCA00E5C131 /* ObjectProgressBar.cpp in Sources */,
