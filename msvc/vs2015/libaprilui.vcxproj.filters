@@ -290,6 +290,42 @@
     <ClCompile Include="..\..\src\animators\AnimatorProgressRedChanger.cpp">
       <Filter>Source Files\Animators</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\animators\AnimatorAlphaBottomRightChanger.cpp">
+      <Filter>Source Files\Animators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\animators\AnimatorAlphaTopRightChanger.cpp">
+      <Filter>Source Files\Animators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\animators\AnimatorBlueBottomLeftChanger.cpp">
+      <Filter>Source Files\Animators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\animators\AnimatorBlueBottomRightChanger.cpp">
+      <Filter>Source Files\Animators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\animators\AnimatorBlueTopRightChanger.cpp">
+      <Filter>Source Files\Animators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\animators\AnimatorGreenBottomLeftChanger.cpp">
+      <Filter>Source Files\Animators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\animators\AnimatorGreenBottomRightChanger.cpp">
+      <Filter>Source Files\Animators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\animators\AnimatorGreenTopRightChanger.cpp">
+      <Filter>Source Files\Animators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\animators\AnimatorRedBottomLeftChanger.cpp">
+      <Filter>Source Files\Animators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\animators\AnimatorRedBottomRightChanger.cpp">
+      <Filter>Source Files\Animators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\animators\AnimatorRedTopRightChanger.cpp">
+      <Filter>Source Files\Animators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\animators\AnimatorAlphaBottomLeftChanger.cpp">
+      <Filter>Source Files\Animators</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\aprilui\Animators.h">
@@ -566,6 +602,42 @@
       <Filter>Header Files\Animators</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\aprilui\AnimatorProgressRedChanger.h">
+      <Filter>Header Files\Animators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\aprilui\AnimatorBlueBottomLeftChanger.h">
+      <Filter>Header Files\Animators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\aprilui\AnimatorBlueBottomRightChanger.h">
+      <Filter>Header Files\Animators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\aprilui\AnimatorBlueTopRightChanger.h">
+      <Filter>Header Files\Animators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\aprilui\AnimatorGreenBottomLeftChanger.h">
+      <Filter>Header Files\Animators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\aprilui\AnimatorGreenBottomRightChanger.h">
+      <Filter>Header Files\Animators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\aprilui\AnimatorGreenTopRightChanger.h">
+      <Filter>Header Files\Animators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\aprilui\AnimatorRedBottomLeftChanger.h">
+      <Filter>Header Files\Animators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\aprilui\AnimatorRedBottomRightChanger.h">
+      <Filter>Header Files\Animators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\aprilui\AnimatorRedTopRightChanger.h">
+      <Filter>Header Files\Animators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\aprilui\AnimatorAlphaBottomLeftChanger.h">
+      <Filter>Header Files\Animators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\aprilui\AnimatorAlphaBottomRightChanger.h">
+      <Filter>Header Files\Animators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\aprilui\AnimatorAlphaTopRightChanger.h">
       <Filter>Header Files\Animators</Filter>
     </ClInclude>
   </ItemGroup>
