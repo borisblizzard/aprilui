@@ -21,7 +21,7 @@ namespace aprilui
 	hmap<hstr, PropertyDescription::Accessor*> Label::_setters;
 
 	Label::Label(chstr name) :
-		Object(name),
+		Colored(name),
 		LabelBase()
 	{
 		this->text = "Label: " + name;
@@ -29,7 +29,7 @@ namespace aprilui
 	}
 
 	Label::Label(const Label& other) :
-		Object(other),
+		Colored(other),
 		LabelBase(other)
 	{
 	}
@@ -43,7 +43,7 @@ namespace aprilui
 	{
 		if (Label::_propertyDescriptions.size() == 0)
 		{
-			Label::_propertyDescriptions = Object::getPropertyDescriptions() + LabelBase::getPropertyDescriptions();
+			Label::_propertyDescriptions = Colored::getPropertyDescriptions() + LabelBase::getPropertyDescriptions();
 		}
 		return Label::_propertyDescriptions;
 	}
@@ -52,7 +52,7 @@ namespace aprilui
 	{
 		if (Label::_getters.size() == 0)
 		{
-			Label::_getters = Object::_getGetters() + LabelBase::_generateGetters<Label>();
+			Label::_getters = Colored::_getGetters() + LabelBase::_generateGetters<Label>();
 		}
 		return Label::_getters;
 	}
@@ -61,14 +61,14 @@ namespace aprilui
 	{
 		if (Label::_setters.size() == 0)
 		{
-			Label::_setters = Object::_getSetters() + LabelBase::_generateSetters<Label>();
+			Label::_setters = Colored::_getSetters() + LabelBase::_generateSetters<Label>();
 		}
 		return Label::_setters;
 	}
 
 	Dataset* Label::getDataset() const
 	{
-		return Object::getDataset();
+		return Colored::getDataset();
 	}
 
 	hstr Label::getAutoScaledFont()
@@ -79,11 +79,37 @@ namespace aprilui
 
 	void Label::_draw()
 	{
-		Object::_draw();
+		Colored::_draw();
 		grectf drawRect = this->_makeDrawRect();
 		april::Color drawColor = this->_makeDrawColor();
 		this->_drawLabelBackground(drawRect, drawColor, this->_makeBackgroundDrawColor(drawColor));
-		this->_drawLabel(drawRect, drawColor);
+		this->_drawInternal(drawRect, drawColor);
+	}
+
+	void Label::_drawInternal(cgrectf rect, const april::Color& color)
+	{
+		if (!this->useAdditionalColors)
+		{
+			this->_drawLabel(rect, color);
+		}
+		else
+		{
+			float mainColorAlpha = this->color.a_f();
+			atres::ColorData colorData;
+			colorData.colorTopLeft = color;
+			colorData.colorTopRight = this->_makeDrawColor(this->colorTopRight);
+			colorData.colorBottomLeft = this->_makeDrawColor(this->colorBottomLeft);
+			colorData.colorBottomRight = this->_makeDrawColor(this->colorBottomRight);
+			if (this->ignoreMainColorAlpha)
+			{
+				colorTopRight.a = (mainColorAlpha > 0.0f ? (unsigned char)hclamp((float)colorTopRight.a / mainColorAlpha, 0.0f, 255.0f) : 255);
+				colorBottomLeft.a = (mainColorAlpha > 0.0f ? (unsigned char)hclamp((float)colorBottomLeft.a / mainColorAlpha, 0.0f, 255.0f) : 255);
+				colorBottomRight.a = (mainColorAlpha > 0.0f ? (unsigned char)hclamp((float)colorBottomRight.a / mainColorAlpha, 0.0f, 255.0f) : 255);
+			}
+			colorData.horizontalColorFit = this->isGradientFitHorizontal();
+			colorData.verticalColorFit = this->isGradientFitVertical();
+			this->_drawLabel(rect, color, &colorData);
+		}
 	}
 
 	hstr Label::getProperty(chstr name)
@@ -91,7 +117,7 @@ namespace aprilui
 		hstr result = LabelBase::getProperty(name); // check side-class first
 		if (result == "")
 		{
-			result = Object::getProperty(name);
+			result = Colored::getProperty(name);
 		}
 		return result;
 	}
@@ -102,43 +128,43 @@ namespace aprilui
 		{
 			return true;
 		}
-		return Object::setProperty(name, value);
+		return Colored::setProperty(name, value);
 	}
 
 	void Label::notifyEvent(chstr type, EventArgs* args)
 	{
-		Object::notifyEvent(type, args);
+		Colored::notifyEvent(type, args);
 		LabelBase::notifyEvent(type, args);
 	}
 
 	bool Label::triggerEvent(chstr type, april::Key keyCode)
 	{
-		return Object::triggerEvent(type, keyCode);
+		return Colored::triggerEvent(type, keyCode);
 	}
 
 	bool Label::triggerEvent(chstr type, april::Key keyCode, chstr string)
 	{
-		return Object::triggerEvent(type, keyCode, string);
+		return Colored::triggerEvent(type, keyCode, string);
 	}
 
 	bool Label::triggerEvent(chstr type, april::Key keyCode, cgvec2f position, chstr string, void* userData)
 	{
-		return Object::triggerEvent(type, keyCode, position, string, userData);
+		return Colored::triggerEvent(type, keyCode, position, string, userData);
 	}
 
 	bool Label::triggerEvent(chstr type, april::Button buttonCode, chstr string, void* userData)
 	{
-		return Object::triggerEvent(type, buttonCode, string, userData);
+		return Colored::triggerEvent(type, buttonCode, string, userData);
 	}
 
 	bool Label::triggerEvent(chstr type, chstr string, void* userData)
 	{
-		return Object::triggerEvent(type, string, userData);
+		return Colored::triggerEvent(type, string, userData);
 	}
 
 	bool Label::triggerEvent(chstr type, void* userData)
 	{
-		return Object::triggerEvent(type, userData);
+		return Colored::triggerEvent(type, userData);
 	}
 
 }

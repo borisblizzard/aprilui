@@ -18,12 +18,12 @@
 #include <hltypes/hstring.h>
 
 #include "apriluiExport.h"
+#include "ObjectColored.h"
 #include "ObjectLabelBase.h"
-#include "Object.h"
 
 namespace aprilui
 {
-	class apriluiExport Label : public Object, public LabelBase
+	class apriluiExport Label : public Colored, public LabelBase
 	{
 		APRILUI_CLONEABLE(Label);
 	public:
@@ -50,6 +50,7 @@ namespace aprilui
 
 	protected:
 		void _draw();
+		void _drawInternal(cgrectf rect, const april::Color& color);
 
 		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const;
 		hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const;

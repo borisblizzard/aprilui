@@ -77,6 +77,8 @@ namespace aprilui
 		HL_DEFINE_GETSET(hstr, effectParameter, EffectParameter);
 		HL_DEFINE_GETSET(april::Color, backgroundColor, BackgroundColor);
 		void setBackgroundSymbolicColor(chstr value);
+		HL_DEFINE_ISSET(gradientFitHorizontal, GradientFitHorizontal);
+		HL_DEFINE_ISSET(gradientFitVertical, GradientFitVertical);
 		HL_DEFINE_ISSET(strikeThrough, StrikeThrough);
 		HL_DEFINE_ISSET(useStrikeThroughColor, UseStrikeThroughColor);
 		HL_DEFINE_ISSET(useStrikeThroughParameter, UseStrikeThroughParameter);
@@ -128,6 +130,8 @@ namespace aprilui
 		bool useEffectParameter;
 		april::Color effectColor;
 		hstr effectParameter;
+		bool gradientFitHorizontal;
+		bool gradientFitVertical;
 		bool strikeThrough;
 		bool useStrikeThroughColor;
 		bool useStrikeThroughParameter;
@@ -147,7 +151,7 @@ namespace aprilui
 		bool _analyzeExtraParameters(chstr name, chstr value, bool& useColor, bool& useParameter, april::Color& color, hstr& parameter) const;
 		
 		void _drawLabelBackground(cgrectf rect, const april::Color& color, const april::Color& backgroundColor);
-		void _drawLabel(cgrectf rect, const april::Color& color);
+		void _drawLabel(cgrectf rect, const april::Color& color, atres::ColorData* colorData = NULL);
 
 		template <typename T>
 		static hmap<hstr, PropertyDescription::Accessor*> _generateGetters()
@@ -163,6 +167,8 @@ namespace aprilui
 			result["text_offset_y"] = new PropertyDescription::Get<T, float>(&T::getTextOffsetY);
 			result["min_auto_scale"] = new PropertyDescription::Get<T, float>(&T::getMinAutoScale);
 			result["auto_scaled_font"] = new PropertyDescription::Get<T, hstr>(&T::getAutoScaledFont);
+			result["gradient_fit_horizontal"] = new PropertyDescription::Get<T, bool>(&T::isGradientFitHorizontal);
+			result["gradient_fit_vertical"] = new PropertyDescription::Get<T, bool>(&T::isGradientFitVertical);
 			result["italic"] = new PropertyDescription::Get<T, bool>(&T::isItalic);
 			result["background_color"] = new PropertyDescription::GetColor<T>(&T::getBackgroundColor);
 			result["background_border"] = new PropertyDescription::Get<T, bool>(&T::isBackgroundBorder);
@@ -182,6 +188,8 @@ namespace aprilui
 			result["text_offset_x"] = new PropertyDescription::Set<T, float>(&T::setTextOffsetX);
 			result["text_offset_y"] = new PropertyDescription::Set<T, float>(&T::setTextOffsetY);
 			result["min_auto_scale"] = new PropertyDescription::Set<T, float>(&T::setMinAutoScale);
+			result["gradient_fit_horizontal"] = new PropertyDescription::Set<T, bool>(&T::setGradientFitHorizontal);
+			result["gradient_fit_vertical"] = new PropertyDescription::Set<T, bool>(&T::setGradientFitVertical);
 			result["italic"] = new PropertyDescription::Set<T, bool>(&T::setItalic);
 			result["background_color"] = new PropertyDescription::Set<T, hstr>(&T::setBackgroundSymbolicColor);
 			result["background_border"] = new PropertyDescription::Set<T, bool>(&T::setBackgroundBorder);

@@ -792,7 +792,7 @@ namespace aprilui
 			}
 		}
 		// not using Label::_draw() directly, because the selection needs to be drawn inbetween the background and border
-		Object::_draw();
+		Colored::_draw();
 		grectf drawRect = this->_makeDrawRect();
 		april::Color drawColor = this->_makeDrawColor();
 		april::Color backgroundColor = this->_makeBackgroundDrawColor(drawColor);
@@ -816,7 +816,7 @@ namespace aprilui
 			}
 		}
 		// border and normal label text
-		this->_drawLabel(drawRect, drawColor);
+		this->_drawInternal(drawRect, drawColor);
 		// caret render
 		if (this->dataset != NULL && focused && this->_blinkTimer < 0.5f)
 		{

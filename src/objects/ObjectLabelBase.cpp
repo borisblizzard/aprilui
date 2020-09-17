@@ -57,6 +57,8 @@ namespace aprilui
 		this->useEffectColor = false;
 		this->useEffectParameter = false;
 		this->effectColor = april::Color::Black;
+		this->gradientFitHorizontal = true;
+		this->gradientFitVertical = true;
 		this->strikeThrough = false;
 		this->useStrikeThroughColor = false;
 		this->useStrikeThroughParameter = false;
@@ -88,6 +90,8 @@ namespace aprilui
 		this->useEffectParameter = other.useEffectParameter;
 		this->effectColor = other.effectColor;
 		this->effectParameter = other.effectParameter;
+		this->gradientFitHorizontal = other.gradientFitHorizontal;
+		this->gradientFitVertical = other.gradientFitVertical;
 		this->strikeThrough = other.strikeThrough;
 		this->useStrikeThroughColor = other.useStrikeThroughColor;
 		this->useStrikeThroughParameter = other.useStrikeThroughParameter;
@@ -126,6 +130,8 @@ namespace aprilui
 			LabelBase::_propertyDescriptions["vert_formatting"] = PropertyDescription("vert_formatting", PropertyDescription::Type::Enum);
 			LabelBase::_propertyDescriptions["effect"] = PropertyDescription("effect", PropertyDescription::Type::Enum);
 			LabelBase::_propertyDescriptions["case_mode"] = PropertyDescription("case_mode", PropertyDescription::Type::Enum);
+			LabelBase::_propertyDescriptions["gradient_fit_horizontal"] = PropertyDescription("gradient_fit_horizontal", PropertyDescription::Type::Bool);
+			LabelBase::_propertyDescriptions["gradient_fit_vertical"] = PropertyDescription("gradient_fit_vertical", PropertyDescription::Type::Bool);
 			LabelBase::_propertyDescriptions["strike_through"] = PropertyDescription("strike_through", PropertyDescription::Type::Bool);
 			LabelBase::_propertyDescriptions["underline"] = PropertyDescription("underline", PropertyDescription::Type::Bool);
 			LabelBase::_propertyDescriptions["italic"] = PropertyDescription("italic", PropertyDescription::Type::Bool);
@@ -313,13 +319,12 @@ namespace aprilui
 		}
 	}
 
-	void LabelBase::_drawLabel(cgrectf rect, const april::Color& color)
+	void LabelBase::_drawLabel(cgrectf rect, const april::Color& color, atres::ColorData* colorData)
 	{
 		if (this->text.size() == 0)
 		{
 			return;
 		}
-		april::Color drawColor = color * this->textColor;
 		hstr text = this->text;
 		if (this->caseMode == CaseMode::Upper)
 		{
@@ -400,7 +405,18 @@ namespace aprilui
 			this->_autoScaleDirty = false;
 		}
 		hstr font = (this->autoScaledFont == "" ? this->font : this->autoScaledFont);
-		atres::renderer->drawText(font, rect, text, this->horzFormatting, this->vertFormatting, drawColor, offset);
+		if (colorData == NULL)
+		{
+			atres::renderer->drawText(font, rect, text, this->horzFormatting, this->vertFormatting, color * this->textColor, offset);
+		}
+		else
+		{
+			colorData->colorTopLeft *= this->textColor;
+			colorData->colorTopRight *= this->textColor;
+			colorData->colorBottomLeft *= this->textColor;
+			colorData->colorBottomRight *= this->textColor;
+			atres::renderer->drawText(font, rect, text, this->horzFormatting, this->vertFormatting, *colorData, offset);
+		}
 	}
 
 	hstr LabelBase::getProperty(chstr name)
