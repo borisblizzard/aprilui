@@ -123,6 +123,7 @@ namespace aprilui
 		REGISTER_ANIMATOR_TYPE(AlphaBottomLeftChanger);
 		REGISTER_ANIMATOR_TYPE(AlphaBottomRightChanger);
 		REGISTER_ANIMATOR_TYPE(AlphaChanger);
+		REGISTER_ANIMATOR_TYPE(AlphaTopLeftChanger);
 		REGISTER_ANIMATOR_TYPE(AlphaTopRightChanger);
 		REGISTER_ANIMATOR_TYPE(AntiProgressAlphaChanger);
 		REGISTER_ANIMATOR_TYPE(AntiProgressBlueChanger);
@@ -131,11 +132,13 @@ namespace aprilui
 		REGISTER_ANIMATOR_TYPE(BlueBottomLeftChanger);
 		REGISTER_ANIMATOR_TYPE(BlueBottomRightChanger);
 		REGISTER_ANIMATOR_TYPE(BlueChanger);
+		REGISTER_ANIMATOR_TYPE(BlueTopLeftChanger);
 		REGISTER_ANIMATOR_TYPE(BlueTopRightChanger);
 		REGISTER_ANIMATOR_TYPE(FrameAnimation);
 		REGISTER_ANIMATOR_TYPE(GreenBottomLeftChanger);
 		REGISTER_ANIMATOR_TYPE(GreenBottomRightChanger);
 		REGISTER_ANIMATOR_TYPE(GreenChanger);
+		REGISTER_ANIMATOR_TYPE(GreenTopLeftChanger);
 		REGISTER_ANIMATOR_TYPE(GreenTopRightChanger);
 		REGISTER_ANIMATOR_TYPE(MoverX);
 		REGISTER_ANIMATOR_TYPE(MoverY);
@@ -149,6 +152,7 @@ namespace aprilui
 		REGISTER_ANIMATOR_TYPE(RedBottomLeftChanger);
 		REGISTER_ANIMATOR_TYPE(RedBottomRightChanger);
 		REGISTER_ANIMATOR_TYPE(RedChanger);
+		REGISTER_ANIMATOR_TYPE(RedTopLeftChanger);
 		REGISTER_ANIMATOR_TYPE(RedTopRightChanger);
 		REGISTER_ANIMATOR_TYPE(Rotator);
 		REGISTER_ANIMATOR_TYPE(ResizerX);

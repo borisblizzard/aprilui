@@ -33,6 +33,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\src\animators\AnimatorAlphaBottomLeftChanger.cpp" />
     <ClCompile Include="..\..\src\animators\AnimatorAlphaBottomRightChanger.cpp" />
+    <ClCompile Include="..\..\src\animators\AnimatorAlphaTopLeftChanger.cpp" />
     <ClCompile Include="..\..\src\animators\AnimatorAlphaTopRightChanger.cpp" />
     <ClCompile Include="..\..\src\animators\AnimatorAntiProgressAlphaChanger.cpp" />
     <ClCompile Include="..\..\src\animators\AnimatorAntiProgressBlueChanger.cpp" />
@@ -40,9 +41,11 @@
     <ClCompile Include="..\..\src\animators\AnimatorAntiProgressRedChanger.cpp" />
     <ClCompile Include="..\..\src\animators\AnimatorBlueBottomLeftChanger.cpp" />
     <ClCompile Include="..\..\src\animators\AnimatorBlueBottomRightChanger.cpp" />
+    <ClCompile Include="..\..\src\animators\AnimatorBlueTopLeftChanger.cpp" />
     <ClCompile Include="..\..\src\animators\AnimatorBlueTopRightChanger.cpp" />
     <ClCompile Include="..\..\src\animators\AnimatorGreenBottomLeftChanger.cpp" />
     <ClCompile Include="..\..\src\animators\AnimatorGreenBottomRightChanger.cpp" />
+    <ClCompile Include="..\..\src\animators\AnimatorGreenTopLeftChanger.cpp" />
     <ClCompile Include="..\..\src\animators\AnimatorGreenTopRightChanger.cpp" />
     <ClCompile Include="..\..\src\animators\AnimatorPivotMoverX.cpp" />
     <ClCompile Include="..\..\src\animators\AnimatorPivotMoverY.cpp" />
@@ -53,6 +56,7 @@
     <ClCompile Include="..\..\src\animators\AnimatorProgressRedChanger.cpp" />
     <ClCompile Include="..\..\src\animators\AnimatorRedBottomLeftChanger.cpp" />
     <ClCompile Include="..\..\src\animators\AnimatorRedBottomRightChanger.cpp" />
+    <ClCompile Include="..\..\src\animators\AnimatorRedTopLeftChanger.cpp" />
     <ClCompile Include="..\..\src\animators\AnimatorRedTopRightChanger.cpp" />
     <ClCompile Include="..\..\src\animators\AnimatorResizerX.cpp" />
     <ClCompile Include="..\..\src\animators\AnimatorResizerY.cpp" />
@@ -133,6 +137,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\include\aprilui\AnimatorAlphaBottomLeftChanger.h" />
     <ClInclude Include="..\..\include\aprilui\AnimatorAlphaBottomRightChanger.h" />
+    <ClInclude Include="..\..\include\aprilui\AnimatorAlphaTopLeftChanger.h" />
     <ClInclude Include="..\..\include\aprilui\AnimatorAlphaTopRightChanger.h" />
     <ClInclude Include="..\..\include\aprilui\AnimatorAntiProgressAlphaChanger.h" />
     <ClInclude Include="..\..\include\aprilui\AnimatorAntiProgressBlueChanger.h" />
@@ -140,9 +145,11 @@
     <ClInclude Include="..\..\include\aprilui\AnimatorAntiProgressRedChanger.h" />
     <ClInclude Include="..\..\include\aprilui\AnimatorBlueBottomLeftChanger.h" />
     <ClInclude Include="..\..\include\aprilui\AnimatorBlueBottomRightChanger.h" />
+    <ClInclude Include="..\..\include\aprilui\AnimatorBlueTopLeftChanger.h" />
     <ClInclude Include="..\..\include\aprilui\AnimatorBlueTopRightChanger.h" />
     <ClInclude Include="..\..\include\aprilui\AnimatorGreenBottomLeftChanger.h" />
     <ClInclude Include="..\..\include\aprilui\AnimatorGreenBottomRightChanger.h" />
+    <ClInclude Include="..\..\include\aprilui\AnimatorGreenTopLeftChanger.h" />
     <ClInclude Include="..\..\include\aprilui\AnimatorGreenTopRightChanger.h" />
     <ClInclude Include="..\..\include\aprilui\AnimatorPivotMoverX.h" />
     <ClInclude Include="..\..\include\aprilui\AnimatorPivotMoverY.h" />
@@ -153,6 +160,7 @@
     <ClInclude Include="..\..\include\aprilui\AnimatorProgressRedChanger.h" />
     <ClInclude Include="..\..\include\aprilui\AnimatorRedBottomLeftChanger.h" />
     <ClInclude Include="..\..\include\aprilui\AnimatorRedBottomRightChanger.h" />
+    <ClInclude Include="..\..\include\aprilui\AnimatorRedTopLeftChanger.h" />
     <ClInclude Include="..\..\include\aprilui\AnimatorRedTopRightChanger.h" />
     <ClInclude Include="..\..\include\aprilui\AnimatorResizerX.h" />
     <ClInclude Include="..\..\include\aprilui\AnimatorResizerY.h" />

@@ -8,7 +8,7 @@
 /// 
 /// @section DESCRIPTION
 /// 
-/// Defines an animator that can change the top-right green channel of objects.
+/// Defines an animator that can change the top-right green channel of images.
 
 #ifndef APRILUI_GREEN_TOP_RIGHT_CHANGER_H
 #define APRILUI_GREEN_TOP_RIGHT_CHANGER_H

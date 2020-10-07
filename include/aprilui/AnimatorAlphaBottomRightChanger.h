@@ -8,7 +8,7 @@
 /// 
 /// @section DESCRIPTION
 /// 
-/// Defines an animator that can change the alpha channel of objects.
+/// Defines an animator that can change the alpha channel of images.
 
 #ifndef APRILUI_ALPHA_BOTTOM_RIGHT_CHANGER_H
 #define APRILUI_ALPHA_BOTTOM_RIGHT_CHANGER_H

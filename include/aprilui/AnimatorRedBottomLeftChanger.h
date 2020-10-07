@@ -8,7 +8,7 @@
 /// 
 /// @section DESCRIPTION
 /// 
-/// Defines an animator that can change the bottom-left red channel of objects.
+/// Defines an animator that can change the bottom-left red channel of images.
 
 #ifndef APRILUI_RED_BOTTOM_LEFT_CHANGER_H
 #define APRILUI_RED_BOTTOM_LEFT_CHANGER_H

@@ -9,7 +9,9 @@
 #include <hltypes/hstring.h>
 
 #include "AnimatorRedBottomRightChanger.h"
-#include "ObjectColored.h"
+#include "ColorImage.h"
+#include "Image.h"
+#include "ObjectImageBox.h"
 
 namespace aprilui
 {
@@ -32,24 +34,49 @@ namespace aprilui
 
 		float RedBottomRightChanger::_getObjectValue() const
 		{
-			Colored* coloredObject = dynamic_cast<Colored*>(this->parent);
-			if (coloredObject == NULL)
+			ImageBox* imageBox = dynamic_cast<ImageBox*>(this->parent);
+			if (imageBox == NULL)
 			{
-				hlog::errorf(logTag, "Animators::RedBottomRightChanger: parent object '%s' not a subclass of Objects::Colored!", (this->parent != NULL ? this->parent->getName() : "NULL").cStr());
+				hlog::errorf(logTag, "Animators::RedBottomRightChanger: parent object '%s' not a subclass of Objects::ImageBox!", (this->parent != NULL ? this->parent->getName() : "NULL").cStr());
 				return 0.0f;
 			}
-			return (float)coloredObject->getRedBottomRight();
+			BaseImage* baseImage = imageBox->getImage();
+			Image* image = dynamic_cast<Image*>(baseImage);
+			if (image != NULL)
+			{
+				return (float)image->getRedBottomRight();
+			}
+			ColorImage* colorImage = dynamic_cast<ColorImage*>(baseImage);
+			if (colorImage != NULL)
+			{
+				return (float)colorImage->getRedBottomRight();
+			}
+			hlog::errorf(logTag, "Animators::RedBottomRightChanger: image in ImageBox is not a subclass of Image or ColorImage in parent object '%s'!", (this->parent != NULL ? this->parent->getName() : "NULL").cStr());
+			return 0.0f;
 		}
 
 		void RedBottomRightChanger::_setObjectValue(float value)
 		{
-			Colored* coloredObject = dynamic_cast<Colored*>(this->parent);
-			if (coloredObject == NULL)
+			ImageBox* imageBox = dynamic_cast<ImageBox*>(this->parent);
+			if (imageBox == NULL)
 			{
-				hlog::errorf(logTag, "Animators::RedBottomRightChanger: parent object '%s' not a subclass of Objects::Colored!", (this->parent != NULL ? this->parent->getName() : "NULL").cStr());
+				hlog::errorf(logTag, "Animators::RedBottomRightChanger: parent object '%s' not a subclass of Objects::ImageBox!", (this->parent != NULL ? this->parent->getName() : "NULL").cStr());
 				return;
 			}
-			coloredObject->setRedBottomRight((unsigned char)value);
+			BaseImage* baseImage = imageBox->getImage();
+			Image* image = dynamic_cast<Image*>(baseImage);
+			if (image != NULL)
+			{
+				image->setRedBottomRight((unsigned char)value);
+				return;
+			}
+			ColorImage* colorImage = dynamic_cast<ColorImage*>(baseImage);
+			if (colorImage != NULL)
+			{
+				colorImage->setRedBottomRight((unsigned char)value);
+				return;
+			}
+			hlog::errorf(logTag, "Animators::RedBottomRightChanger: image in ImageBox is not a subclass of Image or ColorImage in parent object '%s'!", (this->parent != NULL ? this->parent->getName() : "NULL").cStr());
 		}
 
 		void RedBottomRightChanger::_update(float timeDelta)

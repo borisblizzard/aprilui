@@ -8,10 +8,10 @@
 /// 
 /// @section DESCRIPTION
 /// 
-/// Defines an animator that can change the bottom-right blue channel of images.
+/// Defines an animator that can change the top-left alpha channel of images.
 
-#ifndef APRILUI_BLUE_BOTTOM_RIGHT_CHANGER_H
-#define APRILUI_BLUE_BOTTOM_RIGHT_CHANGER_H
+#ifndef APRILUI_ALPHA_TOP_LEFT_CHANGER_H
+#define APRILUI_ALPHA_TOP_LEFT_CHANGER_H
 
 #include <hltypes/hstring.h>
 
@@ -21,12 +21,12 @@ namespace aprilui
 {
 	namespace Animators
 	{
-		class apriluiExport BlueBottomRightChanger : public Animator
+		class apriluiExport AlphaTopLeftChanger : public Animator
 		{
-			APRILUI_CLONEABLE(BlueBottomRightChanger);
+			APRILUI_CLONEABLE(AlphaTopLeftChanger);
 		public:
-			BlueBottomRightChanger(chstr name);
-			inline hstr getClassName() const { return "BlueBottomRightChanger"; }
+			AlphaTopLeftChanger(chstr name);
+			inline hstr getClassName() const { return "AlphaTopLeftChanger"; }
 
 			static Animator* createInstance(chstr name);
 			

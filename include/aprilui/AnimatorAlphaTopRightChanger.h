@@ -8,7 +8,7 @@
 /// 
 /// @section DESCRIPTION
 /// 
-/// Defines an animator that can change the top-right alpha channel of objects.
+/// Defines an animator that can change the top-right alpha channel of images.
 
 #ifndef APRILUI_ALPHA_TOP_RIGHT_CHANGER_H
 #define APRILUI_ALPHA_TOP_RIGHT_CHANGER_H

@@ -9,7 +9,9 @@
 #include <hltypes/hstring.h>
 
 #include "AnimatorAlphaBottomLeftChanger.h"
-#include "ObjectColored.h"
+#include "ColorImage.h"
+#include "Image.h"
+#include "ObjectImageBox.h"
 
 namespace aprilui
 {
@@ -32,24 +34,49 @@ namespace aprilui
 
 		float AlphaBottomLeftChanger::_getObjectValue() const
 		{
-			Colored* coloredObject = dynamic_cast<Colored*>(this->parent);
-			if (coloredObject == NULL)
+			ImageBox* imageBox = dynamic_cast<ImageBox*>(this->parent);
+			if (imageBox == NULL)
 			{
-				hlog::errorf(logTag, "Animators::AlphaBottomLeftChanger: parent object '%s' not a subclass of Objects::Colored!", (this->parent != NULL ? this->parent->getName() : "NULL").cStr());
+				hlog::errorf(logTag, "Animators::AlphaBottomLeftChanger: parent object '%s' not a subclass of Objects::ImageBox!", (this->parent != NULL ? this->parent->getName() : "NULL").cStr());
 				return 0.0f;
 			}
-			return (float)coloredObject->getAlphaBottomLeft();
+			BaseImage* baseImage = imageBox->getImage();
+			Image* image = dynamic_cast<Image*>(baseImage);
+			if (image != NULL)
+			{
+				return (float)image->getAlphaBottomLeft();
+			}
+			ColorImage* colorImage = dynamic_cast<ColorImage*>(baseImage);
+			if (colorImage != NULL)
+			{
+				return (float)colorImage->getAlphaBottomLeft();
+			}
+			hlog::errorf(logTag, "Animators::AlphaBottomLeftChanger: image in ImageBox is not a subclass of Image or ColorImage in parent object '%s'!", (this->parent != NULL ? this->parent->getName() : "NULL").cStr());
+			return 0.0f;
 		}
 
 		void AlphaBottomLeftChanger::_setObjectValue(float value)
 		{
-			Colored* coloredObject = dynamic_cast<Colored*>(this->parent);
-			if (coloredObject == NULL)
+			ImageBox* imageBox = dynamic_cast<ImageBox*>(this->parent);
+			if (imageBox == NULL)
 			{
-				hlog::errorf(logTag, "Animators::AlphaBottomLeftChanger: parent object '%s' not a subclass of Objects::Colored!", (this->parent != NULL ? this->parent->getName() : "NULL").cStr());
+				hlog::errorf(logTag, "Animators::AlphaBottomLeftChanger: parent object '%s' not a subclass of Objects::ImageBox!", (this->parent != NULL ? this->parent->getName() : "NULL").cStr());
 				return;
 			}
-			coloredObject->setAlphaBottomLeft((unsigned char)value);
+			BaseImage* baseImage = imageBox->getImage();
+			Image* image = dynamic_cast<Image*>(baseImage);
+			if (image != NULL)
+			{
+				image->setAlphaBottomLeft((unsigned char)value);
+				return;
+			}
+			ColorImage* colorImage = dynamic_cast<ColorImage*>(baseImage);
+			if (colorImage != NULL)
+			{
+				colorImage->setAlphaBottomLeft((unsigned char)value);
+				return;
+			}
+			hlog::errorf(logTag, "Animators::AlphaBottomLeftChanger: image in ImageBox is not a subclass of Image or ColorImage in parent object '%s'!", (this->parent != NULL ? this->parent->getName() : "NULL").cStr());
 		}
 
 		void AlphaBottomLeftChanger::_update(float timeDelta)
