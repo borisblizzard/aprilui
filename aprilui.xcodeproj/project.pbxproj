@@ -116,6 +116,14 @@
 		A18B9D9E24C98F8500ED3B52 /* AnimatorAntiProgressGreenChanger.h in Headers */ = {isa = PBXBuildFile; fileRef = A18B9D9624C98F8500ED3B52 /* AnimatorAntiProgressGreenChanger.h */; };
 		A18B9D9F24C98F8500ED3B52 /* AnimatorProgressGreenChanger.h in Headers */ = {isa = PBXBuildFile; fileRef = A18B9D9724C98F8500ED3B52 /* AnimatorProgressGreenChanger.h */; };
 		A18B9DA024C98F8500ED3B52 /* AnimatorProgressAlphaChanger.h in Headers */ = {isa = PBXBuildFile; fileRef = A18B9D9824C98F8500ED3B52 /* AnimatorProgressAlphaChanger.h */; };
+		A1A6B9F025399EB700BF9470 /* AnimatorRedTopLeftChanger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1A6B9EC25399EB700BF9470 /* AnimatorRedTopLeftChanger.cpp */; };
+		A1A6B9F125399EB700BF9470 /* AnimatorRedTopLeftChanger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1A6B9EC25399EB700BF9470 /* AnimatorRedTopLeftChanger.cpp */; };
+		A1A6B9F225399EB700BF9470 /* AnimatorAlphaTopLeftChanger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1A6B9ED25399EB700BF9470 /* AnimatorAlphaTopLeftChanger.cpp */; };
+		A1A6B9F325399EB700BF9470 /* AnimatorAlphaTopLeftChanger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1A6B9ED25399EB700BF9470 /* AnimatorAlphaTopLeftChanger.cpp */; };
+		A1A6B9F425399EB700BF9470 /* AnimatorGreenTopLeftChanger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1A6B9EE25399EB700BF9470 /* AnimatorGreenTopLeftChanger.cpp */; };
+		A1A6B9F525399EB700BF9470 /* AnimatorGreenTopLeftChanger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1A6B9EE25399EB700BF9470 /* AnimatorGreenTopLeftChanger.cpp */; };
+		A1A6B9F625399EB700BF9470 /* AnimatorBlueTopLeftChanger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1A6B9EF25399EB700BF9470 /* AnimatorBlueTopLeftChanger.cpp */; };
+		A1A6B9F725399EB700BF9470 /* AnimatorBlueTopLeftChanger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1A6B9EF25399EB700BF9470 /* AnimatorBlueTopLeftChanger.cpp */; };
 		A1D166E5251D560700711900 /* AnimatorBlueBottomRightChanger.h in Headers */ = {isa = PBXBuildFile; fileRef = A1D166D9251D560600711900 /* AnimatorBlueBottomRightChanger.h */; };
 		A1D166E6251D560700711900 /* AnimatorGreenBottomLeftChanger.h in Headers */ = {isa = PBXBuildFile; fileRef = A1D166DA251D560700711900 /* AnimatorGreenBottomLeftChanger.h */; };
 		A1D166E7251D560700711900 /* AnimatorGreenTopRightChanger.h in Headers */ = {isa = PBXBuildFile; fileRef = A1D166DB251D560700711900 /* AnimatorGreenTopRightChanger.h */; };
@@ -510,6 +518,14 @@
 		A18B9D9624C98F8500ED3B52 /* AnimatorAntiProgressGreenChanger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimatorAntiProgressGreenChanger.h; path = include/aprilui/AnimatorAntiProgressGreenChanger.h; sourceTree = "<group>"; };
 		A18B9D9724C98F8500ED3B52 /* AnimatorProgressGreenChanger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimatorProgressGreenChanger.h; path = include/aprilui/AnimatorProgressGreenChanger.h; sourceTree = "<group>"; };
 		A18B9D9824C98F8500ED3B52 /* AnimatorProgressAlphaChanger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimatorProgressAlphaChanger.h; path = include/aprilui/AnimatorProgressAlphaChanger.h; sourceTree = "<group>"; };
+		A1A6B9EC25399EB700BF9470 /* AnimatorRedTopLeftChanger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatorRedTopLeftChanger.cpp; sourceTree = "<group>"; };
+		A1A6B9ED25399EB700BF9470 /* AnimatorAlphaTopLeftChanger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatorAlphaTopLeftChanger.cpp; sourceTree = "<group>"; };
+		A1A6B9EE25399EB700BF9470 /* AnimatorGreenTopLeftChanger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatorGreenTopLeftChanger.cpp; sourceTree = "<group>"; };
+		A1A6B9EF25399EB700BF9470 /* AnimatorBlueTopLeftChanger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatorBlueTopLeftChanger.cpp; sourceTree = "<group>"; };
+		A1A6B9FD25399ED300BF9470 /* AnimatorGreenTopLeftChanger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimatorGreenTopLeftChanger.h; path = include/aprilui/AnimatorGreenTopLeftChanger.h; sourceTree = "<group>"; };
+		A1A6B9FE25399ED300BF9470 /* AnimatorBlueTopLeftChanger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimatorBlueTopLeftChanger.h; path = include/aprilui/AnimatorBlueTopLeftChanger.h; sourceTree = "<group>"; };
+		A1A6B9FF25399ED400BF9470 /* AnimatorAlphaTopLeftChanger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimatorAlphaTopLeftChanger.h; path = include/aprilui/AnimatorAlphaTopLeftChanger.h; sourceTree = "<group>"; };
+		A1A6BA0025399ED400BF9470 /* AnimatorRedTopLeftChanger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimatorRedTopLeftChanger.h; path = include/aprilui/AnimatorRedTopLeftChanger.h; sourceTree = "<group>"; };
 		A1D166D9251D560600711900 /* AnimatorBlueBottomRightChanger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimatorBlueBottomRightChanger.h; path = include/aprilui/AnimatorBlueBottomRightChanger.h; sourceTree = "<group>"; };
 		A1D166DA251D560700711900 /* AnimatorGreenBottomLeftChanger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimatorGreenBottomLeftChanger.h; path = include/aprilui/AnimatorGreenBottomLeftChanger.h; sourceTree = "<group>"; };
 		A1D166DB251D560700711900 /* AnimatorGreenTopRightChanger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimatorGreenTopRightChanger.h; path = include/aprilui/AnimatorGreenTopRightChanger.h; sourceTree = "<group>"; };
@@ -771,6 +787,10 @@
 		7F6D54811201B06200A2BDF6 /* Animators */ = {
 			isa = PBXGroup;
 			children = (
+				A1A6B9ED25399EB700BF9470 /* AnimatorAlphaTopLeftChanger.cpp */,
+				A1A6B9EF25399EB700BF9470 /* AnimatorBlueTopLeftChanger.cpp */,
+				A1A6B9EE25399EB700BF9470 /* AnimatorGreenTopLeftChanger.cpp */,
+				A1A6B9EC25399EB700BF9470 /* AnimatorRedTopLeftChanger.cpp */,
 				A1D166F7251D563C00711900 /* AnimatorAlphaBottomLeftChanger.cpp */,
 				A1D166FC251D563C00711900 /* AnimatorAlphaBottomRightChanger.cpp */,
 				A1D166FA251D563C00711900 /* AnimatorAlphaTopRightChanger.cpp */,
@@ -929,6 +949,10 @@
 		C942B3F113278C3300C1D1E8 /* Animators */ = {
 			isa = PBXGroup;
 			children = (
+				A1A6B9FF25399ED400BF9470 /* AnimatorAlphaTopLeftChanger.h */,
+				A1A6B9FE25399ED300BF9470 /* AnimatorBlueTopLeftChanger.h */,
+				A1A6B9FD25399ED300BF9470 /* AnimatorGreenTopLeftChanger.h */,
+				A1A6BA0025399ED400BF9470 /* AnimatorRedTopLeftChanger.h */,
 				A1D166DF251D560700711900 /* AnimatorAlphaBottomLeftChanger.h */,
 				A1D166DD251D560700711900 /* AnimatorAlphaBottomRightChanger.h */,
 				A1D166E1251D560700711900 /* AnimatorAlphaTopRightChanger.h */,
@@ -1411,6 +1435,7 @@
 				8478B5C721ECD8D4009523ED /* ObjectColored.cpp in Sources */,
 				A18B9D8824C98F7200ED3B52 /* AnimatorAntiProgressGreenChanger.cpp in Sources */,
 				D1522E7C140F6A6B0012F290 /* EventArgs.cpp in Sources */,
+				A1A6B9F525399EB700BF9470 /* AnimatorGreenTopLeftChanger.cpp in Sources */,
 				A18B9D8A24C98F7200ED3B52 /* AnimatorProgressRedChanger.cpp in Sources */,
 				D18CB6181902CE040071C391 /* ObjectScrollBarButtonBackground.cpp in Sources */,
 				D12C44881A35831C0025EBF5 /* BaseImage.cpp in Sources */,
@@ -1423,6 +1448,7 @@
 				D12C448E1A35831C0025EBF5 /* TileImage.cpp in Sources */,
 				D1147B431A3B499C00C592A4 /* ObjectGridView.cpp in Sources */,
 				D16DF4301A24C955005D6371 /* ObjectListBox.cpp in Sources */,
+				A1A6B9F325399EB700BF9470 /* AnimatorAlphaTopLeftChanger.cpp in Sources */,
 				D1522E83140F6A6B0012F290 /* AnimatorScalerX.cpp in Sources */,
 				D1522E84140F6A6B0012F290 /* AnimatorScalerY.cpp in Sources */,
 				D146B4B91A2711E400002ED6 /* ObjectTreeViewImage.cpp in Sources */,
@@ -1430,6 +1456,7 @@
 				D1B061311A51824B0062D851 /* ObjectFilledRect.cpp in Sources */,
 				D1522E85140F6A6B0012F290 /* AnimatorResizerX.cpp in Sources */,
 				A1D16724251D563C00711900 /* AnimatorBlueBottomLeftChanger.cpp in Sources */,
+				A1A6B9F125399EB700BF9470 /* AnimatorRedTopLeftChanger.cpp in Sources */,
 				D1522E86140F6A6B0012F290 /* AnimatorResizerY.cpp in Sources */,
 				D12C448B1A35831C0025EBF5 /* SkinImage.cpp in Sources */,
 				D1522E87140F6A6B0012F290 /* AnimatorBlueChanger.cpp in Sources */,
@@ -1465,6 +1492,7 @@
 				A1D16715251D563C00711900 /* AnimatorRedTopRightChanger.cpp in Sources */,
 				D146B4B61A2711E400002ED6 /* ObjectTreeViewExpander.cpp in Sources */,
 				D146B4BC1A2711E400002ED6 /* ObjectTreeViewLabel.cpp in Sources */,
+				A1A6B9F725399EB700BF9470 /* AnimatorBlueTopLeftChanger.cpp in Sources */,
 				A1D16721251D563C00711900 /* AnimatorGreenBottomRightChanger.cpp in Sources */,
 				D1522E97140F6A6B0012F290 /* ObjectImageBox.cpp in Sources */,
 				D1F3C6FF1B148B14004BBD22 /* AnimatorZOrderChanger.cpp in Sources */,
@@ -1524,6 +1552,7 @@
 				8478B5C621ECD8D4009523ED /* ObjectColored.cpp in Sources */,
 				A18B9D8724C98F7200ED3B52 /* AnimatorAntiProgressGreenChanger.cpp in Sources */,
 				D1F27B2D177A2FCA00E5C131 /* EventArgs.cpp in Sources */,
+				A1A6B9F425399EB700BF9470 /* AnimatorGreenTopLeftChanger.cpp in Sources */,
 				A18B9D8924C98F7200ED3B52 /* AnimatorProgressRedChanger.cpp in Sources */,
 				D18CB6171902CE040071C391 /* ObjectScrollBarButtonBackground.cpp in Sources */,
 				D12C44871A35831C0025EBF5 /* BaseImage.cpp in Sources */,
@@ -1536,6 +1565,7 @@
 				D12C448D1A35831C0025EBF5 /* TileImage.cpp in Sources */,
 				D1147B421A3B499C00C592A4 /* ObjectGridView.cpp in Sources */,
 				D16DF42F1A24C955005D6371 /* ObjectListBox.cpp in Sources */,
+				A1A6B9F225399EB700BF9470 /* AnimatorAlphaTopLeftChanger.cpp in Sources */,
 				D1F27B34177A2FCA00E5C131 /* AnimatorScalerX.cpp in Sources */,
 				D1F27B35177A2FCA00E5C131 /* AnimatorScalerY.cpp in Sources */,
 				D146B4B81A2711E400002ED6 /* ObjectTreeViewImage.cpp in Sources */,
@@ -1543,6 +1573,7 @@
 				D1B061301A51824B0062D851 /* ObjectFilledRect.cpp in Sources */,
 				D1F27B36177A2FCA00E5C131 /* AnimatorResizerX.cpp in Sources */,
 				A1D16723251D563C00711900 /* AnimatorBlueBottomLeftChanger.cpp in Sources */,
+				A1A6B9F025399EB700BF9470 /* AnimatorRedTopLeftChanger.cpp in Sources */,
 				D1F27B37177A2FCA00E5C131 /* AnimatorResizerY.cpp in Sources */,
 				D12C448A1A35831C0025EBF5 /* SkinImage.cpp in Sources */,
 				D1F27B38177A2FCA00E5C131 /* AnimatorBlueChanger.cpp in Sources */,
@@ -1578,6 +1609,7 @@
 				A1D16714251D563C00711900 /* AnimatorRedTopRightChanger.cpp in Sources */,
 				D146B4B51A2711E400002ED6 /* ObjectTreeViewExpander.cpp in Sources */,
 				D146B4BB1A2711E400002ED6 /* ObjectTreeViewLabel.cpp in Sources */,
+				A1A6B9F625399EB700BF9470 /* AnimatorBlueTopLeftChanger.cpp in Sources */,
 				A1D16720251D563C00711900 /* AnimatorGreenBottomRightChanger.cpp in Sources */,
 				D1F27B47177A2FCA00E5C131 /* ObjectImageBox.cpp in Sources */,
 				D1F3C6FE1B148B14004BBD22 /* AnimatorZOrderChanger.cpp in Sources */,
