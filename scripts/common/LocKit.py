@@ -256,6 +256,28 @@ class LocKit:
 		return newLocFiles
 
 	@staticmethod
+	def updateLocFullFiles(originalFullLocFiles, locFiles, baseLanguage):
+		allLanguages = []
+		for file in originalFullLocFiles:
+			allLanguages.extend(file.languages)
+		languages = []
+		[languages.append(x) for x in allLanguages if x not in languages]
+		if not baseLanguage in languages:
+			raise BaseException("Could not find base language: " + baseLanguage)
+		languages.remove(baseLanguage)
+		languages.insert(0, baseLanguage)
+		result = []
+		for language in languages:
+			originalLocFiles = []
+			for fullLocFile in originalFullLocFiles:
+				locFile = fullLocFile.generateLocFile(language)
+				if locFile != None:
+					originalLocFiles.append(locFile)
+			if len(originalLocFiles) > 0:
+				result.extend(LocKit.updateLocFiles(originalLocFiles, locFiles, language))
+		return result
+
+	@staticmethod
 	def renameKeys(locFiles, renamedKeys):
 		for locFile in locFiles:
 			print("RENAME " + locFile.filename)

@@ -19,11 +19,11 @@ def process():
 	language = ""
 	inputFilename = sys.argv[2]
 	originalPath = sys.argv[3]
-	originalLanguage = sys.argv[4]
+	baseLanguage = sys.argv[4]
 	
-	originalLocFiles = LocKit.readLocFiles(originalPath, originalLanguage)
-	newLocFiles = LocKit.readXlsFile(inputFilename)
-	locFiles = LocKit.updateLocFiles(originalLocFiles, newLocFiles, originalLanguage)
+	originalLocFiles = LocKit.readFullLocFiles(originalPath, baseLanguage)
+	newLocFiles = LocKit.readFullTsvFile(inputFilename)
+	locFiles = LocKit.updateLocFullFiles(originalLocFiles, newLocFiles, baseLanguage)
 	LocKit.writeLocFiles(path, locFiles)
 	
 def help():
@@ -31,16 +31,15 @@ def help():
 	print("Updates localization files from a split TSV file (as defined by AprilUI).")
 	print("See examples/generic.loc for reference.")
 	print("")
-	print("usage:   loc_kit_update_loc.py PATH TSV_FILENAME ORG_PATH ORG_LANG")
+	print("usage:   loc_kit_update_loc.py PATH TSV_FILENAME ORG_PATH BASE_LANG")
 	print("")
 	print("  PATH          - Directory path for .loc file output.")
 	print("  TSV_FILENAME  - Filename of the input TSV file.")
 	print("  ORG_PATH      - Directory path to use as root recursive starting point.")
-	print("  ORG_LANG      - Specific directory prefix for the original language files.")
-	print("                  e.g. 'en' would cause only files that look like")
-	print("                  '*en/FILENAME.EXTENSION' to be read.")
+	print("  BASE_LANG     - Specific directory prefix for the base language files.")
+	print("                  e.g. 'en' would make English the base language")
 	print("")
-	print("example: loc_kit_update_loc_xls.py new_loc locale.txt ../data/localization/en en")
+	print("example: loc_kit_update_loc_full.py new_loc locale.txt ../data/localization/en en")
 	print("")
 	os.system("pause")
 

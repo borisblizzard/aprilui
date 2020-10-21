@@ -57,6 +57,8 @@ class FullTsvParser:
 					newLocFiles = []
 				if len(languages) == 0:
 					languages = columns[2:len(columns)]
+					while "" in languages:
+						languages.remove("")
 				for language in languages:
 					locFile = LocFile(os.path.dirname(columns[1]) + "/" + language + "/" + os.path.basename(columns[1]), language, []) # cannot make [] a default argument because there's a bug in Python
 					newLocFiles.append(locFile)

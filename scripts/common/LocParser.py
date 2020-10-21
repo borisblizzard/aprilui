@@ -54,6 +54,25 @@ class LocFullFile:
 
 	def getFullFilename(self):
 		return (self.path + "/" + self.filename)
+		
+	def generateLocFiles(self):
+		result = []
+		for i in range(0, len(self.languages)):
+			locFile = this.generateLocFile(self.languages[i])
+			if locFile != None:
+				result.append(locFile)
+		return result
+
+	def generateLocFile(self, language):
+		index = self.languages.index(language)
+		if index >= 0:
+			newEntries = []
+			for entry in self.entries:
+				if index < len(entry.values):
+					newEntries.append(LocEntry(entry.key, entry.values[index], entry.values[index], entry.comment))
+			if len(newEntries) > 0:
+				return LocFile(self.path + "/" + language + "/" + self.filename, language, newEntries)
+		return None
 
 	def __repr__(self):
 		return "%s<%s, %s, %d entries>" % (self.__class__.__name__, self.path.__repr__(), self.filename.__repr__(), len(self.entries))
