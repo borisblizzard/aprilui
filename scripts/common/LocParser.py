@@ -57,8 +57,9 @@ class LocFullFile:
 		
 	def generateLocFiles(self):
 		result = []
-		for i in range(0, len(self.languages)):
-			locFile = this.generateLocFile(self.languages[i])
+		for i in range(len(self.languages)):
+			print(self.languages[i])
+			locFile = self.generateLocFile(self.languages[i])
 			if locFile != None:
 				result.append(locFile)
 		return result
@@ -90,7 +91,7 @@ class LocFullEntry:
 		result = self.key
 		if self.comment != "":
 			result += " (%s)" % self.comment
-		result += ":%d languages" % len(self.languages)
+		result += ":%d languages" % len(self.values)
 		return "%s<%s>" % (self.__class__.__name__, result)
 
 class LocParser:

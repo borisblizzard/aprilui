@@ -44,29 +44,20 @@ class FullTsvParser:
 		# extracting LocFile instances
 		languages = []
 		locFiles = []
-		locFile = []
-		newLocFiles = []
+		locFile = None
 		for match in matches:
 			columns = list(match)
 			for i in range(len(columns)):
 				if columns[i].startswith("\"") and columns[i].endswith("\""):
 					columns[i] = columns[i][1:-1].replace("\"\"", "\"")
 			if columns[0] == "###":
-				if len(newLocFiles) > 0:
-					locFiles.extend(newLocFiles)
-					newLocFiles = []
-				if len(languages) == 0:
-					languages = columns[2:len(columns)]
-					while "" in languages:
-						languages.remove("")
-				for language in languages:
-					locFile = LocFile(os.path.dirname(columns[1]) + "/" + language + "/" + os.path.basename(columns[1]), language, []) # cannot make [] a default argument because there's a bug in Python
-					newLocFiles.append(locFile)
-			elif columns[0] != "" and len(newLocFiles) > 0:
-				for i in range(len(newLocFiles)):
-					newLocFiles[i].entries.append(LocEntry(columns[0], columns[2 + i], columns[2], columns[1]))
-		if len(newLocFiles) > 0:
-			locFiles.extend(newLocFiles)
+				languages = columns[2:len(columns)]
+				while "" in languages:
+					languages.remove("")
+				locFile = LocFullFile(os.path.dirname(columns[1]), os.path.basename(columns[1]), languages, []) # cannot make [] a default argument because there's a bug in Python
+				locFiles.append(locFile)
+			elif columns[0] != "" and locFile != None:
+				locFile.entries.append(LocFullEntry(columns[0], columns[2:len(languages) + 2], columns[1]))
 		return locFiles
 	
 	@staticmethod

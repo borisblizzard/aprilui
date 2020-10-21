@@ -109,6 +109,30 @@ class LocKit:
 			file.close()
 
 	@staticmethod
+	def writeLocFullFiles(path, locFullFiles, silent = False):
+		if not silent:
+			print("")
+			print("Writing output %d file(s)..." % len(locFullFiles))
+		try:
+			os.makedirs(path)
+		except:
+			pass
+		for locFullFile in locFullFiles:
+			for language in locFullFile.languages:
+				locFile = locFullFile.generateLocFile(language)
+				filename = path + "/" + locFile.filename
+				if not silent:
+					print("  - %s  (%d entries)" % (filename, len(locFullFile.entries)))
+				text = LocParser.joinEntries(locFile.entries)
+				try:
+					os.makedirs(os.path.dirname(filename))
+				except:
+					pass
+				file = open(filename, "wb")
+				file.write(LocParser.BOM + text.encode())
+				file.close()
+
+	@staticmethod
 	def readTsvFile(inputFilename, silent = False):
 		if not silent:
 			print("")
@@ -187,6 +211,17 @@ class LocKit:
 		return None
 
 	@staticmethod
+	def _findLocFullFile(originalLocFiles, locFile, warning = True):
+		for file in originalLocFiles:
+			if file.path == locFile.path and file.filename == locFile.filename:
+				return file
+		if warning:
+			print("----")
+			print("WARNING! No corresponding original file exists for '%s/%s'." % (locFile.path, locFile.filename))
+			print("----")
+		return None
+
+	@staticmethod
 	def _findLocEntry(originalLocEntries, locEntry, warning = True):
 		for entry in originalLocEntries:
 			if entry.key == locEntry.key:
@@ -210,13 +245,12 @@ class LocKit:
 
 	@staticmethod
 	def createDifferenceLocFiles(locFiles, originalLocFiles, language, changedKeys):
-		newLocFiles = []
+		result = []
 		for originalLocFile in originalLocFiles:
 			locFile = LocKit._findLocFile(locFiles, originalLocFile, False)
 			entries = []
 			if locFile != None:
 				entries = locFile.entries
-
 			filename = originalLocFile.getReferenceFilename()
 			basename = os.path.basename(filename)
 			filename = filename.replace("/" + basename, "")
@@ -229,12 +263,12 @@ class LocKit:
 				if locEntry == None or locEntry.key in changedKeys:
 					locFile.entries.append(LocEntry(originalLocEntry.key, "", originalLocEntry.value, originalLocEntry.comment))
 			if len(locFile.entries) > 0:
-				newLocFiles.append(locFile)
-		return newLocFiles
+				result.append(locFile)
+		return result
 
 	@staticmethod
 	def updateLocFiles(originalLocFiles, locFiles, language):
-		newLocFiles = []
+		result = []
 		for locFile in locFiles:
 			originalLocFile = LocKit._findLocFile(originalLocFiles, locFile, False)
 			if originalLocFile == None:
@@ -252,29 +286,52 @@ class LocKit:
 					originalLocFile.entries.append(originalLocEntry)
 				originalLocEntry.value = locEntry.value
 			if len(originalLocFile.entries):
-				newLocFiles.append(originalLocFile)
-		return newLocFiles
+				result.append(originalLocFile)
+		return result
 
 	@staticmethod
-	def updateLocFullFiles(originalFullLocFiles, locFiles, baseLanguage):
-		allLanguages = []
-		for file in originalFullLocFiles:
-			allLanguages.extend(file.languages)
-		languages = []
-		[languages.append(x) for x in allLanguages if x not in languages]
-		if not baseLanguage in languages:
-			raise BaseException("Could not find base language: " + baseLanguage)
-		languages.remove(baseLanguage)
-		languages.insert(0, baseLanguage)
+	def updateLocFullFiles(originalLocFiles, locFiles, baseLanguage):
 		result = []
-		for language in languages:
-			originalLocFiles = []
-			for fullLocFile in originalFullLocFiles:
-				locFile = fullLocFile.generateLocFile(language)
-				if locFile != None:
-					originalLocFiles.append(locFile)
-			if len(originalLocFiles) > 0:
-				result.extend(LocKit.updateLocFiles(originalLocFiles, locFiles, language))
+		newLocFiles = []
+		allLanguages = []
+		for locFile in locFiles:
+			originalLocFile = LocKit._findLocFullFile(originalLocFiles, locFile, False)
+			if originalLocFile != None:
+				addedLanguages = 0
+				for language in locFile.languages:
+					if not language in originalLocFile.languages:
+						originalLocFile.languages.append(language)
+						addedLanguages = addedLanguages + 1
+				allLanguages.extend(originalLocFile.languages)
+				for entry in originalLocFile.entries:
+					for i in range(addedLanguages):
+						entry.values.append("")
+				for locEntry in locFile.entries:
+					originalLocEntry = LocKit._findLocEntry(originalLocFile.entries, locEntry, False)
+					if originalLocEntry == None:
+						emptyEntries = []
+						for language in originalLocFile.languages:
+							emptyEntries.append("")
+						originalLocEntry = LocFullEntry(locEntry.key, emptyEntries, locEntry.comment)
+						originalLocFile.entries.append(originalLocEntry)
+					for i in range(len(locFile.languages)):
+						index = originalLocFile.languages.index(locFile.languages[i])
+						originalLocEntry.values[index] = locEntry.values[i]
+				result.append(originalLocFile)
+			else:
+				newLocFiles.append(locFile)
+				result.append(locFile)
+		languages = []
+		[languages.append(x) for x in allLanguages if x not in languages] # remove duplicates
+		for locFile in newLocFiles:
+			addedLanguages = 0
+			for language in languages:
+				if not language in locFile.languages:
+					locFile.languages.append(language)
+					addedLanguages = addedLanguages + 1
+			for entry in locFile.entries:
+				for i in range(addedLanguages):
+					entry.values.append("")
 		return result
 
 	@staticmethod
@@ -286,6 +343,6 @@ class LocKit:
 				print(renamedKeys)
 				if renamedKeys.has_key(locEntry.key):
 					locEntry.key = renamedKeys[locEntry.key]
-					print("REANEMD")
+					print("RENAMED")
 					break
 		return locFiles

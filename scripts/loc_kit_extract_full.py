@@ -20,7 +20,7 @@ def process():
 	inputFilename = sys.argv[2]
 	
 	locFiles = LocKit.readFullTsvFile(inputFilename)
-	LocKit.writeLocFiles(path, locFiles)
+	LocKit.writeLocFullFiles(path, locFiles)
 	
 def help():
 	print("")

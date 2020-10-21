@@ -24,7 +24,7 @@ def process():
 	originalLocFiles = LocKit.readFullLocFiles(originalPath, baseLanguage)
 	newLocFiles = LocKit.readFullTsvFile(inputFilename)
 	locFiles = LocKit.updateLocFullFiles(originalLocFiles, newLocFiles, baseLanguage)
-	LocKit.writeLocFiles(path, locFiles)
+	LocKit.writeLocFullFiles(path, locFiles)
 	
 def help():
 	print("")
