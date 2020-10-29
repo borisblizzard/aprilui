@@ -279,14 +279,7 @@ namespace aprilui
 		this->vertices[1].x = this->vertices[3].x = this->vertices[5].x = drawRect.right();
 		this->vertices[2].y = this->vertices[4].y = this->vertices[5].y = drawRect.bottom();
 		this->_setDeviceTexture();
-		if (this->tryLoadTextureCoordinates())
-		{
-			for_iter (i, 0, APRILUI_IMAGE_MAX_VERTICES)
-			{
-				this->coloredVertices[i].u = this->vertices[i].u;
-				this->coloredVertices[i].v = this->vertices[i].v;
-			}
-		}
+		this->tryLoadTextureCoordinates();
 		april::rendersys->setBlendMode(this->blendMode);
 		april::rendersys->setColorMode(this->colorMode, this->colorModeFactor);
 		april::rendersys->render(april::RenderOperation::TriangleList, this->vertices, APRILUI_IMAGE_MAX_VERTICES, drawColor);

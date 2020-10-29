@@ -65,6 +65,8 @@ namespace aprilui
 		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const;
 		hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const;
 
+		void _drawWithCorners(cgrectf rect, const april::Color& color);
+
 		grectf _makeRealSrcRect() const;
 		grectf _makeClippedSrcRect() const;
 		

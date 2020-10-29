@@ -140,7 +140,16 @@ namespace aprilui
 
 	void CropImage::draw(cgrectf rect, const april::Color& color)
 	{
-		if (color.a == 0 || this->colorTopLeft.a == 0)
+		if (color.a == 0)
+		{
+			return;
+		}
+		if (this->useAdditionalColors)
+		{
+			this->_drawWithCorners(rect, color);
+			return;
+		}
+		if (this->colorTopLeft.a == 0)
 		{
 			return;
 		}
@@ -171,6 +180,45 @@ namespace aprilui
 		april::rendersys->render(april::RenderOperation::TriangleList, this->vertices, APRILUI_IMAGE_MAX_VERTICES, drawColor);
 	}
 
+	void CropImage::_drawWithCorners(cgrectf rect, const april::Color& color)
+	{
+		april::Color topLeft = this->colorTopLeft * color;
+		april::Color topRight = this->colorTopRight * color;
+		april::Color bottomLeft = this->colorBottomLeft * color;
+		april::Color bottomRight = this->colorBottomRight * color;
+		if (topLeft.a == 0 && topRight.a == 0 && bottomLeft.a == 0 && bottomRight.a == 0)
+		{
+			return;
+		}
+		gvec2f sizeRatio = rect.getSize() / this->srcRect.getSize();
+		grectf drawRect(rect.getPosition() + this->drawPosition * sizeRatio, this->realSrcSize * sizeRatio);
+		if (this->clipRect.w > 0.0f && this->clipRect.h > 0.0f)
+		{
+			grectf realClipRect(rect.getPosition() + this->clipRect.getPosition() * sizeRatio, this->clipRect.getSize() * sizeRatio);
+			drawRect.clip(realClipRect);
+		}
+		this->coloredVertices[0].x = this->coloredVertices[2].x = this->coloredVertices[4].x = drawRect.left();
+		this->coloredVertices[0].y = this->coloredVertices[1].y = this->coloredVertices[3].y = drawRect.top();
+		this->coloredVertices[1].x = this->coloredVertices[3].x = this->coloredVertices[5].x = drawRect.right();
+		this->coloredVertices[2].y = this->coloredVertices[4].y = this->coloredVertices[5].y = drawRect.bottom();
+		this->coloredVertices[0].color = april::rendersys->getNativeColorUInt(topLeft);
+		this->coloredVertices[1].color = this->coloredVertices[3].color = april::rendersys->getNativeColorUInt(topRight);
+		this->coloredVertices[2].color = this->coloredVertices[4].color = april::rendersys->getNativeColorUInt(bottomLeft);
+		this->coloredVertices[5].color = april::rendersys->getNativeColorUInt(bottomRight);
+		this->_setDeviceTexture();
+		if (this->tryLoadTextureCoordinates())
+		{
+			for_iter (i, 0, APRILUI_IMAGE_MAX_VERTICES)
+			{
+				this->coloredVertices[i].u = this->vertices[i].u;
+				this->coloredVertices[i].v = this->vertices[i].v;
+			}
+		}
+		april::rendersys->setBlendMode(this->blendMode);
+		april::rendersys->setColorMode(this->colorMode, this->colorModeFactor);
+		april::rendersys->render(april::RenderOperation::TriangleList, this->coloredVertices, APRILUI_IMAGE_MAX_VERTICES);
+	}
+	
 	void CropImage::draw(const harray<april::TexturedVertex>& vertices, const april::Color& color)
 	{
 		hlog::warn(logTag, "CropImage::draw(harray<april::TexturedVertex>, april::Color) is not supported!");

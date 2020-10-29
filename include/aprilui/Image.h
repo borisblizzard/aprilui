@@ -92,7 +92,7 @@ namespace aprilui
 		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const;
 		hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const;
 
-		void _drawWithCorners(cgrectf rect, const april::Color& color);
+		virtual void _drawWithCorners(cgrectf rect, const april::Color& color);
 
 	private:
 		static hmap<hstr, PropertyDescription> _propertyDescriptions;
