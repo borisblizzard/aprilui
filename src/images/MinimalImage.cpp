@@ -235,9 +235,10 @@ namespace aprilui
 
 	grectf MinimalImage::_makeClippedSrcRect() const
 	{
-		if (this->clipRect.w > 0.0f && this->clipRect.h > 0.0f)
+		grectf clipRect = (!this->useDrawClipRect ? this->clipRect : this->drawClipRect);
+		if (clipRect.w > 0.0f && clipRect.h > 0.0f)
 		{
-			return this->srcRect.clipped(this->clipRect + this->srcRect.getPosition());
+			return this->srcRect.clipped(clipRect + this->srcRect.getPosition());
 		}
 		return this->srcRect;
 	}
@@ -248,12 +249,17 @@ namespace aprilui
 		{
 			return;
 		}
+		if (this->useDrawClipRect && (this->drawClipRect.w <= 0.0f || this->drawClipRect.w <= 0.0f))
+		{
+			return;
+		}
 		grectf drawRect = rect;
-		if (this->clipRect.w > 0.0f && this->clipRect.h > 0.0f)
+		grectf clipRect = (!this->useDrawClipRect ? this->clipRect : this->drawClipRect);
+		if (clipRect.w > 0.0f && clipRect.h > 0.0f)
 		{
 			gvec2f sizeRatio = drawRect.getSize() / this->srcRect.getSize();
-			drawRect += this->clipRect.getPosition() * sizeRatio;
-			drawRect.setSize(this->clipRect.getSize() * sizeRatio);
+			drawRect += clipRect.getPosition() * sizeRatio;
+			drawRect.setSize(clipRect.getSize() * sizeRatio);
 		}
 		this->vertices[0].x = this->vertices[2].x = this->vertices[4].x = drawRect.left();
 		this->vertices[0].y = this->vertices[1].y = this->vertices[3].y = drawRect.top();

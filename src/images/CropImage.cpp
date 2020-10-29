@@ -123,24 +123,24 @@ namespace aprilui
 		}
 	}
 
-	grectf CropImage::_makeRealSrcRect() const
-	{
-		return grectf(this->srcRect.getPosition(), this->realSrcSize);
-	}
-
 	grectf CropImage::_makeClippedSrcRect() const
 	{
-		if (this->clipRect.w > 0.0f && this->clipRect.h > 0.0f)
+		grectf realSrcRect(this->srcRect.getPosition(), this->realSrcSize);
+		grectf clipRect = (!this->useDrawClipRect ? this->clipRect : this->drawClipRect);
+		if (clipRect.w > 0.0f && clipRect.h > 0.0f)
 		{
-			grectf realSrcRect = this->_makeRealSrcRect();
-			return realSrcRect.clipped(this->clipRect - this->drawPosition + realSrcRect.getPosition());
+			realSrcRect.clip(clipRect - this->drawPosition + realSrcRect.getPosition());
 		}
-		return this->_makeRealSrcRect();
+		return realSrcRect;
 	}
 
 	void CropImage::draw(cgrectf rect, const april::Color& color)
 	{
 		if (color.a == 0)
+		{
+			return;
+		}
+		if (this->useDrawClipRect && (this->drawClipRect.w <= 0.0f || this->drawClipRect.w <= 0.0f))
 		{
 			return;
 		}
@@ -164,9 +164,10 @@ namespace aprilui
 		}
 		gvec2f sizeRatio = rect.getSize() / this->srcRect.getSize();
 		grectf drawRect(rect.getPosition() + this->drawPosition * sizeRatio, this->realSrcSize * sizeRatio);
-		if (this->clipRect.w > 0.0f && this->clipRect.h > 0.0f)
+		grectf clipRect = (!this->useDrawClipRect ? this->clipRect : this->drawClipRect);
+		if (clipRect.w > 0.0f && clipRect.h > 0.0f)
 		{
-			grectf realClipRect(rect.getPosition() + this->clipRect.getPosition() * sizeRatio, this->clipRect.getSize() * sizeRatio);
+			grectf realClipRect(rect.getPosition() + clipRect.getPosition() * sizeRatio, clipRect.getSize() * sizeRatio);
 			drawRect.clip(realClipRect);
 		}
 		this->vertices[0].x = this->vertices[2].x = this->vertices[4].x = drawRect.left();
@@ -192,10 +193,27 @@ namespace aprilui
 		}
 		gvec2f sizeRatio = rect.getSize() / this->srcRect.getSize();
 		grectf drawRect(rect.getPosition() + this->drawPosition * sizeRatio, this->realSrcSize * sizeRatio);
-		if (this->clipRect.w > 0.0f && this->clipRect.h > 0.0f)
+		grectf originalRect = drawRect;
+		grectf clipRect = (!this->useDrawClipRect ? this->clipRect : this->drawClipRect);
+		if (clipRect.w > 0.0f && clipRect.h > 0.0f)
 		{
-			grectf realClipRect(rect.getPosition() + this->clipRect.getPosition() * sizeRatio, this->clipRect.getSize() * sizeRatio);
+			grectf realClipRect(rect.getPosition() + clipRect.getPosition() * sizeRatio, clipRect.getSize() * sizeRatio);
 			drawRect.clip(realClipRect);
+			if (this->useDrawClipRect)
+			{
+				float ratioLeft = (drawRect.x - originalRect.x) / originalRect.w;
+				float ratioRight = (drawRect.right() - originalRect.x) / originalRect.w;
+				float ratioTop = (drawRect.y - originalRect.y) / originalRect.h;
+				float ratioBottom = (drawRect.bottom() - originalRect.y) / originalRect.h;
+				topLeft = color * this->colorTopLeft.lerp(this->colorTopRight, ratioLeft).lerp(
+					this->colorBottomLeft.lerp(this->colorBottomRight, ratioLeft), ratioTop);
+				topRight = color * this->colorTopLeft.lerp(this->colorTopRight, ratioRight).lerp(
+					this->colorBottomLeft.lerp(this->colorBottomRight, ratioRight), ratioTop);
+				bottomLeft = color * this->colorTopLeft.lerp(this->colorTopRight, ratioLeft).lerp(
+					this->colorBottomLeft.lerp(this->colorBottomRight, ratioLeft), ratioBottom);
+				bottomRight = color * this->colorTopLeft.lerp(this->colorTopRight, ratioRight).lerp(
+					this->colorBottomLeft.lerp(this->colorBottomRight, ratioRight), ratioBottom);
+			}
 		}
 		this->coloredVertices[0].x = this->coloredVertices[2].x = this->coloredVertices[4].x = drawRect.left();
 		this->coloredVertices[0].y = this->coloredVertices[1].y = this->coloredVertices[3].y = drawRect.top();

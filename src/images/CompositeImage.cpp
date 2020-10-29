@@ -99,7 +99,6 @@ namespace aprilui
 		else
 		{
 			gvec2f cf;
-			grectf oldClipRect;
 			grectf clipRect;
 			foreach (ImageRef, it, this->images)
 			{
@@ -109,14 +108,10 @@ namespace aprilui
 				clipRect.set(clipRect.getPosition() * cf, clipRect.getSize() * cf);
 				if (clipRect.w > 0.0f && clipRect.h > 0.0f)
 				{
-					oldClipRect = (*it).first->getClipRect();
-					(*it).first->setClipRect(clipRect);
+					(*it).first->enableDrawClipRect(clipRect);
 					drawRect.set(rect.getPosition() + (*it).second.getPosition() * sf, (*it).second.getSize() * sf);
 					(*it).first->draw(drawRect, color);
-					if (this->restoreClipRects)
-					{
-						(*it).first->setClipRect(oldClipRect);
-					}
+					(*it).first->disableDrawClipRect();
 				}
 			}
 		}

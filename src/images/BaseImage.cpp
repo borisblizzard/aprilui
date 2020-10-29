@@ -20,6 +20,7 @@ namespace aprilui
 	{
 		this->name = name;
 		this->dataset = NULL;
+		this->useDrawClipRect = false;
 		this->_clipRectCalculated = false;
 	}
 
@@ -30,6 +31,8 @@ namespace aprilui
 		this->tag = other.tag;
 		this->dataset = NULL;
 		this->clipRect = other.clipRect;
+		this->drawClipRect = other.drawClipRect;
+		this->useDrawClipRect = other.useDrawClipRect;
 		this->_clipRectCalculated = false;
 	}
 
@@ -223,6 +226,19 @@ namespace aprilui
 			return true;
 		}
 		return false;
+	}
+
+	void BaseImage::enableDrawClipRect(cgrectf clipRect)
+	{
+		this->drawClipRect = clipRect;
+		this->useDrawClipRect = true;
+		this->_clipRectCalculated = false;
+	}
+
+	void BaseImage::disableDrawClipRect()
+	{
+		this->useDrawClipRect = false;
+		this->_clipRectCalculated = false;
 	}
 
 	harray<Texture*> BaseImage::findTextures(harray<BaseImage*> baseImages)

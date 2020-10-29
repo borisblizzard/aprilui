@@ -268,6 +268,10 @@ namespace aprilui
 		{
 			return;
 		}
+		if (this->useDrawClipRect && (this->drawClipRect.w <= 0.0f || this->drawClipRect.w <= 0.0f))
+		{
+			return;
+		}
 		april::Color drawColor = color;
 		if (this->colorTopLeft != april::Color::White)
 		{
@@ -285,10 +289,7 @@ namespace aprilui
 		this->_setDeviceTexture();
 		april::rendersys->setBlendMode(this->blendMode);
 		april::rendersys->setColorMode(this->colorMode, this->colorModeFactor);
-		grectf originalClipRect = this->clipRect; // prevents wrong calculations for src coordinates
-		this->clipRect.set(0.0f, 0.0f, 0.0f, 0.0f);
 		this->tryLoadTextureCoordinates();
-		this->clipRect = originalClipRect;
 		if (!this->_skinCoordinatesCalculated)
 		{
 			this->_skinCoordinatesCalculated = true;
@@ -533,16 +534,17 @@ namespace aprilui
 				}
 			}
 			// clipped rect
-			if (this->clipRect.w > 0.0f && this->clipRect.h > 0.0f)
+			if (this->useDrawClipRect)
 			{
 				float range = 0.0f;
 				float offset = 0.0f;
 				gvec2f clipScale = rect.getSize() / this->srcRect.getSize();
-				grectf clipRect(rect.getPosition() + this->clipRect.getPosition() * clipScale, this->clipRect.getSize() * clipScale);
+				grectf drawClipRect(rect.getPosition() + this->drawClipRect.getPosition() * clipScale, this->drawClipRect.getSize() * clipScale);
 				for_iter (i, 0, this->_vertices.size() / 6)
 				{
 					// remove out-of bounds
-					if (this->_vertices[i * 6 + 1].x <= clipRect.x || this->_vertices[i * 6].x >= clipRect.right() || this->_vertices[i * 6 + 2].y <= clipRect.y || this->_vertices[i * 6].y >= clipRect.bottom())
+					if (this->_vertices[i * 6 + 1].x <= drawClipRect.x || this->_vertices[i * 6].x >= drawClipRect.right() ||
+						this->_vertices[i * 6 + 2].y <= drawClipRect.y || this->_vertices[i * 6].y >= drawClipRect.bottom())
 					{
 						this->_vertices.removeAt(i * 6, 6);
 						--i;
@@ -550,34 +552,34 @@ namespace aprilui
 					else
 					{
 						// cut coordinates and correct src
-						if (this->_vertices[i * 6].x < clipRect.x)
+						if (this->_vertices[i * 6].x < drawClipRect.x)
 						{
 							range = this->_vertices[i * 6 + 1].x - this->_vertices[i * 6].x;
-							offset = clipRect.x - this->_vertices[i * 6].x;
+							offset = drawClipRect.x - this->_vertices[i * 6].x;
 							this->_vertices[i * 6].x += offset;		this->_vertices[i * 6 + 2].x += offset;	this->_vertices[i * 6 + 4].x += offset;
 							offset *= (this->_vertices[i * 6 + 1].u - this->_vertices[i * 6].u) / range;
 							this->_vertices[i * 6].u += offset;		this->_vertices[i * 6 + 2].u += offset;	this->_vertices[i * 6 + 4].u += offset;
 						}
-						if (this->_vertices[i * 6 + 1].x > clipRect.right())
+						if (this->_vertices[i * 6 + 1].x > drawClipRect.right())
 						{
 							range = this->_vertices[i * 6 + 1].x - this->_vertices[i * 6].x;
-							offset = this->_vertices[i * 6 + 1].x - clipRect.right();
+							offset = this->_vertices[i * 6 + 1].x - drawClipRect.right();
 							this->_vertices[i * 6 + 1].x -= offset;	this->_vertices[i * 6 + 3].x -= offset;	this->_vertices[i * 6 + 5].x -= offset;
 							offset *= (this->_vertices[i * 6 + 1].u - this->_vertices[i * 6].u) / range;
 							this->_vertices[i * 6 + 1].u -= offset;	this->_vertices[i * 6 + 3].u -= offset;	this->_vertices[i * 6 + 5].u -= offset;
 						}
-						if (this->_vertices[i * 6].y < clipRect.y)
+						if (this->_vertices[i * 6].y < drawClipRect.y)
 						{
 							range = this->_vertices[i * 6 + 2].y - this->_vertices[i * 6].y;
-							offset = clipRect.y - this->_vertices[i * 6].y;
+							offset = drawClipRect.y - this->_vertices[i * 6].y;
 							this->_vertices[i * 6].y += offset;		this->_vertices[i * 6 + 1].y += offset;	this->_vertices[i * 6 + 3].y += offset;
 							offset *= (this->_vertices[i * 6 + 2].v - this->_vertices[i * 6].v) / range;
 							this->_vertices[i * 6].v += offset;		this->_vertices[i * 6 + 1].v += offset;	this->_vertices[i * 6 + 3].v += offset;
 						}
-						if (this->_vertices[i * 6 + 2].y > clipRect.bottom())
+						if (this->_vertices[i * 6 + 2].y > drawClipRect.bottom())
 						{
 							range = this->_vertices[i * 6 + 2].y - this->_vertices[i * 6].y;
-							offset = this->_vertices[i * 6 + 2].y - clipRect.bottom();
+							offset = this->_vertices[i * 6 + 2].y - drawClipRect.bottom();
 							this->_vertices[i * 6 + 2].y -= offset;	this->_vertices[i * 6 + 4].y -= offset;	this->_vertices[i * 6 + 5].y -= offset;
 							offset *= (this->_vertices[i * 6 + 2].v - this->_vertices[i * 6].v) / range;
 							this->_vertices[i * 6 + 2].v -= offset;	this->_vertices[i * 6 + 4].v -= offset;	this->_vertices[i * 6 + 5].v -= offset;

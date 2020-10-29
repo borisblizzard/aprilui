@@ -67,7 +67,6 @@ namespace aprilui
 
 		void _drawWithCorners(cgrectf rect, const april::Color& color);
 
-		grectf _makeRealSrcRect() const;
 		grectf _makeClippedSrcRect() const;
 		
 	private:

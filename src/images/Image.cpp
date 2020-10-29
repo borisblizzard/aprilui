@@ -258,6 +258,10 @@ namespace aprilui
 		{
 			return;
 		}
+		if (this->useDrawClipRect && (this->drawClipRect.w <= 0.0f || this->drawClipRect.w <= 0.0f))
+		{
+			return;
+		}
 		april::Color drawColor = color;
 		if (this->colorTopLeft != april::Color::White)
 		{
@@ -268,11 +272,12 @@ namespace aprilui
 			}
 		}
 		grectf drawRect = rect;
-		if (this->clipRect.w > 0.0f && this->clipRect.h > 0.0f)
+		grectf clipRect = (!this->useDrawClipRect ? this->clipRect : this->drawClipRect);
+		if (clipRect.w > 0.0f && clipRect.h > 0.0f)
 		{
 			gvec2f sizeRatio = drawRect.getSize() / this->srcRect.getSize();
-			drawRect += this->clipRect.getPosition() * sizeRatio;
-			drawRect.setSize(this->clipRect.getSize() * sizeRatio);
+			drawRect += clipRect.getPosition() * sizeRatio;
+			drawRect.setSize(clipRect.getSize() * sizeRatio);
 		}
 		this->vertices[0].x = this->vertices[2].x = this->vertices[4].x = drawRect.left();
 		this->vertices[0].y = this->vertices[1].y = this->vertices[3].y = drawRect.top();
@@ -296,11 +301,27 @@ namespace aprilui
 			return;
 		}
 		grectf drawRect = rect;
-		if (this->clipRect.w > 0.0f && this->clipRect.h > 0.0f)
+		grectf clipRect = (!this->useDrawClipRect ? this->clipRect : this->drawClipRect);
+		if (clipRect.w > 0.0f && clipRect.h > 0.0f)
 		{
 			gvec2f sizeRatio = drawRect.getSize() / this->srcRect.getSize();
-			drawRect += this->clipRect.getPosition() * sizeRatio;
-			drawRect.setSize(this->clipRect.getSize() * sizeRatio);
+			drawRect += clipRect.getPosition() * sizeRatio;
+			drawRect.setSize(clipRect.getSize() * sizeRatio);
+			if (this->useDrawClipRect)
+			{
+				float ratioLeft = (drawRect.x - rect.x) / rect.w;
+				float ratioRight = (drawRect.right() - rect.x) / rect.w;
+				float ratioTop = (drawRect.y - rect.y) / rect.h;
+				float ratioBottom = (drawRect.bottom() - rect.y) / rect.h;
+				topLeft = color * this->colorTopLeft.lerp(this->colorTopRight, ratioLeft).lerp(
+					this->colorBottomLeft.lerp(this->colorBottomRight, ratioLeft), ratioTop);
+				topRight = color * this->colorTopLeft.lerp(this->colorTopRight, ratioRight).lerp(
+					this->colorBottomLeft.lerp(this->colorBottomRight, ratioRight), ratioTop);
+				bottomLeft = color * this->colorTopLeft.lerp(this->colorTopRight, ratioLeft).lerp(
+					this->colorBottomLeft.lerp(this->colorBottomRight, ratioLeft), ratioBottom);
+				bottomRight = color * this->colorTopLeft.lerp(this->colorTopRight, ratioRight).lerp(
+					this->colorBottomLeft.lerp(this->colorBottomRight, ratioRight), ratioBottom);
+			}
 		}
 		this->coloredVertices[0].x = this->coloredVertices[2].x = this->coloredVertices[4].x = drawRect.left();
 		this->coloredVertices[0].y = this->coloredVertices[1].y = this->coloredVertices[3].y = drawRect.top();

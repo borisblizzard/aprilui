@@ -186,9 +186,9 @@ namespace aprilui
 				{
 					sizeRect.setSize(drawRect.getSize());
 				}
-				this->antiProgressImage->setClipRect(this->_calcRectDirection(sizeRect, antiProgress, antiDirection));
+				this->antiProgressImage->enableDrawClipRect(this->_calcRectDirection(sizeRect, antiProgress, antiDirection));
 				this->antiProgressImage->draw(drawRect, drawAntiProgressColor);
-				this->antiProgressImage->setClipRect(clipRect);
+				this->antiProgressImage->disableDrawClipRect();
 			}
 		}
 		if (this->progressImage != NULL && progress > 0.0f)
@@ -206,9 +206,9 @@ namespace aprilui
 				{
 					sizeRect.setSize(drawRect.getSize());
 				}
-				this->progressImage->setClipRect(this->_calcRectDirection(sizeRect, progress, this->direction));
+				this->progressImage->enableDrawClipRect(this->_calcRectDirection(sizeRect, progress, this->direction));
 				this->progressImage->draw(drawRect, drawProgressColor);
-				this->progressImage->setClipRect(clipRect);
+				this->progressImage->disableDrawClipRect();
 			}
 		}
 		if (this->maskImage != NULL)

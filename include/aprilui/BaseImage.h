@@ -73,6 +73,8 @@ namespace aprilui
 		virtual hstr getProperty(chstr name);
 		virtual bool setProperty(chstr name, chstr value);
 
+		void enableDrawClipRect(cgrectf clipRect);
+		void disableDrawClipRect();
 		virtual void draw(cgrectf rect, const april::Color& color = april::Color::White) = 0;
 		virtual void draw(const harray<april::TexturedVertex>& vertices, const april::Color& color = april::Color::White) = 0;
 
@@ -83,6 +85,8 @@ namespace aprilui
 		hstr tag;
 		Dataset* dataset;
 		grectf clipRect;
+		grectf drawClipRect;
+		bool useDrawClipRect;
 
 		bool _clipRectCalculated;
 
