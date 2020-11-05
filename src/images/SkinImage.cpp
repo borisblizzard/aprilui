@@ -43,7 +43,7 @@ namespace aprilui
 	hmap<hstr, PropertyDescription> SkinImage::_propertyDescriptions;
 	hmap<hstr, PropertyDescription::Accessor*> SkinImage::_getters;
 	hmap<hstr, PropertyDescription::Accessor*> SkinImage::_setters;
-	int SkinImage::maxRectCache = 30;
+	int SkinImage::maxRectCache = 100;
 
 	SkinImage::SkinImage(Texture* texture, chstr name, cgrectf source) :
 		Image(texture, name, source)
@@ -310,7 +310,7 @@ namespace aprilui
 			this->_vertices.clear();
 			if (this->_rectVertices.size() >= SkinImage::maxRectCache)
 			{
-				this->_rectVertices.clear();
+				this->_rectVertices.removeFirst(this->_rectVertices.size() - SkinImage::maxRectCache + 1);
 			}
 			// which pieces will be rendered
 			grectf indentedSkinRect(this->skinRect.getPosition() + this->borderIndent, this->skinRect.getSize() - this->borderIndent * 2);
