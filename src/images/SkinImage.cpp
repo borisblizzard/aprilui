@@ -312,6 +312,11 @@ namespace aprilui
 			{
 				this->_rectVertices.removeFirst(this->_rectVertices.size() - SkinImage::maxRectCache + 1);
 			}
+			// this feature can't be implemented either because of color mixing and caching optimizations
+			if (this->useAdditionalColors)
+			{
+				hlog::warnf(logTag, "SkinImage '%s' uses a additional colors, but this feature is not supported!", this->name.cStr());
+			}
 			// which pieces will be rendered
 			grectf indentedSkinRect(this->skinRect.getPosition() + this->borderIndent, this->skinRect.getSize() - this->borderIndent * 2);
 			grectf clippedIndentedSkinRect = indentedSkinRect.clipped(grectf(0.0f, 0.0f, this->srcRect.getSize()));
