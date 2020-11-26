@@ -1976,8 +1976,6 @@ namespace aprilui
 
 	void Dataset::createTextureLinks(const harray<hstr>& names)
 	{
-		aprilui::Texture* first = NULL;
-		aprilui::Texture* second = NULL;
 		foreachc (hstr, it, names)
 		{
 			if ((*it).startsWith(" "))
