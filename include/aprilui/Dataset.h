@@ -83,6 +83,7 @@ namespace aprilui
 		void unregisterImage(BaseImage* image);
 		void registerStyle(Style* style);
 		void unregisterStyle(Style* style);
+		void createTextureLinks(const harray<hstr>& names);
 
 		void registerCallback(chstr name, void (*callback)());
 		void triggerCallback(chstr name);

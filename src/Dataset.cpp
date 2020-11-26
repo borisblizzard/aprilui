@@ -1973,6 +1973,30 @@ namespace aprilui
 			(*this->callbacks[name])();
 		}
 	}
+
+	void Dataset::createTextureLinks(const harray<hstr>& names)
+	{
+		aprilui::Texture* first = NULL;
+		aprilui::Texture* second = NULL;
+		foreachc (hstr, it, names)
+		{
+			if ((*it).startsWith(" "))
+			{
+				hlog::warnf(logTag, "Detected texture group with prefixed spaces '%s'. Are you sure this is correct?", (*it).cStr());
+			}
+			if ((*it).endsWith(" "))
+			{
+				hlog::warnf(logTag, "Detected texture group with suffixed spaces '%s'. Are you sure this is correct?", (*it).cStr());
+			}
+			foreachc (hstr, it2, names)
+			{
+				if ((*it) != (*it2))
+				{
+					this->getTexture(*it)->addLink(this->getTexture(*it2));
+				}
+			}
+		}
+	}
 	
 	void Dataset::draw()
 	{

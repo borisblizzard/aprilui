@@ -49,7 +49,8 @@ namespace aprilui
 		{
 			april::rendersys->destroyTexture(this->texture);
 		}
-		foreach (Texture*, it, this->links)
+		harray<Texture*> oldLinks = this->links;
+		foreach (Texture*, it, oldLinks)
 		{
 			(*it)->removeLink(this);
 		}
@@ -275,10 +276,7 @@ namespace aprilui
 	
 	void Texture::removeLink(Texture* link)
 	{
-		if (this->links.has(link))
-		{
-			this->links -= link;
-		}
+		this->links /= link;
 	}
 	
 }
