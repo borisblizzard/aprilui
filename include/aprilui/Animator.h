@@ -21,8 +21,11 @@
 
 namespace aprilui
 {
+	class Colored;
+	class Label;
 	class ProgressBar;
 	class ProgressCircle;
+	class TextImageButton;
 
 	class apriluiExport Animator : public BaseObject
 	{
@@ -49,8 +52,11 @@ namespace aprilui
 		));
 
 		friend class BaseObject;
+		friend class Colored;
+		friend class Label;
 		friend class ProgressBar;
 		friend class ProgressCircle;
+		friend class TextImageButton;
 
 		Animator(chstr name);
 		inline hstr getClassName() const { return "Animator"; }

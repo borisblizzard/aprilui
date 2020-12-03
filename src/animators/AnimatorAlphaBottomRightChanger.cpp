@@ -11,6 +11,7 @@
 #include "AnimatorAlphaBottomRightChanger.h"
 #include "ColorImage.h"
 #include "Image.h"
+#include "ObjectColored.h"
 #include "ObjectImageBox.h"
 
 namespace aprilui
@@ -37,8 +38,13 @@ namespace aprilui
 			ImageBox* imageBox = dynamic_cast<ImageBox*>(this->parent);
 			if (imageBox == NULL)
 			{
-				hlog::errorf(logTag, "Animators::AlphaBottomRightChanger: parent object '%s' not a subclass of Objects::ImageBox!", (this->parent != NULL ? this->parent->getName() : "NULL").cStr());
-				return 0.0f;
+				Colored* colored = dynamic_cast<Colored*>(this->parent);
+				if (colored == NULL)
+				{
+					hlog::errorf(logTag, "Animators::AlphaBottomRightChanger: parent object '%s' not a subclass of Objects::ImageBox or Objects::Colored!", (this->parent != NULL ? this->parent->getName() : "NULL").cStr());
+					return 0.0f;
+				}
+				return colored->getAlphaBottomRight();
 			}
 			BaseImage* baseImage = imageBox->getImage();
 			Image* image = dynamic_cast<Image*>(baseImage);
@@ -60,7 +66,13 @@ namespace aprilui
 			ImageBox* imageBox = dynamic_cast<ImageBox*>(this->parent);
 			if (imageBox == NULL)
 			{
-				hlog::errorf(logTag, "Animators::AlphaBottomRightChanger: parent object '%s' not a subclass of Objects::ImageBox!", (this->parent != NULL ? this->parent->getName() : "NULL").cStr());
+				Colored* colored = dynamic_cast<Colored*>(this->parent);
+				if (colored == NULL)
+				{
+					hlog::errorf(logTag, "Animators::AlphaBottomRightChanger: parent object '%s' not a subclass of Objects::ImageBox or Objects::Colored!", (this->parent != NULL ? this->parent->getName() : "NULL").cStr());
+					return;
+				}
+				colored->setAlphaBottomRight((unsigned char)value);
 				return;
 			}
 			BaseImage* baseImage = imageBox->getImage();

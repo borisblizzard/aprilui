@@ -12,6 +12,7 @@
 #include "ColorImage.h"
 #include "Image.h"
 #include "ObjectImageBox.h"
+#include "ObjectLabel.h"
 
 namespace aprilui
 {
@@ -37,8 +38,14 @@ namespace aprilui
 			ImageBox* imageBox = dynamic_cast<ImageBox*>(this->parent);
 			if (imageBox == NULL)
 			{
-				hlog::errorf(logTag, "Animators::RedTopLeftChanger: parent object '%s' not a subclass of Objects::ImageBox!", (this->parent != NULL ? this->parent->getName() : "NULL").cStr());
-				return 0.0f;
+				Colored* colored = dynamic_cast<Colored*>(this->parent);
+				if (colored == NULL)
+				{
+					hlog::errorf(logTag, "Animators::RedTopLeftChanger: parent object '%s' not a subclass of Objects::ImageBox or Objects::Colored!", (this->parent != NULL ? this->parent->getName() : "NULL").cStr());
+					return 0.0f;
+				}
+				Label* label = dynamic_cast<Label*>(colored);
+				return (label != NULL ? label->getTextRed() : colored->getRed());
 			}
 			BaseImage* baseImage = imageBox->getImage();
 			Image* image = dynamic_cast<Image*>(baseImage);
@@ -60,7 +67,14 @@ namespace aprilui
 			ImageBox* imageBox = dynamic_cast<ImageBox*>(this->parent);
 			if (imageBox == NULL)
 			{
-				hlog::errorf(logTag, "Animators::RedTopLeftChanger: parent object '%s' not a subclass of Objects::ImageBox!", (this->parent != NULL ? this->parent->getName() : "NULL").cStr());
+				Colored* colored = dynamic_cast<Colored*>(this->parent);
+				if (colored == NULL)
+				{
+					hlog::errorf(logTag, "Animators::RedTopLeftChanger: parent object '%s' not a subclass of Objects::ImageBox or Objects::Colored!", (this->parent != NULL ? this->parent->getName() : "NULL").cStr());
+					return;
+				}
+				Label* label = dynamic_cast<Label*>(colored);
+				label != NULL ? label->setTextRed((unsigned char)value) : colored->setRed((unsigned char)value);
 				return;
 			}
 			BaseImage* baseImage = imageBox->getImage();

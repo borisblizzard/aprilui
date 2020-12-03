@@ -54,6 +54,10 @@ namespace aprilui
 		void setFont(chstr value);
 		HL_DEFINE_ISSET(textFormatting, TextFormatting);
 		HL_DEFINE_GETSET(april::Color, textColor, TextColor);
+		HL_DEFINE_GETSET(unsigned char, textColor.r, TextRed);
+		HL_DEFINE_GETSET(unsigned char, textColor.g, TextGreen);
+		HL_DEFINE_GETSET(unsigned char, textColor.b, TextBlue);
+		HL_DEFINE_GETSET(unsigned char, textColor.a, TextAlpha);
 		void setTextSymbolicColor(chstr value);
 		HL_DEFINE_GET(gvec2f, textOffset, TextOffset);
 		void setTextOffset(cgvec2f value);

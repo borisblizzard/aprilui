@@ -11,6 +11,7 @@
 #include <hltypes/hlog.h>
 #include <hltypes/hstring.h>
 
+#include "Animators.h"
 #include "aprilui.h"
 #include "apriluiUtil.h"
 #include "Dataset.h"
@@ -211,6 +212,120 @@ namespace aprilui
 			return true;
 		}
 		return ImageButton::setProperty(name, value);
+	}
+
+	Animator* TextImageButton::fadeTextRed(unsigned char r, float speed)
+	{
+		REMOVE_EXISTING_ANIMATORS(RedTopLeftChanger);
+		CREATE_DYNAMIC_ANIMATOR(RedTopLeftChanger, (float)this->textColor.r, (float)r, speed);
+		return animatorRedTopLeftChanger;
+	}
+
+	Animator* TextImageButton::fadeTextGreen(unsigned char g, float speed)
+	{
+		REMOVE_EXISTING_ANIMATORS(GreenTopLeftChanger);
+		CREATE_DYNAMIC_ANIMATOR(GreenTopLeftChanger, (float)this->textColor.g, (float)g, speed);
+		return animatorGreenTopLeftChanger;
+	}
+
+	Animator* TextImageButton::fadeTextBlue(unsigned char b, float speed)
+	{
+		REMOVE_EXISTING_ANIMATORS(BlueTopLeftChanger);
+		CREATE_DYNAMIC_ANIMATOR(BlueTopLeftChanger, (float)this->textColor.b, (float)b, speed);
+		return animatorBlueTopLeftChanger;
+	}
+
+	Animator* TextImageButton::fadeTextAlpha(unsigned char a, float speed)
+	{
+		REMOVE_EXISTING_ANIMATORS(AlphaTopLeftChanger);
+		CREATE_DYNAMIC_ANIMATOR(AlphaTopLeftChanger, (float)this->textColor.a, (float)a, speed);
+		return animatorAlphaTopLeftChanger;
+	}
+
+	void TextImageButton::fadeTextColor(unsigned char r, unsigned char g, unsigned char b, unsigned char a, float speed)
+	{
+		REMOVE_EXISTING_ANIMATORS(RedTopLeftChanger);
+		REMOVE_EXISTING_ANIMATORS(GreenTopLeftChanger);
+		REMOVE_EXISTING_ANIMATORS(BlueTopLeftChanger);
+		REMOVE_EXISTING_ANIMATORS(AlphaTopLeftChanger);
+		CREATE_DYNAMIC_ANIMATOR(RedTopLeftChanger, (float)this->textColor.r, (float)r, speed);
+		CREATE_DYNAMIC_ANIMATOR(GreenTopLeftChanger, (float)this->textColor.g, (float)g, speed);
+		CREATE_DYNAMIC_ANIMATOR(BlueTopLeftChanger, (float)this->textColor.b, (float)b, speed);
+		CREATE_DYNAMIC_ANIMATOR(AlphaTopLeftChanger, (float)this->textColor.a, (float)a, speed);
+	}
+
+	void TextImageButton::fadeTextColor(const april::Color& color, float speed)
+	{
+		REMOVE_EXISTING_ANIMATORS(RedTopLeftChanger);
+		REMOVE_EXISTING_ANIMATORS(GreenTopLeftChanger);
+		REMOVE_EXISTING_ANIMATORS(BlueTopLeftChanger);
+		REMOVE_EXISTING_ANIMATORS(AlphaTopLeftChanger);
+		CREATE_DYNAMIC_ANIMATOR(RedTopLeftChanger, (float)this->textColor.r, (float)color.r, speed);
+		CREATE_DYNAMIC_ANIMATOR(GreenTopLeftChanger, (float)this->textColor.g, (float)color.g, speed);
+		CREATE_DYNAMIC_ANIMATOR(BlueTopLeftChanger, (float)this->textColor.b, (float)color.b, speed);
+		CREATE_DYNAMIC_ANIMATOR(AlphaTopLeftChanger, (float)this->textColor.a, (float)color.a, speed);
+	}
+
+	Animator* TextImageButton::fadeTextRedQueue(unsigned char r, float speed, float delay)
+	{
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(RedTopLeftChanger, (float)this->textColor.r, (float)r, speed, delay);
+		return animatorRedTopLeftChanger;
+	}
+
+	Animator* TextImageButton::fadeTextGreenQueue(unsigned char g, float speed, float delay)
+	{
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(GreenTopLeftChanger, (float)this->textColor.g, (float)g, speed, delay);
+		return animatorGreenTopLeftChanger;
+	}
+
+	Animator* TextImageButton::fadeTextBlueQueue(unsigned char b, float speed, float delay)
+	{
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(BlueTopLeftChanger, (float)this->textColor.b, (float)b, speed, delay);
+		return animatorBlueTopLeftChanger;
+	}
+
+	Animator* TextImageButton::fadeTextAlphaQueue(unsigned char a, float speed, float delay)
+	{
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(AlphaTopLeftChanger, (float)this->textColor.a, (float)a, speed, delay);
+		return animatorAlphaTopLeftChanger;
+	}
+
+	void TextImageButton::fadeTextColorQueue(unsigned char r, unsigned char g, unsigned char b, unsigned char a, float speed, float delay)
+	{
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(RedTopLeftChanger, (float)this->textColor.r, (float)r, speed, delay);
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(GreenTopLeftChanger, (float)this->textColor.g, (float)g, speed, delay);
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(BlueTopLeftChanger, (float)this->textColor.b, (float)b, speed, delay);
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(AlphaTopLeftChanger, (float)this->textColor.a, (float)a, speed, delay);
+	}
+
+	void TextImageButton::fadeTextColorQueue(const april::Color& color, float speed, float delay)
+	{
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(RedTopLeftChanger, (float)this->textColor.r, (float)color.r, speed, delay);
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(GreenTopLeftChanger, (float)this->textColor.g, (float)color.g, speed, delay);
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(BlueTopLeftChanger, (float)this->textColor.b, (float)color.b, speed, delay);
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(AlphaTopLeftChanger, (float)this->textColor.a, (float)color.a, speed, delay);
+	}
+
+	harray<Animator*> TextImageButton::animateTextColor(float offset, float amplitude, float speed, Animator::AnimationFunction function, float startPeriods, float durationPeriods, float delay)
+	{
+		harray<Animator*> result;
+		CREATE_DYNAMIC_ANIMATE(RedTopLeftChanger);
+		CREATE_DYNAMIC_ANIMATE(GreenTopLeftChanger);
+		CREATE_DYNAMIC_ANIMATE(BlueTopLeftChanger);
+		CREATE_DYNAMIC_ANIMATE(AlphaTopLeftChanger);
+		result += animatorRedTopLeftChanger;
+		result += animatorGreenTopLeftChanger;
+		result += animatorBlueTopLeftChanger;
+		result += animatorAlphaTopLeftChanger;
+		return result;
+	}
+
+	void TextImageButton::animateStopTextColor()
+	{
+		REMOVE_EXISTING_ANIMATORS(RedTopLeftChanger);
+		REMOVE_EXISTING_ANIMATORS(GreenTopLeftChanger);
+		REMOVE_EXISTING_ANIMATORS(BlueTopLeftChanger);
+		REMOVE_EXISTING_ANIMATORS(AlphaTopLeftChanger);
 	}
 
 	void TextImageButton::notifyEvent(chstr type, EventArgs* args)

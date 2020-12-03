@@ -10,7 +10,9 @@
 #include <gtypes/Vector2.h>
 #include <hltypes/hstring.h>
 
+#include "Animators.h"
 #include "aprilui.h"
+#include "apriluiUtil.h"
 #include "Dataset.h"
 #include "ObjectLabel.h"
 
@@ -129,6 +131,120 @@ namespace aprilui
 			return true;
 		}
 		return Colored::setProperty(name, value);
+	}
+
+	Animator* Label::fadeTextRed(unsigned char r, float speed)
+	{
+		REMOVE_EXISTING_ANIMATORS(RedTopLeftChanger);
+		CREATE_DYNAMIC_ANIMATOR(RedTopLeftChanger, (float)this->textColor.r, (float)r, speed);
+		return animatorRedTopLeftChanger;
+	}
+
+	Animator* Label::fadeTextGreen(unsigned char g, float speed)
+	{
+		REMOVE_EXISTING_ANIMATORS(GreenTopLeftChanger);
+		CREATE_DYNAMIC_ANIMATOR(GreenTopLeftChanger, (float)this->textColor.g, (float)g, speed);
+		return animatorGreenTopLeftChanger;
+	}
+
+	Animator* Label::fadeTextBlue(unsigned char b, float speed)
+	{
+		REMOVE_EXISTING_ANIMATORS(BlueTopLeftChanger);
+		CREATE_DYNAMIC_ANIMATOR(BlueTopLeftChanger, (float)this->textColor.b, (float)b, speed);
+		return animatorBlueTopLeftChanger;
+	}
+
+	Animator* Label::fadeTextAlpha(unsigned char a, float speed)
+	{
+		REMOVE_EXISTING_ANIMATORS(AlphaTopLeftChanger);
+		CREATE_DYNAMIC_ANIMATOR(AlphaTopLeftChanger, (float)this->textColor.a, (float)a, speed);
+		return animatorAlphaTopLeftChanger;
+	}
+
+	void Label::fadeTextColor(unsigned char r, unsigned char g, unsigned char b, unsigned char a, float speed)
+	{
+		REMOVE_EXISTING_ANIMATORS(RedTopLeftChanger);
+		REMOVE_EXISTING_ANIMATORS(GreenTopLeftChanger);
+		REMOVE_EXISTING_ANIMATORS(BlueTopLeftChanger);
+		REMOVE_EXISTING_ANIMATORS(AlphaTopLeftChanger);
+		CREATE_DYNAMIC_ANIMATOR(RedTopLeftChanger, (float)this->textColor.r, (float)r, speed);
+		CREATE_DYNAMIC_ANIMATOR(GreenTopLeftChanger, (float)this->textColor.g, (float)g, speed);
+		CREATE_DYNAMIC_ANIMATOR(BlueTopLeftChanger, (float)this->textColor.b, (float)b, speed);
+		CREATE_DYNAMIC_ANIMATOR(AlphaTopLeftChanger, (float)this->textColor.a, (float)a, speed);
+	}
+
+	void Label::fadeTextColor(const april::Color& color, float speed)
+	{
+		REMOVE_EXISTING_ANIMATORS(RedTopLeftChanger);
+		REMOVE_EXISTING_ANIMATORS(GreenTopLeftChanger);
+		REMOVE_EXISTING_ANIMATORS(BlueTopLeftChanger);
+		REMOVE_EXISTING_ANIMATORS(AlphaTopLeftChanger);
+		CREATE_DYNAMIC_ANIMATOR(RedTopLeftChanger, (float)this->textColor.r, (float)color.r, speed);
+		CREATE_DYNAMIC_ANIMATOR(GreenTopLeftChanger, (float)this->textColor.g, (float)color.g, speed);
+		CREATE_DYNAMIC_ANIMATOR(BlueTopLeftChanger, (float)this->textColor.b, (float)color.b, speed);
+		CREATE_DYNAMIC_ANIMATOR(AlphaTopLeftChanger, (float)this->textColor.a, (float)color.a, speed);
+	}
+
+	Animator* Label::fadeTextRedQueue(unsigned char r, float speed, float delay)
+	{
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(RedTopLeftChanger, (float)this->textColor.r, (float)r, speed, delay);
+		return animatorRedTopLeftChanger;
+	}
+
+	Animator* Label::fadeTextGreenQueue(unsigned char g, float speed, float delay)
+	{
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(GreenTopLeftChanger, (float)this->textColor.g, (float)g, speed, delay);
+		return animatorGreenTopLeftChanger;
+	}
+
+	Animator* Label::fadeTextBlueQueue(unsigned char b, float speed, float delay)
+	{
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(BlueTopLeftChanger, (float)this->textColor.b, (float)b, speed, delay);
+		return animatorBlueTopLeftChanger;
+	}
+
+	Animator* Label::fadeTextAlphaQueue(unsigned char a, float speed, float delay)
+	{
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(AlphaTopLeftChanger, (float)this->textColor.a, (float)a, speed, delay);
+		return animatorAlphaTopLeftChanger;
+	}
+
+	void Label::fadeTextColorQueue(unsigned char r, unsigned char g, unsigned char b, unsigned char a, float speed, float delay)
+	{
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(RedTopLeftChanger, (float)this->textColor.r, (float)r, speed, delay);
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(GreenTopLeftChanger, (float)this->textColor.g, (float)g, speed, delay);
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(BlueTopLeftChanger, (float)this->textColor.b, (float)b, speed, delay);
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(AlphaTopLeftChanger, (float)this->textColor.a, (float)a, speed, delay);
+	}
+
+	void Label::fadeTextColorQueue(const april::Color& color, float speed, float delay)
+	{
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(RedTopLeftChanger, (float)this->textColor.r, (float)color.r, speed, delay);
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(GreenTopLeftChanger, (float)this->textColor.g, (float)color.g, speed, delay);
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(BlueTopLeftChanger, (float)this->textColor.b, (float)color.b, speed, delay);
+		CREATE_DELAYED_DYNAMIC_ANIMATOR(AlphaTopLeftChanger, (float)this->textColor.a, (float)color.a, speed, delay);
+	}
+
+	harray<Animator*> Label::animateTextColor(float offset, float amplitude, float speed, Animator::AnimationFunction function, float startPeriods, float durationPeriods, float delay)
+	{
+		harray<Animator*> result;
+		CREATE_DYNAMIC_ANIMATE(RedTopLeftChanger);
+		CREATE_DYNAMIC_ANIMATE(GreenTopLeftChanger);
+		CREATE_DYNAMIC_ANIMATE(BlueTopLeftChanger);
+		CREATE_DYNAMIC_ANIMATE(AlphaTopLeftChanger);
+		result += animatorRedTopLeftChanger;
+		result += animatorGreenTopLeftChanger;
+		result += animatorBlueTopLeftChanger;
+		result += animatorAlphaTopLeftChanger;
+		return result;
+	}
+
+	void Label::animateStopTextColor()
+	{
+		REMOVE_EXISTING_ANIMATORS(RedTopLeftChanger);
+		REMOVE_EXISTING_ANIMATORS(GreenTopLeftChanger);
+		REMOVE_EXISTING_ANIMATORS(BlueTopLeftChanger);
+		REMOVE_EXISTING_ANIMATORS(AlphaTopLeftChanger);
 	}
 
 	void Label::notifyEvent(chstr type, EventArgs* args)

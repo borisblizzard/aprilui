@@ -48,6 +48,24 @@ namespace aprilui
 		hstr getProperty(chstr name);
 		bool setProperty(chstr name, chstr value);
 
+		Animator* fadeTextRed(unsigned char r, float speed);
+		Animator* fadeTextGreen(unsigned char g, float speed);
+		Animator* fadeTextBlue(unsigned char b, float speed);
+		Animator* fadeTextAlpha(unsigned char a, float speed);
+		void fadeTextColor(unsigned char r, unsigned char g, unsigned char b, unsigned char a, float speed);
+		void fadeTextColor(const april::Color& color, float speed);
+
+		Animator* fadeTextRedQueue(unsigned char r, float speed, float delay = 0.0f);
+		Animator* fadeTextGreenQueue(unsigned char g, float speed, float delay = 0.0f);
+		Animator* fadeTextBlueQueue(unsigned char b, float speed, float delay = 0.0f);
+		Animator* fadeTextAlphaQueue(unsigned char a, float speed, float delay = 0.0f);
+		void fadeTextColorQueue(unsigned char r, unsigned char g, unsigned char b, unsigned char a, float speed, float delay = 0.0f);
+		void fadeTextColorQueue(const april::Color& color, float speed, float delay = 0.0f);
+
+		harray<Animator*> animateTextColor(float offset, float amplitude, float speed, Animator::AnimationFunction function, float startPeriods = 0.0f, float durationPeriods = -1.0f, float delay = 0.0f);
+
+		void animateStopTextColor();
+
 		void notifyEvent(chstr type, EventArgs* args);
 
 		bool triggerEvent(chstr type, april::Key keyCode);

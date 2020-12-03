@@ -56,6 +56,52 @@ namespace aprilui
 		HL_DEFINE_ISSET(useAdditionalColors, UseAdditionalColors);
 		HL_DEFINE_ISSET(ignoreMainColorAlpha, IgnoreMainColorAlpha);
 
+		Animator* fadeRedTopRight(unsigned char r, float speed);
+		Animator* fadeGreenTopRight(unsigned char g, float speed);
+		Animator* fadeBlueTopRight(unsigned char b, float speed);
+		Animator* fadeAlphaTopRight(unsigned char a, float speed);
+		Animator* fadeRedBottomLeft(unsigned char r, float speed);
+		Animator* fadeGreenBottomLeft(unsigned char g, float speed);
+		Animator* fadeBlueBottomLeft(unsigned char b, float speed);
+		Animator* fadeAlphaBottomLeft(unsigned char a, float speed);
+		Animator* fadeRedBottomRight(unsigned char r, float speed);
+		Animator* fadeGreenBottomRight(unsigned char g, float speed);
+		Animator* fadeBlueBottomRight(unsigned char b, float speed);
+		Animator* fadeAlphaBottomRight(unsigned char a, float speed);
+		void fadeColorTopRight(unsigned char r, unsigned char g, unsigned char b, unsigned char a, float speed);
+		void fadeColorTopRight(const april::Color& color, float speed);
+		void fadeColorBottomLeft(unsigned char r, unsigned char g, unsigned char b, unsigned char a, float speed);
+		void fadeColorBottomLeft(const april::Color& color, float speed);
+		void fadeColorBottomRight(unsigned char r, unsigned char g, unsigned char b, unsigned char a, float speed);
+		void fadeColorBottomRight(const april::Color& color, float speed);
+
+		Animator* fadeRedTopRightQueue(unsigned char r, float speed, float delay = 0.0f);
+		Animator* fadeGreenTopRightQueue(unsigned char g, float speed, float delay = 0.0f);
+		Animator* fadeBlueTopRightQueue(unsigned char b, float speed, float delay = 0.0f);
+		Animator* fadeAlphaTopRightQueue(unsigned char a, float speed, float delay = 0.0f);
+		Animator* fadeRedBottomLeftQueue(unsigned char r, float speed, float delay = 0.0f);
+		Animator* fadeGreenBottomLeftQueue(unsigned char g, float speed, float delay = 0.0f);
+		Animator* fadeBlueBottomLeftQueue(unsigned char b, float speed, float delay = 0.0f);
+		Animator* fadeAlphaBottomLeftQueue(unsigned char a, float speed, float delay = 0.0f);
+		Animator* fadeRedBottomRightQueue(unsigned char r, float speed, float delay = 0.0f);
+		Animator* fadeGreenBottomRightQueue(unsigned char g, float speed, float delay = 0.0f);
+		Animator* fadeBlueBottomRightQueue(unsigned char b, float speed, float delay = 0.0f);
+		Animator* fadeAlphaBottomRightQueue(unsigned char a, float speed, float delay = 0.0f);
+		void fadeColorTopRightQueue(unsigned char r, unsigned char g, unsigned char b, unsigned char a, float speed, float delay = 0.0f);
+		void fadeColorTopRightQueue(const april::Color& color, float speed, float delay = 0.0f);
+		void fadeColorBottomLeftQueue(unsigned char r, unsigned char g, unsigned char b, unsigned char a, float speed, float delay = 0.0f);
+		void fadeColorBottomLeftQueue(const april::Color& color, float speed, float delay = 0.0f);
+		void fadeColorBottomRightQueue(unsigned char r, unsigned char g, unsigned char b, unsigned char a, float speed, float delay = 0.0f);
+		void fadeColorBottomRightQueue(const april::Color& color, float speed, float delay = 0.0f);
+
+		harray<Animator*> animateColorTopRight(float offset, float amplitude, float speed, Animator::AnimationFunction function, float startPeriods = 0.0f, float durationPeriods = -1.0f, float delay = 0.0f);
+		harray<Animator*> animateColorBottomLeft(float offset, float amplitude, float speed, Animator::AnimationFunction function, float startPeriods = 0.0f, float durationPeriods = -1.0f, float delay = 0.0f);
+		harray<Animator*> animateColorBottomRight(float offset, float amplitude, float speed, Animator::AnimationFunction function, float startPeriods = 0.0f, float durationPeriods = -1.0f, float delay = 0.0f);
+
+		void animateStopColorTopRight();
+		void animateStopColorBottomLeft();
+		void animateStopColorBottomRight();
+
 	protected:
 		april::Color colorTopRight;
 		april::Color colorBottomLeft;
