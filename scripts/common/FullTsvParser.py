@@ -29,16 +29,16 @@ class FullTsvParser:
 		# regular expressions are awesome
 		regex = ""
 		# normal entry
-		normal = "(?:.*?)"
-		# special entry with escaped characters and \n support
+		normal = "(?:[^\n]*?)"
+		# special entry with quotes, escaped characters and \n support
 		special = "\"(?:.|\n)*?\"?"
 		# one entry is either normal or special
-		entry = "(" + special + "|" + normal + ")?"
+		entry = "(" + normal + "|" + special + ")?"
 		# the regex is 3+ entries separated by delimiter characters and ending with \n
 		regex += "(?:" + entry + FullTsvParser.DELIMITER + entry
 		for i in range(columnCount - 2):
 			regex += FullTsvParser.DELIMITER + entry
-		regex += "\n)"
+		regex += "\n)?"
 		# now using that regex to extract all entries
 		matches = re.findall(regex, string)
 		# extracting LocFile instances
@@ -47,9 +47,12 @@ class FullTsvParser:
 		locFile = None
 		for match in matches:
 			columns = list(match)
+			columns.pop() # last column is for alignment
 			for i in range(len(columns)):
 				if columns[i].startswith("\"") and columns[i].endswith("\""):
-					columns[i] = columns[i][1:-1].replace("\"\"", "\"")
+					if "\n" in columns[i]:
+						columns[i] = columns[i][1:-1]
+					columns[i] = columns[i].replace("\"\"", "\"")
 			if columns[0] == "###":
 				languages = columns[2:len(columns)]
 				while "" in languages:

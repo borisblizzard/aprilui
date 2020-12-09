@@ -13,7 +13,7 @@ class TsvParser:
 	@staticmethod
 	def parse(filename):
 		entries = []
-		file = open(filename, "r")
+		file = open(filename, "rb")
 		# the first line of a UTF8 file can be "screwed up"
 		skip = 0
 		line = file.readline()
