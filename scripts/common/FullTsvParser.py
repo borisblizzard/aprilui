@@ -25,7 +25,10 @@ class FullTsvParser:
 		# read data
 		string = file.read().decode().replace("\r", "")
 		file.close()
-		columnCount = len(string.split("\n")[0].split(FullTsvParser.DELIMITER))
+		allColumns = string.split("\n")[0].split(FullTsvParser.DELIMITER)
+		if allColumns[-1] != "ALIGN":
+			raise BaseException("Full TSV file not formatted properly: expecting empty column with 'ALIGN' header")
+		columnCount = len(allColumns)
 		# regular expressions are awesome
 		regex = ""
 		# normal entry
