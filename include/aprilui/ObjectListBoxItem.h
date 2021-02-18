@@ -31,46 +31,46 @@ namespace aprilui
 		friend class ListBox;
 
 		ListBoxItem(chstr name);
-		inline hstr getClassName() const { return "ListBoxItem"; }
+		inline hstr getClassName() const override { return "ListBoxItem"; }
 		static Object* createInstance(chstr name);
 
-		hmap<hstr, PropertyDescription>& getPropertyDescriptions() const;
+		hmap<hstr, PropertyDescription>& getPropertyDescriptions() const override;
 
-		hstr getName() const;
-		int getFocusIndex() const;
-		Object* getParent() const;
-		Dataset* getDataset() const;
-		bool isCursorInside() const;
+		hstr getName() const override;
+		int getFocusIndex() const override;
+		Object* getParent() const override;
+		Dataset* getDataset() const override;
+		bool isCursorInside() const override;
 		bool isSelected() const;
 
-		bool isPointInside(cgvec2f position) const;
+		bool isPointInside(cgvec2f position) const override;
 
-		void notifyEvent(chstr type, EventArgs* args);
+		void notifyEvent(chstr type, EventArgs* args) override;
 
-		bool triggerEvent(chstr type, april::Key keyCode);
-		bool triggerEvent(chstr type, april::Key keyCode, chstr string);
-		bool triggerEvent(chstr type, april::Key keyCode, cgvec2f position, chstr string = "", void* userData = NULL);
-		bool triggerEvent(chstr type, april::Button buttonCode, chstr string = "", void* userData = NULL);
-		bool triggerEvent(chstr type, chstr string, void* userData = NULL);
-		bool triggerEvent(chstr type, void* userData = NULL);
+		bool triggerEvent(chstr type, april::Key keyCode) override;
+		bool triggerEvent(chstr type, april::Key keyCode, chstr string) override;
+		bool triggerEvent(chstr type, april::Key keyCode, cgvec2f position, chstr string = "", void* userData = NULL) override;
+		bool triggerEvent(chstr type, april::Button buttonCode, chstr string = "", void* userData = NULL) override;
+		bool triggerEvent(chstr type, chstr string, void* userData = NULL) override;
+		bool triggerEvent(chstr type, void* userData = NULL) override;
 
 	protected:
-		void _update(float timeDelta);
-		void _draw();
+		void _update(float timeDelta) override;
+		void _draw() override;
 
 		april::Color _getCurrentBackgroundColor() const;
 		void _setSelected();
 
-		bool _mouseDown(april::Key keyCode);
-		bool _mouseUp(april::Key keyCode);
-		void _mouseCancel(april::Key keyCode);
-		bool _mouseMove();
-		bool _touchDown(int index);
-		bool _touchUp(int index);
-		void _touchCancel(int index);
-		bool _touchMove(int index);
-		bool _buttonDown(april::Button buttonCode);
-		bool _buttonUp(april::Button buttonCode);
+		bool _mouseDown(april::Key keyCode) override;
+		bool _mouseUp(april::Key keyCode) override;
+		void _mouseCancel(april::Key keyCode) override;
+		bool _mouseMove() override;
+		bool _touchDown(int index) override;
+		bool _touchUp(int index) override;
+		void _touchCancel(int index) override;
+		bool _touchMove(int index) override;
+		bool _buttonDown(april::Button buttonCode) override;
+		bool _buttonUp(april::Button buttonCode) override;
 
 	private:
 		ListBox* _listBox;

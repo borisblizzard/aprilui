@@ -29,10 +29,10 @@ namespace aprilui
 		APRILUI_CLONEABLE(ImageBox);
 	public:
 		ImageBox(chstr name);
-		inline hstr getClassName() const { return "ImageBox"; }
+		inline hstr getClassName() const override { return "ImageBox"; }
 		static Object* createInstance(chstr name);
 		
-		hmap<hstr, PropertyDescription>& getPropertyDescriptions() const;
+		hmap<hstr, PropertyDescription>& getPropertyDescriptions() const override;
 
 		HL_DEFINE_GETSET(gvec2f, tileScroll, TileScroll);
 		HL_DEFINE_GETSET(float, tileScroll.x, TileScrollX);
@@ -54,12 +54,12 @@ namespace aprilui
 		gvec2f tileScroll;
 		hstr imageName;
 		
-		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const;
-		hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const;
+		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const override;
+		hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const override;
 
-		harray<BaseImage*> _getUsedImages() const;
+		harray<BaseImage*> _getUsedImages() const override;
 
-		void _draw();
+		void _draw() override;
 		
 	private:
 		static hmap<hstr, PropertyDescription> _propertyDescriptions;

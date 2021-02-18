@@ -30,7 +30,7 @@ namespace aprilui
 
 	class apriluiExport BaseImage : public Cloneable
 	{
-		APRILUI_CLONEABLE_ABSTRACT(BaseImage);
+		APRILUI_CLONEABLE_ABSTRACT_DERIVED(BaseImage);
 	public:
 		friend class Dataset;
 

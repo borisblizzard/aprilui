@@ -26,33 +26,33 @@ namespace aprilui
 			APRILUI_CLONEABLE(FrameAnimation);
 		public:
 			FrameAnimation(chstr name);
-			inline hstr getClassName() const { return "FrameAnimation"; }
+			inline hstr getClassName() const override { return "FrameAnimation"; }
 
 			static Animator* createInstance(chstr name);
 
-			hmap<hstr, PropertyDescription>& getPropertyDescriptions() const;
+			hmap<hstr, PropertyDescription>& getPropertyDescriptions() const override;
 
 			HL_DEFINE_GETSET(hstr, imageBaseName, ImageBaseName);
 			HL_DEFINE_GETSET(int, firstFrame, FirstFrame);
 			HL_DEFINE_GETSET(int, frameCount, FrameCount);
-			bool isAnimated() const;
+			bool isAnimated() const override;
 
-			bool setProperty(chstr name, chstr value);
+			bool setProperty(chstr name, chstr value) override;
 
-			void notifyEvent(chstr type, EventArgs* args);
+			void notifyEvent(chstr type, EventArgs* args) override;
 			
 		protected:
 			hstr imageBaseName;
 			int firstFrame;
 			int frameCount;
 			
-			hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const;
-			hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const;
+			hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const override;
+			hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const override;
 
-			inline float _getObjectValue() const { return 0.0f; }
-			inline void _setObjectValue(float value) { }
+			inline float _getObjectValue() const override { return 0.0f; }
+			inline void _setObjectValue(float value) override { }
 
-			void _update(float timeDelta);
+			void _update(float timeDelta) override;
 
 		private:
 			static hmap<hstr, PropertyDescription> _propertyDescriptions;

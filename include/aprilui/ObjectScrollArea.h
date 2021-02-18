@@ -35,10 +35,10 @@ namespace aprilui
 		friend class ScrollBarV;
 
 		ScrollArea(chstr name);
-		inline hstr getClassName() const { return "ScrollArea"; }
+		inline hstr getClassName() const override { return "ScrollArea"; }
 		static Object* createInstance(chstr name);
 
-		hmap<hstr, PropertyDescription>& getPropertyDescriptions() const;
+		hmap<hstr, PropertyDescription>& getPropertyDescriptions() const override;
 
 		HL_DEFINE_ISSET(allowDrag, AllowDrag);
 		HL_DEFINE_GETSET(float, inertia, Inertia);
@@ -58,11 +58,11 @@ namespace aprilui
 		HL_DEFINE_ISSET(optimizeOobChildrenVisible, OptimizeOobChildrenVisible);
 		HL_DEFINE_ISSET(optimizeOobChildrenAwake, OptimizeOobChildrenAwake);
 		HL_DEFINE_IS(dragging, Dragging);
-		hstr getName() const;
-		bool isCursorInside() const;
-		int getFocusIndex() const;
-		Object* getParent() const;
-		Dataset* getDataset() const;
+		hstr getName() const override;
+		bool isCursorInside() const override;
+		int getFocusIndex() const override;
+		Object* getParent() const override;
+		Dataset* getDataset() const override;
 		bool isScrolling() const;
 		bool isScrollable() const;
 		bool isScrollableX() const;
@@ -75,25 +75,25 @@ namespace aprilui
 		float getScrollOffsetY() const;
 		void setScrollOffsetY(float value);
 
-		bool isPointInside(cgvec2f position) const;
+		bool isPointInside(cgvec2f position) const override;
 
 		void snapScrollOffset();
 		void snapScrollOffsetX();
 		void snapScrollOffsetY();
 		void stopScrolling();
 
-		void notifyEvent(chstr type, EventArgs* args);
+		void notifyEvent(chstr type, EventArgs* args) override;
 
-		bool triggerEvent(chstr type, april::Key keyCode);
-		bool triggerEvent(chstr type, april::Key keyCode, chstr string);
-		bool triggerEvent(chstr type, april::Key keyCode, cgvec2f position, chstr string = "", void* userData = NULL);
-		bool triggerEvent(chstr type, april::Button buttonCode, chstr string = "", void* userData = NULL);
-		bool triggerEvent(chstr type, chstr string, void* userData = NULL);
-		bool triggerEvent(chstr type, void* userData = NULL);
+		bool triggerEvent(chstr type, april::Key keyCode) override;
+		bool triggerEvent(chstr type, april::Key keyCode, chstr string) override;
+		bool triggerEvent(chstr type, april::Key keyCode, cgvec2f position, chstr string = "", void* userData = NULL) override;
+		bool triggerEvent(chstr type, april::Button buttonCode, chstr string = "", void* userData = NULL) override;
+		bool triggerEvent(chstr type, chstr string, void* userData = NULL) override;
+		bool triggerEvent(chstr type, void* userData = NULL) override;
 
-		bool onMouseDown(april::Key keyCode);
-		bool onMouseUp(april::Key keyCode);
-		bool onMouseScroll(float x, float y);
+		bool onMouseDown(april::Key keyCode) override;
+		bool onMouseUp(april::Key keyCode) override;
+		bool onMouseScroll(float x, float y) override;
 
 		static float defaultInertia;
 		static gvec2f defaultDragThreshold;
@@ -111,21 +111,21 @@ namespace aprilui
 		bool optimizeOobChildrenAwake;
 		bool dragging;
 
-		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const;
-		hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const;
+		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const override;
+		hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const override;
 
-		Object* _findHoverObject();
+		Object* _findHoverObject() override;
 		bool _isScrollableScrollArea(Object* object) const;
 		bool _executeScroll(float x, float y, Container* parentContainer);
 		void _adjustDragSpeed();
 
-		void _update(float timeDelta);
+		void _update(float timeDelta) override;
 		void _updateOobChildren();
 
-		void _mouseCancel(april::Key keyCode);
-		bool _mouseMove();
-		bool _buttonDown(april::Button buttonCode);
-		bool _buttonUp(april::Button buttonCode);
+		void _mouseCancel(april::Key keyCode) override;
+		bool _mouseMove() override;
+		bool _buttonDown(april::Button buttonCode) override;
+		bool _buttonUp(april::Button buttonCode) override;
 
 	private:
 		static hmap<hstr, PropertyDescription> _propertyDescriptions;

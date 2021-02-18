@@ -28,11 +28,11 @@ namespace aprilui
 		APRILUI_CLONEABLE(TileImage);
 	public:
 		TileImage(Texture* texture, chstr name, cgrectf source);
-		inline hstr getClassName() const { return "TileImage"; }
+		inline hstr getClassName() const override { return "TileImage"; }
 		
 		static MinimalImage* createInstance(Texture* texture, chstr name, cgrectf source);
 
-		hmap<hstr, PropertyDescription>& getPropertyDescriptions() const;
+		hmap<hstr, PropertyDescription>& getPropertyDescriptions() const override;
 
 		HL_DEFINE_GETSET(gvec2f, tile, Tile);
 		inline void setTile(float w, float h) { this->tile.set(w, h); }
@@ -44,8 +44,8 @@ namespace aprilui
 		HL_DEFINE_GETSET(float, scroll.y, ScrollY);
 		HL_DEFINE_ISSET(useTileCount, UseTileCount);
 
-		void draw(cgrectf rect, const april::Color& color = april::Color::White);
-		void draw(const harray<april::TexturedVertex>& vertices, const april::Color& color = april::Color::White);
+		void draw(cgrectf rect, const april::Color& color = april::Color::White) override;
+		void draw(const harray<april::TexturedVertex>& vertices, const april::Color& color = april::Color::White) override;
 
 	protected:
 		gvec2f tile;
@@ -55,8 +55,8 @@ namespace aprilui
 		gvec2f _lastScroll;
 		grectf _lastRect;
 
-		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const;
-		hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const;
+		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const override;
+		hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const override;
 
 		void _createVertices(grectf rect);
 

@@ -52,10 +52,10 @@ namespace aprilui
 
 		Object(chstr name);
 		~Object();
-		inline hstr getClassName() const { return "Object"; }
+		inline hstr getClassName() const override { return "Object"; }
 		Object* cloneTree() const;
 
-		hmap<hstr, PropertyDescription>& getPropertyDescriptions() const;
+		hmap<hstr, PropertyDescription>& getPropertyDescriptions() const override;
 
 		HL_DEFINE_GET(grectf, rect, Rect);
 		void setRect(cgrectf value);
@@ -127,8 +127,8 @@ namespace aprilui
 		CustomPointInsideCallback getCustomPointInsideCallback() { return this->customPointInsideCallback; }
 		void setCustomPointInsideCallback(CustomPointInsideCallback callback) { this->customPointInsideCallback = callback; }
 		bool isDerivedVisible() const;
-		bool isAnimated() const;
-		bool isWaitingAnimation() const;
+		bool isAnimated() const override;
+		bool isWaitingAnimation() const override;
 		bool hasDynamicAnimation() const;
 		bool isFocused() const;
 		virtual void setFocused(const bool& focused);
@@ -136,11 +136,11 @@ namespace aprilui
 		harray<BaseImage*> getUsedImages() const;
 		Object* getChildUnderCursor();
 
-		void update(float timeDelta);
+		void update(float timeDelta) override;
 		void draw();
 
-		hstr getProperty(chstr name);
-		bool setProperty(chstr name, chstr value);
+		hstr getProperty(chstr name) override;
+		bool setProperty(chstr name, chstr value) override;
 
 		void setAnchors(bool left, bool right, bool top, bool bottom);
 		void resetPivot();
@@ -314,13 +314,13 @@ namespace aprilui
 		
 		void _cloneChildren(const harray<Object*>& objects, const harray<Animator*>& animators);
 
-		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const;
-		hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const;
+		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const override;
+		hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const override;
 
 		bool _isDerivedHitTestEnabled() const;
 		virtual harray<BaseImage*> _getUsedImages() const;
 
-		void _update(float timeDelta);
+		void _update(float timeDelta) override;
 		virtual void _draw();
 		virtual void _drawDebug();
 

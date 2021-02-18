@@ -47,22 +47,22 @@ namespace aprilui
 		));
 
 		ProgressCircle(chstr name);
-		inline hstr getClassName() const { return "ProgressCircle"; }
+		inline hstr getClassName() const override { return "ProgressCircle"; }
 		static Object* createInstance(chstr name);
 		
-		hmap<hstr, PropertyDescription>& getPropertyDescriptions() const;
+		hmap<hstr, PropertyDescription>& getPropertyDescriptions() const override;
 
 		HL_DEFINE_GETSET(Direction, direction, Direction);
-		Dataset* getDataset() const;
-		BaseImage* getImage() const;
-		void setImage(BaseImage* image);
-		hstr getImageName() const;
-		void setImageByName(chstr name);
+		Dataset* getDataset() const override;
+		BaseImage* getImage() const override;
+		void setImage(BaseImage* image) override;
+		hstr getImageName() const override;
+		void setImageByName(chstr name) override;
 
-		bool trySetImageByName(chstr name);
+		bool trySetImageByName(chstr name) override;
 
-		hstr getProperty(chstr name);
-		bool setProperty(chstr name, chstr value);
+		hstr getProperty(chstr name) override;
+		bool setProperty(chstr name, chstr value) override;
 
 		Animator* changeProgress(float value, float speed);
 		Animator* fadeProgressRed(unsigned char r, float speed);
@@ -103,13 +103,13 @@ namespace aprilui
 	protected:
 		Direction direction;
 		
-		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const;
-		hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const;
+		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const override;
+		hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const override;
 
-		harray<BaseImage*> _getUsedImages() const;
-		april::Color _makeDrawColor(const april::Color& color) const;
+		harray<BaseImage*> _getUsedImages() const override;
+		april::Color _makeDrawColor(const april::Color& color) const override;
 
-		void _draw();
+		void _draw() override;
 		harray<april::TexturedVertex> _calcVertices(cgrectf rect, float progress, Direction direction);
 
 	private:

@@ -27,10 +27,10 @@ namespace aprilui
 		APRILUI_CLONEABLE(ScrollBarButtonBackground);
 	public:
 		ScrollBarButtonBackground(chstr name);
-		inline hstr getClassName() const { return "ScrollBarButtonBackground"; }
+		inline hstr getClassName() const override { return "ScrollBarButtonBackground"; }
 		static Object* createInstance(chstr name);
 
-		void notifyEvent(chstr type, EventArgs* args);
+		void notifyEvent(chstr type, EventArgs* args) override;
 
 	protected:
 		static void _click(EventArgs* args);

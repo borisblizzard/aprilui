@@ -45,7 +45,7 @@ namespace aprilui
 
 		virtual hmap<hstr, PropertyDescription>& getPropertyDescriptions() const;
 
-		HL_DEFINE_GET(hstr, name, Name);
+		HL_DEFINE_GET_OVERRIDE(hstr, name, Name);
 		void setName(chstr value);
 		HL_DEFINE_GETSET(hstr, tag, Tag);
 		hstr getFullName() const;

@@ -37,7 +37,7 @@ namespace aprilui
 		APRILUI_CLONEABLE(CropImage);
 	public:
 		CropImage(Texture* texture, chstr name, cgrectf source);
-		inline hstr getClassName() const { return "CropImage"; }
+		inline hstr getClassName() const override { return "CropImage"; }
 
 		static MinimalImage* createInstance(Texture* texture, chstr name, cgrectf source);
 
@@ -53,21 +53,21 @@ namespace aprilui
 		HL_DEFINE_GET(float, realSrcSize.y, RealSrcHeight);
 		void setRealSrcHeight(float const& value);
 
-		hmap<hstr, PropertyDescription>& getPropertyDescriptions() const;
+		hmap<hstr, PropertyDescription>& getPropertyDescriptions() const override;
 
-		void draw(cgrectf rect, const april::Color& color = april::Color::White);
-		void draw(const harray<april::TexturedVertex>& vertices, const april::Color& color = april::Color::White);
+		void draw(cgrectf rect, const april::Color& color = april::Color::White) override;
+		void draw(const harray<april::TexturedVertex>& vertices, const april::Color& color = april::Color::White) override;
 
 	protected:
 		gvec2f drawPosition;
 		gvec2f realSrcSize;
 
-		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const;
-		hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const;
+		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const override;
+		hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const override;
 
-		void _drawWithCorners(cgrectf rect, const april::Color& color);
+		void _drawWithCorners(cgrectf rect, const april::Color& color) override;
 
-		grectf _makeClippedSrcRect() const;
+		grectf _makeClippedSrcRect() const override;
 		
 	private:
 		static hmap<hstr, PropertyDescription> _propertyDescriptions;

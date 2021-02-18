@@ -29,7 +29,7 @@ namespace aprilui
 
 	class apriluiExport Animator : public BaseObject
 	{
-		APRILUI_CLONEABLE_ABSTRACT(Animator)
+		APRILUI_CLONEABLE_ABSTRACT_DERIVED(Animator)
 	public:
 		HL_ENUM_CLASS_PREFIX_DECLARE(apriluiExport, AnimationFunction,
 		(
@@ -59,9 +59,9 @@ namespace aprilui
 		friend class TextImageButton;
 
 		Animator(chstr name);
-		inline hstr getClassName() const { return "Animator"; }
+		inline hstr getClassName() const override { return "Animator"; }
 		
-		hmap<hstr, PropertyDescription>& getPropertyDescriptions() const;
+		hmap<hstr, PropertyDescription>& getPropertyDescriptions() const override;
 
 		HL_DEFINE_GETSET(AnimationFunction, animationFunction, AnimationFunction);
 		HL_DEFINE_GETSET(float, value, Value);
@@ -86,8 +86,8 @@ namespace aprilui
 		inline double (*getCustomFunction())(Animator*, double) { return this->customFunction; }
 		inline void setCustomFunction(double (*value)(Animator*, double)) { this->customFunction = value; }
 
-		bool isAnimated() const;
-		bool isWaitingAnimation() const;
+		bool isAnimated() const override;
+		bool isWaitingAnimation() const override;
 		bool isExpired() const;
 		void setTime(const float& value);
 		/// @note Same as setTimer() but in periods instead of seconds.
@@ -96,10 +96,10 @@ namespace aprilui
 		/// @note Does not reset delay.
 		void reset();
 
-		hstr getProperty(chstr name);
-		bool setProperty(chstr name, chstr value);
+		hstr getProperty(chstr name) override;
+		bool setProperty(chstr name, chstr value) override;
 
-		void notifyEvent(chstr type, EventArgs* args);
+		void notifyEvent(chstr type, EventArgs* args) override;
 
 	protected:
 		float timeDelta;
@@ -124,10 +124,10 @@ namespace aprilui
 		/// @brief This is a special hack to doesn't apply the values when attaching to a parent, usually used to prevent this feature after cloning.
 		bool applyValuesOnAttach;
 
-		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const;
-		hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const;
+		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const override;
+		hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const override;
 
-		void _update(float timeDelta);
+		void _update(float timeDelta) override;
 
 		float _calculateValue(float timeDelta);
 		bool _checkUpdate(float timeDelta);

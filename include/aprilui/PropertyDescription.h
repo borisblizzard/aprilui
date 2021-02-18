@@ -33,7 +33,7 @@
 		type (O::*function)() const;  \
 		inline Get ## name(type (O::*function)() const) : Accessor() { this->function = function; } \
 		inline Get ## name(type (O::*function)()) : Accessor() { this->function = function; } \
-		inline void execute(void* object, hstr& parameter) const { const type& result = (((O*)object)->*this->function)(); parameter = conversionCode; } \
+		inline void execute(void* object, hstr& parameter) const override { const type& result = (((O*)object)->*this->function)(); parameter = conversionCode; } \
 	};
 
 #define _DEFINE_SPECIAL_SET_CLASS(name, type, conversionCode) \
@@ -43,7 +43,7 @@
 	public: \
 		void (O::*function)(const type&); \
 		inline Set ## name(void (O::*function)(const type&)) : Accessor() { this->function = function; } \
-		inline void execute(void* object, hstr& parameter) const { const type& converted = conversionCode; (((O*)object)->*this->function)(converted); } \
+		inline void execute(void* object, hstr& parameter) const override { const type& converted = conversionCode; (((O*)object)->*this->function)(converted); } \
 	};
 
 namespace aprilui
@@ -83,7 +83,7 @@ namespace aprilui
 			inline Get(T (O::*function)()) : Accessor() { this->function = function; }
 			inline Get(T (O::*function)() const) : Accessor() { this->function = (T (O::*)())function; }
 
-			inline void execute(void* object, hstr& parameter) const { parameter = (((O*)object)->*this->function)(); }
+			inline void execute(void* object, hstr& parameter) const override { parameter = (((O*)object)->*this->function)(); }
 
 		protected:
 			T (O::*function)();
@@ -96,7 +96,7 @@ namespace aprilui
 		public:
 			inline _SetBase(R (O::*function)(const T&)) : Accessor() { this->function = function; }
 
-			inline void execute(void* object, hstr& parameter) const { (((O*)object)->*this->function)((T)parameter); }
+			inline void execute(void* object, hstr& parameter) const override { (((O*)object)->*this->function)((T)parameter); }
 
 		protected:
 			R (O::*function)(const T&);

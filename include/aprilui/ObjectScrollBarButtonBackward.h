@@ -27,10 +27,10 @@ namespace aprilui
 		APRILUI_CLONEABLE(ScrollBarButtonBackward);
 	public:
 		ScrollBarButtonBackward(chstr name);
-		inline hstr getClassName() const { return "ScrollBarButtonBackward"; }
+		inline hstr getClassName() const override { return "ScrollBarButtonBackward"; }
 		static Object* createInstance(chstr name);
 
-		void notifyEvent(chstr type, EventArgs* args);
+		void notifyEvent(chstr type, EventArgs* args) override;
 
 	protected:
 		static void _click(EventArgs* args);

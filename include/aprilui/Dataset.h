@@ -45,7 +45,7 @@ namespace aprilui
 	{
 		// TODO - enable/implemement cloning of dataset
 	protected:
-		virtual Dataset* clone() const { return NULL; }
+		virtual Dataset* clone() const override { return NULL; }
 		//APRILUI_CLONEABLE(Dataset);
 	public:
 		BaseObject* parseObject(hlxml::Node* node, Object* parent = NULL);
@@ -53,7 +53,7 @@ namespace aprilui
 		Dataset(chstr filename, chstr name = "", bool useNameBasePath = false);
 		~Dataset();
 		
-		HL_DEFINE_GET(hstr, name, Name);
+		HL_DEFINE_GET_OVERRIDE(hstr, name, Name);
 		HL_DEFINE_GET(hstr, filePath, FilePath);
 		HL_DEFINE_GETSET(harray<hstr>, textsPaths, TextsPaths);
 		void setTextsPath(chstr value); // useful when using only one text path
@@ -220,7 +220,7 @@ namespace aprilui
 			out = this->tryGetAnimator<T>(name);
 		}
 
-		void notifyEvent(chstr type, EventArgs* args);
+		void notifyEvent(chstr type, EventArgs* args) override;
 		void reloadTexts();
 		void reloadTextures();
 		void focus(Object* object);

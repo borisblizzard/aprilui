@@ -37,10 +37,10 @@ namespace aprilui
 		friend class TreeViewNode;
 
 		TreeView(chstr name);
-		inline hstr getClassName() const { return "TreeView"; }
+		inline hstr getClassName() const override { return "TreeView"; }
 		static Object* createInstance(chstr name);
 
-		hmap<hstr, PropertyDescription>& getPropertyDescriptions() const;
+		hmap<hstr, PropertyDescription>& getPropertyDescriptions() const override;
 
 		HL_DEFINE_GET(float, expanderWidth, ExpanderWidth);
 		void setExpanderWidth(const float& value);
@@ -60,7 +60,7 @@ namespace aprilui
 		HL_DEFINE_GET(harray<TreeViewNode*>, items, Items);
 		TreeViewNode* getSelected() const;
 		void setSelected(const harray<int>& nodeIndices);
-		int getItemCount() const;
+		int getItemCount() const override;
 
 		virtual TreeViewNode* createItem(harray<int> nodeIndices, chstr name = "");
 		bool deleteItem(const harray<int>& nodeIndices);
@@ -75,12 +75,12 @@ namespace aprilui
 		harray<TreeViewNode*> nodes;
 		harray<TreeViewNode*> items;
 
-		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const;
-		hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const;
+		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const override;
+		hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const override;
 
-		void _updateDisplay();
-		void _updateItem(int index);
-		void _optimizeVisibility();
+		void _updateDisplay() override;
+		void _updateItem(int index) override;
+		void _optimizeVisibility() override;
 
 		void _deleteChildren(TreeViewNode* node);
 		bool _findNode(harray<int> nodeIndices, TreeViewNode** node) const;

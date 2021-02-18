@@ -30,7 +30,7 @@ namespace aprilui
 
 	class apriluiExport EventReceiver : public Cloneable
 	{
-		APRILUI_CLONEABLE_ABSTRACT(EventReceiver);
+		APRILUI_CLONEABLE_ABSTRACT_DERIVED(EventReceiver);
 	public:
 		EventReceiver();
 		~EventReceiver();

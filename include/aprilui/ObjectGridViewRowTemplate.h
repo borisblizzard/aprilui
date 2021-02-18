@@ -31,14 +31,14 @@ namespace aprilui
 		friend class GridViewCell;
 
 		GridViewRowTemplate(chstr name);
-		inline hstr getClassName() const { return "GridViewRowTemplate"; }
+		inline hstr getClassName() const override { return "GridViewRowTemplate"; }
 		static Object* createInstance(chstr name);
 
-		void notifyEvent(chstr type, EventArgs* args);
+		void notifyEvent(chstr type, EventArgs* args) override;
 
 	protected:
-		void _update(float timeDelta);
-		void _draw();
+		void _update(float timeDelta) override;
+		void _draw() override;
 
 		GridViewRow* _createRow(chstr name);
 

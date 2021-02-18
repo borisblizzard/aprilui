@@ -34,10 +34,10 @@ namespace aprilui
 		friend class GridViewRowTemplate;
 
 		GridView(chstr name);
-		inline hstr getClassName() const { return "GridView"; }
+		inline hstr getClassName() const override { return "GridView"; }
 		static Object* createInstance(chstr name);
 
-		hmap<hstr, PropertyDescription>& getPropertyDescriptions() const;
+		hmap<hstr, PropertyDescription>& getPropertyDescriptions() const override;
 
 		HL_DEFINE_GET(float, spacingWidth, SpacingWidth);
 		void setSpacingWidth(const float& value);
@@ -49,7 +49,7 @@ namespace aprilui
 		GridViewCell* getSelected() const;
 		int getRowCount() const;
 		int getCellCount() const;
-		int getItemCount() const;
+		int getItemCount() const override;
 
 		virtual GridViewRow* createRow(int index, chstr name = "");
 		bool deleteRow(int index);
@@ -63,14 +63,14 @@ namespace aprilui
 		harray<GridViewRow*> rows;
 		harray<GridViewCell*> cells;
 
-		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const;
-		hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const;
+		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const override;
+		hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const override;
 
-		void _updateDisplay();
+		void _updateDisplay() override;
 		void _updateRow(int index);
-		void _updateItem(int index);
+		void _updateItem(int index) override;
 		void _updateScrollArea();
-		void _optimizeVisibility();
+		void _optimizeVisibility() override;
 
 	private:
 		static hmap<hstr, PropertyDescription> _propertyDescriptions;

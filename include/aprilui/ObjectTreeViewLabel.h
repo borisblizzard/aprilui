@@ -32,10 +32,10 @@ namespace aprilui
 		friend class TreeViewNode;
 
 		TreeViewLabel(chstr name);
-		inline hstr getClassName() const { return "TreeViewLabel"; }
+		inline hstr getClassName() const override { return "TreeViewLabel"; }
 		static Object* createInstance(chstr name);
 
-		void notifyEvent(chstr type, EventArgs* args);
+		void notifyEvent(chstr type, EventArgs* args) override;
 
 	private:
 		TreeView* _treeView;

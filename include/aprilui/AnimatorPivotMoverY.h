@@ -26,15 +26,15 @@ namespace aprilui
 			APRILUI_CLONEABLE(PivotMoverY);
 		public:
 			PivotMoverY(chstr name);
-			inline hstr getClassName() const { return "PivotMoverY"; }
+			inline hstr getClassName() const override { return "PivotMoverY"; }
 
 			static Animator* createInstance(chstr name);
 			
 		protected:
-			float _getObjectValue() const;
-			void _setObjectValue(float value);
+			float _getObjectValue() const override;
+			void _setObjectValue(float value) override;
 			
-			void _update(float timeDelta);
+			void _update(float timeDelta) override;
 
 		};
 

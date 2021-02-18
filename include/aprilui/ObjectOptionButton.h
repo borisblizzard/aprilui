@@ -27,19 +27,19 @@ namespace aprilui
 		APRILUI_CLONEABLE(OptionButton);
 	public:
 		OptionButton(chstr name);
-		inline hstr getClassName() const { return "OptionButton"; }
+		inline hstr getClassName() const override { return "OptionButton"; }
 
 		static Object* createInstance(chstr name);
 
-		hmap<hstr, PropertyDescription>& getPropertyDescriptions() const;
+		hmap<hstr, PropertyDescription>& getPropertyDescriptions() const override;
 
 		int getOptionCount() const;
 
-		void turnOn();
-		void turnOff();
+		void turnOn() override;
+		void turnOff() override;
 		
 	protected:
-		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const;
+		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const override;
 
 	private:
 		static hmap<hstr, PropertyDescription> _propertyDescriptions;

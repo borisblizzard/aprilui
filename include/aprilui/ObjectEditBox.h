@@ -28,16 +28,16 @@ namespace aprilui
 	public:
 		EditBox(chstr name);
 		~EditBox();
-		inline hstr getClassName() const { return "EditBox"; }
+		inline hstr getClassName() const override { return "EditBox"; }
 		static Object* createInstance(chstr name);
 		
-		hmap<hstr, PropertyDescription>& getPropertyDescriptions() const;
+		hmap<hstr, PropertyDescription>& getPropertyDescriptions() const override;
 
-		hstr getName() const;
-		int getFocusIndex() const;
-		Object* getParent() const;
-		Dataset* getDataset() const;
-		bool isCursorInside() const;
+		hstr getName() const override;
+		int getFocusIndex() const override;
+		Object* getParent() const override;
+		Dataset* getDataset() const override;
+		bool isCursorInside() const override;
 
 		HL_DEFINE_GET(hstr, emptyText, EmptyText);
 		void setEmptyText(chstr value);
@@ -66,23 +66,23 @@ namespace aprilui
 		HL_DEFINE_GET(hstr, filter, Filter);
 		void setFilter(chstr value);
 		HL_DEFINE_GET(grectf, caretRect, CaretRect);
-		void setText(chstr value);
-		void setFocused(const bool& value);
+		void setText(chstr value) override;
+		void setFocused(const bool& value) override;
 		hstr getSelectedText() const;
 		hstr getDisplayedText() const;
 		void setMinAutoScale(float value);
 
-		bool isPointInside(cgvec2f position) const;
+		bool isPointInside(cgvec2f position) const override;
 		void setCaretIndexAt(cgvec2f position);
 
-		void notifyEvent(chstr type, EventArgs* args);
+		void notifyEvent(chstr type, EventArgs* args) override;
 
-		bool triggerEvent(chstr type, april::Key keyCode);
-		bool triggerEvent(chstr type, april::Key keyCode, chstr string);
-		bool triggerEvent(chstr type, april::Key keyCode, cgvec2f position, chstr string = "", void* userData = NULL);
-		bool triggerEvent(chstr type, april::Button buttonCode, chstr string = "", void* userData = NULL);
-		bool triggerEvent(chstr type, chstr string, void* userData = NULL);
-		bool triggerEvent(chstr type, void* userData = NULL);
+		bool triggerEvent(chstr type, april::Key keyCode) override;
+		bool triggerEvent(chstr type, april::Key keyCode, chstr string) override;
+		bool triggerEvent(chstr type, april::Key keyCode, cgvec2f position, chstr string = "", void* userData = NULL) override;
+		bool triggerEvent(chstr type, april::Button buttonCode, chstr string = "", void* userData = NULL) override;
+		bool triggerEvent(chstr type, chstr string, void* userData = NULL) override;
+		bool triggerEvent(chstr type, void* userData = NULL) override;
 
 		static hstr defaultFilterUnsignedNumeric;
 		static hstr defaultFilterUnsignedDecimal;
@@ -117,8 +117,8 @@ namespace aprilui
 		bool disabledOffset;
 		grectf caretRect;
 
-		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const;
-		hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const;
+		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const override;
+		hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const override;
 
 		void _updateCaretPosition();
 		void _updateCaret();
@@ -126,18 +126,18 @@ namespace aprilui
 		gvec2f _makeCaretPosition(const harray<atres::RenderLine>& lines, int index, cgvec2f base, float fontHeight, float heightOffset, int* lineIndex = NULL);
 		void _makeBaseOffset(gvec2f& offset, float& heightOffset, float* heightFactor = NULL) const;
 
-		void _update(float timeDelta);
-		void _draw();
+		void _update(float timeDelta) override;
+		void _draw() override;
 
-		bool _mouseDown(april::Key keyCode);
-		bool _mouseUp(april::Key keyCode);
-		void _mouseCancel(april::Key keyCode);
-		bool _mouseMove();
-		bool _keyDown(april::Key keyCode);
-		bool _keyUp(april::Key keyCode);
-		bool _char(unsigned int charCode);
-		bool _buttonDown(april::Button buttonCode);
-		bool _buttonUp(april::Button buttonCode);
+		bool _mouseDown(april::Key keyCode) override;
+		bool _mouseUp(april::Key keyCode) override;
+		void _mouseCancel(april::Key keyCode) override;
+		bool _mouseMove() override;
+		bool _keyDown(april::Key keyCode) override;
+		bool _keyUp(april::Key keyCode) override;
+		bool _char(unsigned int charCode) override;
+		bool _buttonDown(april::Button buttonCode) override;
+		bool _buttonUp(april::Button buttonCode) override;
 
 		april::Color _makeSelectionDrawColor(const april::Color& drawColor) const;
 

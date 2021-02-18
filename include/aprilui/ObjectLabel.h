@@ -28,16 +28,16 @@ namespace aprilui
 		APRILUI_CLONEABLE(Label);
 	public:
 		Label(chstr name);
-		inline hstr getClassName() const { return "Label"; }
+		inline hstr getClassName() const override { return "Label"; }
 		static Object* createInstance(chstr name);
 		
-		hmap<hstr, PropertyDescription>& getPropertyDescriptions() const;
+		hmap<hstr, PropertyDescription>& getPropertyDescriptions() const override;
 
-		Dataset* getDataset() const;
-		hstr getAutoScaledFont();
+		Dataset* getDataset() const override;
+		hstr getAutoScaledFont() override;
 
-		hstr getProperty(chstr name);
-		bool setProperty(chstr name, chstr value);
+		hstr getProperty(chstr name) override;
+		bool setProperty(chstr name, chstr value) override;
 
 		Animator* fadeTextRed(unsigned char r, float speed);
 		Animator* fadeTextGreen(unsigned char g, float speed);
@@ -57,21 +57,21 @@ namespace aprilui
 
 		void animateStopTextColor();
 
-		void notifyEvent(chstr type, EventArgs* args);
+		void notifyEvent(chstr type, EventArgs* args) override;
 
-		bool triggerEvent(chstr type, april::Key keyCode);
-		bool triggerEvent(chstr type, april::Key keyCode, chstr string);
-		bool triggerEvent(chstr type, april::Key keyCode, cgvec2f position, chstr string = "", void* userData = NULL);
-		bool triggerEvent(chstr type, april::Button buttonCode, chstr string = "", void* userData = NULL);
-		bool triggerEvent(chstr type, chstr string, void* userData = NULL);
-		bool triggerEvent(chstr type, void* userData = NULL);
+		bool triggerEvent(chstr type, april::Key keyCode) override;
+		bool triggerEvent(chstr type, april::Key keyCode, chstr string) override;
+		bool triggerEvent(chstr type, april::Key keyCode, cgvec2f position, chstr string = "", void* userData = NULL) override;
+		bool triggerEvent(chstr type, april::Button buttonCode, chstr string = "", void* userData = NULL) override;
+		bool triggerEvent(chstr type, chstr string, void* userData = NULL) override;
+		bool triggerEvent(chstr type, void* userData = NULL) override;
 
 	protected:
-		void _draw();
+		void _draw() override;
 		void _drawInternal(cgrectf rect, const april::Color& color);
 
-		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const;
-		hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const;
+		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const override;
+		hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const override;
 
 	private:
 		static hmap<hstr, PropertyDescription> _propertyDescriptions;

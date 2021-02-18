@@ -26,15 +26,15 @@ namespace aprilui
 			APRILUI_CLONEABLE(ProgressRedChanger);
 		public:
 			ProgressRedChanger(chstr name);
-			inline hstr getClassName() const { return "ProgressRedChanger"; }
+			inline hstr getClassName() const override { return "ProgressRedChanger"; }
 
 			static Animator* createInstance(chstr name);
 			
 		protected:
-			float _getObjectValue() const;
-			void _setObjectValue(float value);
+			float _getObjectValue() const override;
+			void _setObjectValue(float value) override;
 			
-			void _update(float timeDelta);
+			void _update(float timeDelta) override;
 
 		};
 

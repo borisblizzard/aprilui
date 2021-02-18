@@ -24,7 +24,7 @@ namespace aprilui
 
 	class apriluiExport Event : public Cloneable
 	{
-		APRILUI_CLONEABLE_ABSTRACT(Event);
+		APRILUI_CLONEABLE_ABSTRACT_DERIVED(Event);
 	public:
 		static hstr DatasetLoaded;
 		static hstr DatasetUnloaded;

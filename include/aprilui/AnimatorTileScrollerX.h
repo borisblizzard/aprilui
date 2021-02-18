@@ -28,16 +28,16 @@ namespace aprilui
 			APRILUI_CLONEABLE(TileScrollerX);
 		public:
 			TileScrollerX(chstr name);
-			inline hstr getClassName() const { return "TileScrollerX"; }
+			inline hstr getClassName() const override { return "TileScrollerX"; }
 
 			static Animator* createInstance(chstr name);
 			
 		protected:
-			float _getObjectValue() const;
-			void _setObjectValue(float value);
+			float _getObjectValue() const override;
+			void _setObjectValue(float value) override;
 			ImageBox* _getValidParent() const;
 			
-			void _update(float timeDelta);
+			void _update(float timeDelta) override;
 
 		};
 

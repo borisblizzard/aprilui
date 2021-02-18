@@ -31,10 +31,10 @@ namespace aprilui
 		friend class ListBoxItem;
 
 		ListBox(chstr name);
-		inline hstr getClassName() const { return "ListBox"; }
+		inline hstr getClassName() const override { return "ListBox"; }
 		static Object* createInstance(chstr name);
 
-		hmap<hstr, PropertyDescription>& getPropertyDescriptions() const;
+		hmap<hstr, PropertyDescription>& getPropertyDescriptions() const override;
 
 		HL_DEFINE_GET(april::Color, evenColor, EvenColor);
 		void setEvenColor(const april::Color& value);
@@ -44,7 +44,7 @@ namespace aprilui
 		void setOddSymbolicColor(chstr value);
 		HL_DEFINE_GET(harray<ListBoxItem*>, items, Items);
 		ListBoxItem* getSelected() const;
-		int getItemCount() const;
+		int getItemCount() const override;
 
 		virtual ListBoxItem* createItem(int index, chstr name = "");
 		bool deleteItem(int index);
@@ -56,13 +56,13 @@ namespace aprilui
 		april::Color oddColor;
 		harray<ListBoxItem*> items;
 
-		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const;
-		hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const;
+		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const override;
+		hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const override;
 
-		void _updateDisplay();
-		void _updateItem(int index);
+		void _updateDisplay() override;
+		void _updateItem(int index) override;
 		void _updateScrollArea();
-		void _optimizeVisibility();
+		void _optimizeVisibility() override;
 
 	private:
 		static hmap<hstr, PropertyDescription> _propertyDescriptions;

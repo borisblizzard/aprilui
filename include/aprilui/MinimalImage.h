@@ -36,11 +36,11 @@ namespace aprilui
 		APRILUI_CLONEABLE(MinimalImage);
 	public:
 		MinimalImage(Texture* texture, chstr name, cgrectf source);
-		inline hstr getClassName() const { return "MinimalImage"; }
+		inline hstr getClassName() const override { return "MinimalImage"; }
 
 		static MinimalImage* createInstance(Texture* texture, chstr name, cgrectf source);
 
-		hmap<hstr, PropertyDescription>& getPropertyDescriptions() const;
+		hmap<hstr, PropertyDescription>& getPropertyDescriptions() const override;
 
 		HL_DEFINE_GET(Texture*, texture, Texture);
 		HL_DEFINE_GET(grectf, srcRect, SrcRect);
@@ -50,22 +50,22 @@ namespace aprilui
 		void setSrcX(const float& value);
 		HL_DEFINE_GET(float, srcRect.y, SrcY);
 		void setSrcY(const float& value);
-		HL_DEFINE_GET(float, srcRect.w, SrcWidth);
-		void setSrcWidth(const float& value);
-		HL_DEFINE_GET(float, srcRect.h, SrcHeight);
-		void setSrcHeight(const float& value);
+		HL_DEFINE_GET_OVERRIDE(float, srcRect.w, SrcWidth);
+		void setSrcWidth(const float& value) override;
+		HL_DEFINE_GET_OVERRIDE(float, srcRect.h, SrcHeight);
+		void setSrcHeight(const float& value) override;
 		inline gvec2f getSrcPosition() const { return this->srcRect.getPosition(); }
 		void setSrcPosition(cgvec2f value);
 		void setSrcPosition(const float& x, const float& y);
-		inline gvec2f getSrcSize() const { return this->srcRect.getSize(); }
-		void setSrcSize(cgvec2f value);
+		inline gvec2f getSrcSize() const override { return this->srcRect.getSize(); }
+		void setSrcSize(cgvec2f value) override;
 		void setSrcSize(const float& w, const float& h);
 		inline const april::TexturedVertex* getVertices() const { return this->vertices; } // use with care!
 
-		hstr getProperty(chstr name);
+		hstr getProperty(chstr name) override;
 
-		void draw(cgrectf rect, const april::Color& color = april::Color::White);
-		void draw(const harray<april::TexturedVertex>& vertices, const april::Color& color = april::Color::White);
+		void draw(cgrectf rect, const april::Color& color = april::Color::White) override;
+		void draw(const harray<april::TexturedVertex>& vertices, const april::Color& color = april::Color::White) override;
 
 		bool tryLoadTextureCoordinates();
 
@@ -75,8 +75,8 @@ namespace aprilui
 		april::TexturedVertex vertices[APRILUI_IMAGE_MAX_VERTICES];
 		bool _textureCoordinatesLoaded;
 
-		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const;
-		hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const;
+		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const override;
+		hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const override;
 
 		virtual grectf _makeClippedSrcRect() const;
 		

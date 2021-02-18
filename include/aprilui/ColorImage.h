@@ -38,7 +38,7 @@ namespace aprilui
 		APRILUI_CLONEABLE(ColorImage);
 	public:
 		ColorImage(chstr name, const harray<april::Color>& colors);
-		inline hstr getClassName() const { return "ColorImage"; }
+		inline hstr getClassName() const override { return "ColorImage"; }
 
 		HL_DEFINE_GETSET(april::Color, colorTopLeft, ColorTopLeft);
 		void setSymbolicColorTopLeft(chstr value);
@@ -65,15 +65,15 @@ namespace aprilui
 		HL_DEFINE_GETSET(unsigned char, colorBottomRight.b, BlueBottomRight);
 		HL_DEFINE_GETSET(unsigned char, colorBottomRight.a, AlphaBottomRight);
 
-		inline float getSrcWidth() const { return 0.0f; };
-		inline void setSrcWidth(const float& value) { }
-		inline float getSrcHeight() const { return 0.0f; };
-		inline void setSrcHeight(const float& value) { }
-		inline gvec2f getSrcSize() const { return gvec2f(); }
-		inline void setSrcSize(cgvec2f value) { }
+		inline float getSrcWidth() const override { return 0.0f; };
+		inline void setSrcWidth(const float& value) override { }
+		inline float getSrcHeight() const override { return 0.0f; };
+		inline void setSrcHeight(const float& value) override { }
+		inline gvec2f getSrcSize() const override { return gvec2f(); }
+		inline void setSrcSize(cgvec2f value) override { }
 
-		void draw(cgrectf rect, const april::Color& color = april::Color::White);
-		void draw(const harray<april::TexturedVertex>& vertices, const april::Color& color = april::Color::White);
+		void draw(cgrectf rect, const april::Color& color = april::Color::White) override;
+		void draw(const harray<april::TexturedVertex>& vertices, const april::Color& color = april::Color::White) override;
 
 	protected:
 		april::Color colorTopLeft;

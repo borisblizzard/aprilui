@@ -24,12 +24,12 @@ namespace aprilui
 {
 	class apriluiExport SelectionContainer : public Container
 	{
-		APRILUI_CLONEABLE_ABSTRACT(SelectionContainer);
+		APRILUI_CLONEABLE_ABSTRACT_DERIVED(SelectionContainer);
 	public:
 		SelectionContainer(chstr name);
-		inline hstr getClassName() const { return "SelectionContainer"; }
+		inline hstr getClassName() const override { return "SelectionContainer"; }
 
-		hmap<hstr, PropertyDescription>& getPropertyDescriptions() const;
+		hmap<hstr, PropertyDescription>& getPropertyDescriptions() const override;
 
 		HL_DEFINE_GET(int, selectedIndex, SelectedIndex);
 		void setSelectedIndex(const int& value);
@@ -55,7 +55,7 @@ namespace aprilui
 
 		virtual int getItemCount() const = 0;
 
-		void notifyEvent(chstr type, EventArgs* args);
+		void notifyEvent(chstr type, EventArgs* args) override;
 
 	protected:
 		int selectedIndex;
@@ -67,10 +67,10 @@ namespace aprilui
 		april::Color selectedHoverColor;
 		bool allowDrag;
 
-		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const;
-		hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const;
+		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const override;
+		hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const override;
 
-		void _update(float timeDelta);
+		void _update(float timeDelta) override;
 
 		virtual void _updateDisplay() = 0;
 		virtual void _updateItem(int index) = 0;

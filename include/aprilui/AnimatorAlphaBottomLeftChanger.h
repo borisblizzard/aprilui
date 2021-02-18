@@ -26,15 +26,15 @@ namespace aprilui
 			APRILUI_CLONEABLE(AlphaBottomLeftChanger);
 		public:
 			AlphaBottomLeftChanger(chstr name);
-			inline hstr getClassName() const { return "AlphaBottomLeftChanger"; }
+			inline hstr getClassName() const override { return "AlphaBottomLeftChanger"; }
 
 			static Animator* createInstance(chstr name);
 			
 		protected:
-			float _getObjectValue() const;
-			void _setObjectValue(float value);
+			float _getObjectValue() const override;
+			void _setObjectValue(float value) override;
 			
-			void _update(float timeDelta);
+			void _update(float timeDelta) override;
 
 		};
 

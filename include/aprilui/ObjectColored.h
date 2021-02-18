@@ -27,10 +27,10 @@ namespace aprilui
 		APRILUI_CLONEABLE(Colored);
 	public:
 		Colored(chstr name);
-		inline hstr getClassName() const { return "Colored"; }
+		inline hstr getClassName() const override { return "Colored"; }
 		static Object* createInstance(chstr name);
 
-		hmap<hstr, PropertyDescription>& getPropertyDescriptions() const;
+		hmap<hstr, PropertyDescription>& getPropertyDescriptions() const override;
 
 		HL_DEFINE_GET(april::Color, colorTopRight, ColorTopRight);
 		void setColorTopRight(const april::Color& value);
@@ -109,8 +109,8 @@ namespace aprilui
 		bool useAdditionalColors;
 		bool ignoreMainColorAlpha;
 
-		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const;
-		hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const;
+		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const override;
+		hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const override;
 
 	private:
 		static hmap<hstr, PropertyDescription> _propertyDescriptions;

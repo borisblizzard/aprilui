@@ -28,10 +28,10 @@ namespace aprilui
 		APRILUI_CLONEABLE(TextImageButton);
 	public:
 		TextImageButton(chstr name);
-		inline hstr getClassName() const { return "TextImageButton"; }
+		inline hstr getClassName() const override { return "TextImageButton"; }
 		static Object* createInstance(chstr name);
 
-		hmap<hstr, PropertyDescription>& getPropertyDescriptions() const;
+		hmap<hstr, PropertyDescription>& getPropertyDescriptions() const override;
 
 		HL_DEFINE_GET(april::Color, pushedTextColor, PushedTextColor);
 		void setPushedTextColor(const april::Color& value);
@@ -42,11 +42,11 @@ namespace aprilui
 		HL_DEFINE_GET(april::Color, disabledTextColor, DisabledTextColor);
 		void setDisabledTextColor(const april::Color& value);
 		void setDisabledTextSymbolicColor(chstr value);
-		Dataset* getDataset() const;
-		hstr getAutoScaledFont();
+		Dataset* getDataset() const override;
+		hstr getAutoScaledFont() override;
 
-		hstr getProperty(chstr name);
-		bool setProperty(chstr name, chstr value);
+		hstr getProperty(chstr name) override;
+		bool setProperty(chstr name, chstr value) override;
 
 		Animator* fadeTextRed(unsigned char r, float speed);
 		Animator* fadeTextGreen(unsigned char g, float speed);
@@ -66,24 +66,24 @@ namespace aprilui
 
 		void animateStopTextColor();
 
-		void notifyEvent(chstr type, EventArgs* args);
+		void notifyEvent(chstr type, EventArgs* args) override;
 
-		bool triggerEvent(chstr type, april::Key keyCode);
-		bool triggerEvent(chstr type, april::Key keyCode, chstr string);
-		bool triggerEvent(chstr type, april::Key keyCode, cgvec2f position, chstr string = "", void* userData = NULL);
-		bool triggerEvent(chstr type, april::Button buttonCode, chstr string = "", void* userData = NULL);
-		bool triggerEvent(chstr type, chstr string, void* userData = NULL);
-		bool triggerEvent(chstr type, void* userData = NULL);
+		bool triggerEvent(chstr type, april::Key keyCode) override;
+		bool triggerEvent(chstr type, april::Key keyCode, chstr string) override;
+		bool triggerEvent(chstr type, april::Key keyCode, cgvec2f position, chstr string = "", void* userData = NULL) override;
+		bool triggerEvent(chstr type, april::Button buttonCode, chstr string = "", void* userData = NULL) override;
+		bool triggerEvent(chstr type, chstr string, void* userData = NULL) override;
+		bool triggerEvent(chstr type, void* userData = NULL) override;
 
 	protected:
 		april::Color pushedTextColor;
 		april::Color hoverTextColor;
 		april::Color disabledTextColor;
 		
-		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const;
-		hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const;
+		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const override;
+		hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const override;
 
-		void _draw();
+		void _draw() override;
 
 	private:
 		static hmap<hstr, PropertyDescription> _propertyDescriptions;

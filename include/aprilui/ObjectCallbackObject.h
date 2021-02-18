@@ -26,7 +26,7 @@ namespace aprilui
 		APRILUI_CLONEABLE(CallbackObject);
 	public:
 		CallbackObject(chstr name);
-		inline hstr getClassName() const { return "CallbackObject"; }
+		inline hstr getClassName() const override { return "CallbackObject"; }
 		static Object* createInstance(chstr name);
 
 		inline void (*getDrawCallback())(CallbackObject*) { return this->drawCallback; }
@@ -37,8 +37,8 @@ namespace aprilui
 		void (*drawCallback)(CallbackObject*);
 		void (*updateCallback)(float);
 
-		void _update(float timeDelta);
-		void _draw();
+		void _update(float timeDelta) override;
+		void _draw() override;
 
 	};
 

@@ -34,11 +34,11 @@ namespace aprilui
 		APRILUI_CLONEABLE(Image);
 	public:
 		Image(Texture* texture, chstr name, cgrectf source);
-		inline hstr getClassName() const { return "Image"; }
+		inline hstr getClassName() const override { return "Image"; }
 
 		static MinimalImage* createInstance(Texture* texture, chstr name, cgrectf source);
 
-		hmap<hstr, PropertyDescription>& getPropertyDescriptions() const;
+		hmap<hstr, PropertyDescription>& getPropertyDescriptions() const override;
 
 		HL_DEFINE_GETSET(april::Color, colorTopLeft, Color);
 		void setSymbolicColor(chstr value);
@@ -72,11 +72,11 @@ namespace aprilui
 		HL_DEFINE_GETSET(april::ColorMode, colorMode, ColorMode);
 		HL_DEFINE_GETSET(float, colorModeFactor, ColorModeFactor);
 
-		hstr getProperty(chstr name);
-		bool setProperty(chstr name, chstr value);
+		hstr getProperty(chstr name) override;
+		bool setProperty(chstr name, chstr value) override;
 
-		void draw(cgrectf rect, const april::Color& color = april::Color::White);
-		void draw(const harray<april::TexturedVertex>& vertices, const april::Color& color = april::Color::White);
+		void draw(cgrectf rect, const april::Color& color = april::Color::White) override;
+		void draw(const harray<april::TexturedVertex>& vertices, const april::Color& color = april::Color::White) override;
 
 	protected:
 		april::Color colorTopLeft;
@@ -89,8 +89,8 @@ namespace aprilui
 		float colorModeFactor;
 		april::ColoredTexturedVertex coloredVertices[APRILUI_IMAGE_MAX_VERTICES];
 
-		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const;
-		hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const;
+		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const override;
+		hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const override;
 
 		virtual void _drawWithCorners(cgrectf rect, const april::Color& color);
 

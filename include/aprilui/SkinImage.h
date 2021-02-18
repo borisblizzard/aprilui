@@ -24,11 +24,11 @@ namespace aprilui
 		APRILUI_CLONEABLE(SkinImage);
 	public:
 		SkinImage(Texture* texture, chstr name, cgrectf source);
-		inline hstr getClassName() const { return "SkinImage"; }
+		inline hstr getClassName() const override { return "SkinImage"; }
 
 		static MinimalImage* createInstance(Texture* texture, chstr name, cgrectf source);
 
-		hmap<hstr, PropertyDescription>& getPropertyDescriptions() const;
+		hmap<hstr, PropertyDescription>& getPropertyDescriptions() const override;
 
 		HL_DEFINE_GET(grectf, skinRect, SkinRect);
 		void setSkinRect(cgrectf value);
@@ -57,8 +57,8 @@ namespace aprilui
 		HL_DEFINE_IS(tiledBorders, TiledBorders);
 		void setTiledBorders(const bool& value);
 
-		void draw(cgrectf rect, const april::Color& color = april::Color::White);
-		void draw(const harray<april::TexturedVertex>& vertices, const april::Color& color = april::Color::White);
+		void draw(cgrectf rect, const april::Color& color = april::Color::White) override;
+		void draw(const harray<april::TexturedVertex>& vertices, const april::Color& color = april::Color::White) override;
 		
 		static int maxRectCache;
 
@@ -67,8 +67,8 @@ namespace aprilui
 		gvec2f borderIndent;
 		bool tiledBorders;
 
-		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const;
-		hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const;
+		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const override;
+		hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const override;
 
 	private:
 		static hmap<hstr, PropertyDescription> _propertyDescriptions;

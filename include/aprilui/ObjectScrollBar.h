@@ -31,7 +31,7 @@ namespace aprilui
 
 	class apriluiExport ScrollBar : public Object
 	{
-		APRILUI_CLONEABLE_ABSTRACT(ScrollBar);
+		APRILUI_CLONEABLE_ABSTRACT_DERIVED(ScrollBar);
 	public:
 		friend class ScrollArea;
 		friend class ScrollBarButtonBackground;
@@ -40,9 +40,9 @@ namespace aprilui
 		friend class ScrollBarButtonSlider;
 
 		ScrollBar(chstr name);
-		inline hstr getClassName() const { return "ScrollBar"; }
+		inline hstr getClassName() const override { return "ScrollBar"; }
 
-		hmap<hstr, PropertyDescription>& getPropertyDescriptions() const;
+		hmap<hstr, PropertyDescription>& getPropertyDescriptions() const override;
 
 		HL_DEFINE_GETSET(float, gridSize, GridSize);
 		HL_DEFINE_GETSET(float, scrollDistance, ScrollDistance);
@@ -54,7 +54,7 @@ namespace aprilui
 		HL_DEFINE_GET(hstr, skinName, SkinName);
 		void setSkinName(chstr value);
 
-		void notifyEvent(chstr type, EventArgs* args);
+		void notifyEvent(chstr type, EventArgs* args) override;
 
 		virtual void addScrollValue(float value) = 0;
 		void addScrollValueBackground(float value);
@@ -83,8 +83,8 @@ namespace aprilui
 		ScrollBarButtonForward* _buttonForwardSkinned;
 		ScrollBarButtonBackward* _buttonBackwardSkinned;
 
-		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const;
-		hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const;
+		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const override;
+		hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const override;
 
 		ScrollBarButtonBackground* _getButtonBackground() const;
 		void _setButtonBackground(ScrollBarButtonBackground* button);
@@ -124,15 +124,15 @@ namespace aprilui
 		virtual void _adjustDragSpeed() = 0;
 		virtual bool _checkAreaSize() = 0;
 
-		void _update(float timeDelta);
-		void _draw();
+		void _update(float timeDelta) override;
+		void _draw() override;
 
 		void _updateButtonBackgroundSkinned();
 		void _updateButtonSliderSkinned();
 		void _updateButtonForwardkinned();
 		void _updateButtonBackwardSkinned();
 
-		bool _mouseMove();
+		bool _mouseMove() override;
 
 	private:
 		static hmap<hstr, PropertyDescription> _propertyDescriptions;

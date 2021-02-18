@@ -30,12 +30,12 @@ namespace aprilui
 		friend class ScrollArea;
 
 		ScrollBarV(chstr name);
-		inline hstr getClassName() const { return "ScrollBarV"; }
+		inline hstr getClassName() const override { return "ScrollBarV"; }
 		static Object* createInstance(chstr name);
 
-		void notifyEvent(chstr type, EventArgs* args);
+		void notifyEvent(chstr type, EventArgs* args) override;
 
-		void addScrollValue(float value);
+		void addScrollValue(float value) override;
 
 		static hstr skinNameVBackground;
 		static hstr skinNameVSliderNormal;
@@ -49,26 +49,26 @@ namespace aprilui
 		static hstr skinNameVBackwardPushed;
 
 	protected:
-		inline hstr _getSkinNameBackground() const { return skinNameVBackground; }
-		inline hstr _getSkinNameSliderNormal() const { return skinNameVSliderNormal; }
-		inline hstr _getSkinNameSliderHover() const { return skinNameVSliderHover; }
-		inline hstr _getSkinNameSliderPushed() const { return skinNameVSliderPushed; }
-		inline hstr _getSkinNameForwardNormal() const { return skinNameVForwardNormal; }
-		inline hstr _getSkinNameForwardHover() const { return skinNameVForwardHover; }
-		inline hstr _getSkinNameForwardPushed() const { return skinNameVForwardPushed; }
-		inline hstr _getSkinNameBackwardNormal() const { return skinNameVBackwardNormal; }
-		inline hstr _getSkinNameBackwardHover() const { return skinNameVBackwardHover; }
-		inline hstr _getSkinNameBackwardPushed() const { return skinNameVBackwardPushed; }
+		inline hstr _getSkinNameBackground() const override { return skinNameVBackground; }
+		inline hstr _getSkinNameSliderNormal() const override { return skinNameVSliderNormal; }
+		inline hstr _getSkinNameSliderHover() const override { return skinNameVSliderHover; }
+		inline hstr _getSkinNameSliderPushed() const override { return skinNameVSliderPushed; }
+		inline hstr _getSkinNameForwardNormal() const override { return skinNameVForwardNormal; }
+		inline hstr _getSkinNameForwardHover() const override { return skinNameVForwardHover; }
+		inline hstr _getSkinNameForwardPushed() const override { return skinNameVForwardPushed; }
+		inline hstr _getSkinNameBackwardNormal() const override { return skinNameVBackwardNormal; }
+		inline hstr _getSkinNameBackwardHover() const override { return skinNameVBackwardHover; }
+		inline hstr _getSkinNameBackwardPushed() const override { return skinNameVBackwardPushed; }
 
-		grectf _getBarDrawRect() const;
+		grectf _getBarDrawRect() const override;
 
-		float _calcScrollJump(float x, float y, cgvec2f size);
-		float _calcScrollMove(float x, float y);
-		void _updateChildren();
-		void _moveScrollBar(float x, float y);
-		void _updateBar();
-		void _adjustDragSpeed();
-		bool _checkAreaSize();
+		float _calcScrollJump(float x, float y, cgvec2f size) override;
+		float _calcScrollMove(float x, float y) override;
+		void _updateChildren() override;
+		void _moveScrollBar(float x, float y) override;
+		void _updateBar() override;
+		void _adjustDragSpeed() override;
+		bool _checkAreaSize() override;
 
 	};
 

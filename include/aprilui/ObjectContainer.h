@@ -36,10 +36,10 @@ namespace aprilui
 		friend class ScrollBarV;
 
 		Container(chstr name);
-		inline hstr getClassName() const { return "Container"; }
+		inline hstr getClassName() const override { return "Container"; }
 		static Object* createInstance(chstr name);
 
-		void notifyEvent(chstr type, EventArgs* args);
+		void notifyEvent(chstr type, EventArgs* args) override;
 		
 	protected:
 		ScrollArea* scrollArea;

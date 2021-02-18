@@ -28,10 +28,10 @@ namespace aprilui
 		APRILUI_CLONEABLE(ImageButton);
 	public:
 		ImageButton(chstr name);
-		inline hstr getClassName() const { return "ImageButton"; }
+		inline hstr getClassName() const override { return "ImageButton"; }
 		static Object* createInstance(chstr name);
 		
-		hmap<hstr, PropertyDescription>& getPropertyDescriptions() const;
+		hmap<hstr, PropertyDescription>& getPropertyDescriptions() const override;
 
 		HL_DEFINE_GET(BaseImage*, hoverImage, HoverImage);
 		HL_DEFINE_GET(BaseImage*, pushedImage, PushedImage);
@@ -39,7 +39,7 @@ namespace aprilui
 		HL_DEFINE_GET(hstr, hoverImageName, HoverImageName);
 		HL_DEFINE_GET(hstr, pushedImageName, PushedImageName);
 		HL_DEFINE_GET(hstr, disabledImageName, DisabledImageName);
-		HL_DEFINE_GET(BaseImage*, normalImage, Image);
+		HL_DEFINE_GET_OVERRIDE(BaseImage*, normalImage, Image);
 		HL_DEFINE_GET(float, hoverAddFactor, HoverAddFactor);
 		void setHoverAddFactor(const float& value);
 		HL_DEFINE_GET(float, pushedMultiplyFactor, PushedMultiplyFactor);
@@ -48,12 +48,12 @@ namespace aprilui
 		void setHoverAddFadeSpeed(const float& value);
 		HL_DEFINE_GET(float, pushedMultiplyFadeSpeed, PushedMultiplyFadeSpeed);
 		void setPushedMultiplyFadeSpeed(const float& value);
-		void setImage(BaseImage* value);
-		hstr getName() const;
-		int getFocusIndex() const;
-		Object* getParent() const;
-		Dataset* getDataset() const;
-		bool isCursorInside() const;
+		void setImage(BaseImage* value) override;
+		hstr getName() const override;
+		int getFocusIndex() const override;
+		Object* getParent() const override;
+		Dataset* getDataset() const override;
+		bool isCursorInside() const override;
 		void setHoverImage(BaseImage* image);
 		void setPushedImage(BaseImage* image);
 		void setDisabledImage(BaseImage* name);
@@ -68,16 +68,16 @@ namespace aprilui
 		/// @brief Optimized version.
 		bool trySetDisabledImageByName(chstr name);
 
-		bool isPointInside(cgvec2f position) const;
+		bool isPointInside(cgvec2f position) const override;
 
-		void notifyEvent(chstr type, EventArgs* args);
+		void notifyEvent(chstr type, EventArgs* args) override;
 		
-		bool triggerEvent(chstr type, april::Key keyCode);
-		bool triggerEvent(chstr type, april::Key keyCode, chstr string);
-		bool triggerEvent(chstr type, april::Key keyCode, cgvec2f position, chstr string = "", void* userData = NULL);
-		bool triggerEvent(chstr type, april::Button buttonCode, chstr string = "", void* userData = NULL);
-		bool triggerEvent(chstr type, chstr string, void* userData = NULL);
-		bool triggerEvent(chstr type, void* userData = NULL);
+		bool triggerEvent(chstr type, april::Key keyCode) override;
+		bool triggerEvent(chstr type, april::Key keyCode, chstr string) override;
+		bool triggerEvent(chstr type, april::Key keyCode, cgvec2f position, chstr string = "", void* userData = NULL) override;
+		bool triggerEvent(chstr type, april::Button buttonCode, chstr string = "", void* userData = NULL) override;
+		bool triggerEvent(chstr type, chstr string, void* userData = NULL) override;
+		bool triggerEvent(chstr type, void* userData = NULL) override;
 
 	protected:
 		BaseImage* normalImage;
@@ -93,25 +93,25 @@ namespace aprilui
 		float hoverAddFadeSpeed;
 		float pushedMultiplyFadeSpeed;
 
-		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const;
-		hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const;
+		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const override;
+		hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const override;
 
-		harray<BaseImage*> _getUsedImages() const;
+		harray<BaseImage*> _getUsedImages() const override;
 
-		void _update(float timeDelta);
+		void _update(float timeDelta) override;
 		void _updateImage(int* hoveredDirection = NULL, int* pushedDirection = NULL);
-		void _draw();
+		void _draw() override;
 		
-		bool _mouseDown(april::Key keyCode);
-		bool _mouseUp(april::Key keyCode);
-		void _mouseCancel(april::Key keyCode);
-		bool _mouseMove();
-		bool _touchDown(int index);
-		bool _touchUp(int index);
-		void _touchCancel(int index);
-		bool _touchMove(int index);
-		bool _buttonDown(april::Button buttonCode);
-		bool _buttonUp(april::Button buttonCode);
+		bool _mouseDown(april::Key keyCode) override;
+		bool _mouseUp(april::Key keyCode) override;
+		void _mouseCancel(april::Key keyCode) override;
+		bool _mouseMove() override;
+		bool _touchDown(int index) override;
+		bool _touchUp(int index) override;
+		void _touchCancel(int index) override;
+		bool _touchMove(int index) override;
+		bool _buttonDown(april::Button buttonCode) override;
+		bool _buttonUp(april::Button buttonCode) override;
 		
 	private:
 		float _hoverAddTime;

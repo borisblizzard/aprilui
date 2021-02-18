@@ -25,7 +25,7 @@ namespace aprilui
 	public:
 		CallbackEvent(void (*callback)(EventArgs*));
 
-		void execute(EventArgs* args);
+		void execute(EventArgs* args) override;
 		
 	protected:
 		void (*callback)(EventArgs*);

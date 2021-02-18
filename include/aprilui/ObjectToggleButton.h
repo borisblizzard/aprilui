@@ -26,10 +26,10 @@ namespace aprilui
 		APRILUI_CLONEABLE(ToggleButton);
 	public:
 		ToggleButton(chstr name);
-		inline hstr getClassName() const { return "ToggleButton"; }
+		inline hstr getClassName() const override { return "ToggleButton"; }
 		static Object* createInstance(chstr name);
 
-		hmap<hstr, PropertyDescription>& getPropertyDescriptions() const;
+		hmap<hstr, PropertyDescription>& getPropertyDescriptions() const override;
 
 		HL_DEFINE_ISSET(toggled, Toggled);
 		HL_DEFINE_GET(BaseImage*, toggledNormalImage, ToggledNormalImage);
@@ -70,15 +70,15 @@ namespace aprilui
 		hstr toggledHoverImageName;
 		hstr toggledDisabledImageName;
 
-		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const;
-		hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const;
+		hmap<hstr, PropertyDescription::Accessor*>& _getGetters() const override;
+		hmap<hstr, PropertyDescription::Accessor*>& _getSetters() const override;
 
-		harray<BaseImage*> _getUsedImages() const;
+		harray<BaseImage*> _getUsedImages() const override;
 
-		void _update(float timeDelta);
-		void _draw();
+		void _update(float timeDelta) override;
+		void _draw() override;
 		
-		bool _mouseUp(april::Key keyCode);
+		bool _mouseUp(april::Key keyCode) override;
 
 	private:
 		static hmap<hstr, PropertyDescription> _propertyDescriptions;

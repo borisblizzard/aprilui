@@ -38,7 +38,7 @@ namespace aprilui
 			this->function = other.function;
 		}
 
-		inline void execute(EventArgs* args)
+		inline void execute(EventArgs* args) override
 		{
 			(this->object->*function)(args);
 		}
@@ -47,7 +47,7 @@ namespace aprilui
 		T* object;
 		void (T::*function)(EventArgs*);
 
-		inline MemberCallbackEvent<T>* clone() const { return new MemberCallbackEvent<T>(*this); }
+		inline MemberCallbackEvent<T>* clone() const override { return new MemberCallbackEvent<T>(*this); }
 
 	};
 

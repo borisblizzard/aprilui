@@ -31,13 +31,13 @@ namespace aprilui
 		APRILUI_CLONEABLE(FilledRect);
 	public:
 		FilledRect(chstr name);
-		inline hstr getClassName() const { return "FilledRect"; }
+		inline hstr getClassName() const override { return "FilledRect"; }
 		static Object* createInstance(chstr name);
 
 	protected:
 		april::ColoredVertex vertices[APRILUI_COLOR_MAX_VERTICES];
 
-		void _draw();
+		void _draw() override;
 
 	};
 
