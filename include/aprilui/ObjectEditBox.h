@@ -70,7 +70,7 @@ namespace aprilui
 		void setFocused(const bool& value) override;
 		hstr getSelectedText() const;
 		hstr getDisplayedText() const;
-		void setMinAutoScale(float value);
+		void setMinAutoScale(const float& value) override;
 
 		bool isPointInside(cgvec2f position) const override;
 		void setCaretIndexAt(cgvec2f position);

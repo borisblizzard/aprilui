@@ -22,8 +22,8 @@ namespace aprilui
 	ScrollBarButtonSlider::ScrollBarButtonSlider(chstr name) :
 		ImageButton(name)
 	{
-		this->registerEvent(aprilui::Event::MouseDown, new aprilui::CallbackEvent(&_mouseDown));
-		this->registerEvent(aprilui::Event::Click, new aprilui::CallbackEvent(&_click));
+		this->registerEvent(aprilui::Event::MouseDown, new aprilui::CallbackEvent(&_onMouseDown));
+		this->registerEvent(aprilui::Event::Click, new aprilui::CallbackEvent(&_onClick));
 	}
 
 	ScrollBarButtonSlider::ScrollBarButtonSlider(const ScrollBarButtonSlider& other) :
@@ -57,7 +57,7 @@ namespace aprilui
 		}
 	}
 
-	void ScrollBarButtonSlider::_mouseDown(EventArgs* args)
+	void ScrollBarButtonSlider::_onMouseDown(EventArgs* args)
 	{
 		if (args->object != NULL)
 		{
@@ -75,7 +75,7 @@ namespace aprilui
 		}
 	}
 
-	void ScrollBarButtonSlider::_click(EventArgs* args)
+	void ScrollBarButtonSlider::_onClick(EventArgs* args)
 	{
 		if (args->baseObject != NULL)
 		{

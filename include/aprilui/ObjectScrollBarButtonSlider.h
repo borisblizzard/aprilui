@@ -33,8 +33,8 @@ namespace aprilui
 		void notifyEvent(chstr type, EventArgs* args) override;
 
 	protected:
-		static void _mouseDown(EventArgs* args);
-		static void _click(EventArgs* args);
+		static void _onMouseDown(EventArgs* args);
+		static void _onClick(EventArgs* args);
 
 	};
 
