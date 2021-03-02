@@ -263,7 +263,7 @@ namespace aprilui
 		bool hoverFade = (this->hoverAddFadeSpeed > 0.0f && this->_hoverAddTime > 0.0f);
 		// this is a fallback feature if you haven't defined a pushed image. this solution works for most use cases
 		// so why bother providing a pushed image when this can work. also it covers situations where people forget to set a pushed image
-		if (this->pushedImage == NULL && this->image != NULL && (this->pushed && this->isCursorInside() || pushedFade))
+		if (this->pushedImage == NULL && this->image != NULL && (pushedFade || (this->pushed && this->isCursorInside())))
 		{
 			april::Color color = this->color;
 			float factor = 1.0f - (1.0f - this->pushedMultiplyFactor) * (this->_pushedMultiplyTime > 0.0f ? this->_pushedMultiplyTime : 1.0f);
@@ -282,7 +282,7 @@ namespace aprilui
 			ImageBox::_draw();
 		}
 		// the same thing for a hover image fallback solution
-		if (this->hoverImage == NULL && this->image != NULL && enabled && aprilui::isHoverEffectEnabled() && (!this->pushed && this->hovered || hoverFade))
+		if (this->hoverImage == NULL && this->image != NULL && enabled && aprilui::isHoverEffectEnabled() && (hoverFade ||(!this->pushed && this->hovered)))
 		{
 			Image* blendableImage = dynamic_cast<Image*>(this->image);
 			if (blendableImage != NULL)

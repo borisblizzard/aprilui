@@ -181,7 +181,7 @@ namespace aprilui
 	
 	bool Animator::isExpired() const
 	{
-		return (!this->enabled || this->periods >= 0.0f && this->timer * habs(this->speed) >= this->periods);
+		return (!this->enabled || (this->periods >= 0.0f && this->timer * habs(this->speed) >= this->periods));
 	}
 	
 	void Animator::setTime(const float& value)
@@ -239,7 +239,7 @@ namespace aprilui
 		float delay = this->delay;
 		bool animated = this->isAnimated();
 		Animator::_update(timeDelta);
-		return (animated || this->isAnimated() || delay > 0.0f && this->delay <= 0.0f);
+		return (animated || this->isAnimated() || (delay > 0.0f && this->delay <= 0.0f));
 	}
 
 	float Animator::_calculateValue(float timeDelta)
@@ -439,7 +439,7 @@ namespace aprilui
 	
 	void Animator::notifyEvent(chstr type, EventArgs* args)
 	{
-		if (this->applyValuesOnAttach && (type == Event::AttachedToObject || type == Event::AnimationDelayExpired && this->inheritValue))
+		if (this->applyValuesOnAttach && (type == Event::AttachedToObject || (type == Event::AnimationDelayExpired && this->inheritValue)))
 		{
 			this->applyValuesOnAttach = false;
 			this->value = this->offset = this->_getObjectValue();

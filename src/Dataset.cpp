@@ -155,8 +155,8 @@ namespace aprilui
 		}
 		foreach_m (Object*, it, this->objects)
 		{
-			if (it->second->getFocusIndex() == value && (!strict && it->second->isEnabled() && it->second->isVisible() ||
-				strict && it->second->isDerivedEnabled() && it->second->isDerivedVisible()))
+			if (it->second->getFocusIndex() == value && ((!strict && it->second->isEnabled() && it->second->isVisible()) ||
+				(strict && it->second->isDerivedEnabled() && it->second->isDerivedVisible())))
 			{
 				this->focus(it->second);
 				return true;
@@ -176,8 +176,8 @@ namespace aprilui
 		foreach_m (Object*, it, this->objects)
 		{
 			focusIndex = it->second->getFocusIndex();
-			if (focusIndex >= 0 && (!strict && it->second->isEnabled() && it->second->isVisible() ||
-				strict && it->second->isDerivedEnabled() && it->second->isDerivedVisible()))
+			if (focusIndex >= 0 && ((!strict && it->second->isEnabled() && it->second->isVisible()) ||
+				(strict && it->second->isDerivedEnabled() && it->second->isDerivedVisible())))
 			{
 				result += focusIndex;
 			}

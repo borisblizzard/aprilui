@@ -407,11 +407,11 @@ namespace aprilui
 				float tileCountY = border.y / tile.y;
 				int countX = (int)tileCountX;
 				int countY = (int)tileCountY;
-				if (tileCountX - countX > TILED_FIT_LIMIT || countX == 0 && tileCountX > 0.0f)
+				if (tileCountX - countX > TILED_FIT_LIMIT || (countX == 0 && tileCountX > 0.0f))
 				{
 					++countX;
 				}
-				if (tileCountY - countY > TILED_FIT_LIMIT || countY == 0 && tileCountY > 0.0f)
+				if (tileCountY - countY > TILED_FIT_LIMIT || (countY == 0 && tileCountY > 0.0f))
 				{
 					++countY;
 				}
