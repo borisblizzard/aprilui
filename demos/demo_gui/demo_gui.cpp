@@ -92,7 +92,7 @@ void _gridViewSelectedChanged(aprilui::EventArgs* args)
 class UpdateDelegate : public april::UpdateDelegate
 {
 public:
-	bool onUpdate(float timeDelta)
+	bool onUpdate(float timeDelta) override
 	{
 		april::rendersys->clear();
 		april::rendersys->setOrthoProjection(viewport);
@@ -119,7 +119,7 @@ public:
 	{
 	}
 
-	void onWindowSizeChanged(int width, int height, bool fullScreen)
+	void onWindowSizeChanged(int width, int height, bool fullScreen) override
 	{
 		//this is called when the window size is changed
 		april::rendersys->setViewport(drawRect);
@@ -130,31 +130,31 @@ public:
 
 class MouseDelegate : public april::MouseDelegate
 {
-	void onMouseDown(april::Key button)
+	void onMouseDown(april::Key button) override
 	{
 		aprilui::onMouseDown(button);
 		aprilui::processEvents();
 	}
 
-	void onMouseUp(april::Key button)
+	void onMouseUp(april::Key button) override
 	{
 		aprilui::onMouseUp(button);
 		aprilui::processEvents();
 	}
 
-	void onMouseCancel(april::Key button)
+	void onMouseCancel(april::Key button) override
 	{
 		aprilui::onMouseCancel(button);
 		aprilui::processEvents();
 	}
 
-	void onMouseMove()
+	void onMouseMove() override
 	{
 		aprilui::onMouseMove();
 		aprilui::processEvents();
 	}
 
-	void onMouseScroll(float x, float y)
+	void onMouseScroll(float x, float y) override
 	{
 		aprilui::onMouseScroll(x, y);
 		aprilui::processEvents();
@@ -164,7 +164,7 @@ class MouseDelegate : public april::MouseDelegate
 
 class KeyDelegate : public april::KeyDelegate
 {
-	void onKeyDown(april::Key keyCode)
+	void onKeyDown(april::Key keyCode) override
 	{
 		aprilui::Object* object = NULL;
 		aprilui::ListBox* listBox = NULL;
@@ -252,12 +252,12 @@ class KeyDelegate : public april::KeyDelegate
 		aprilui::onKeyDown(keyCode);
 	}
 
-	void onKeyUp(april::Key keyCode)
+	void onKeyUp(april::Key keyCode) override
 	{
 		aprilui::onKeyUp(keyCode);
 	}
 
-	void onChar(unsigned int charCode)
+	void onChar(unsigned int charCode) override
 	{
 		aprilui::onChar(charCode);
 	}

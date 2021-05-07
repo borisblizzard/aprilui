@@ -50,7 +50,7 @@ aprilui::Dataset* dataset = NULL;
 class UpdateDelegate : public april::UpdateDelegate
 {
 public:
-	bool onUpdate(float timeDelta)
+	bool onUpdate(float timeDelta) override
 	{
 		aprilui::updateCursorPosition();
 		aprilui::processEvents();

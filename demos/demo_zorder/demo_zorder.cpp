@@ -52,7 +52,7 @@ aprilui::Dataset* dataset = NULL;
 class UpdateDelegate : public april::UpdateDelegate
 {
 public:
-	bool onUpdate(float timeDelta)
+	bool onUpdate(float timeDelta) override
 	{
 		april::rendersys->clear();
 		april::rendersys->setOrthoProjection(viewport);
