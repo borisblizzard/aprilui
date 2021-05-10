@@ -733,25 +733,42 @@ namespace aprilui
 			else
 			{
 				float upperAutoScale = 1.0f;
+				static grectf _testRect(0.0f, 0.0f, 100000.0f, 100000.0f);
+				harray<atres::RenderLine> lines = atres::renderer->makeRenderLines(realFontName + ":" + hstr(fontScale), _testRect, text);
+				float maxWidth = 0.0f;
+				foreach (atres::RenderLine, it, lines)
+				{
+					foreach (atres::RenderWord, it2, (*it).words)
+					{
+						maxWidth = hmax(maxWidth, (*it2).rect.w);
+					}
+				}
+				if (maxWidth > rect.w)
+				{
+					upperAutoScale = rect.w / maxWidth;
+				}
 				float lowerAutoScale = this->minAutoScale;
 				float currentAutoScale = 0;
 				autoScale = this->minAutoScale;
-				for_iter (i, 0, MAX_AUTO_SCALE_STEPS)
+				if (upperAutoScale > this->minAutoScale)
 				{
-					currentAutoScale = lowerAutoScale + (upperAutoScale - lowerAutoScale) * 0.5f;
-					size.y = atres::renderer->getTextHeight(realFontName + ":" + hstr(fontScale * currentAutoScale), text, rect.w);
-					if (size.y > rect.h)
+					for_iter (i, 0, MAX_AUTO_SCALE_STEPS)
 					{
-						upperAutoScale = currentAutoScale;
-					}
-					else if (size.y < rect.h)
-					{
-						lowerAutoScale = autoScale = currentAutoScale;
-					}
-					else // however unlikely, the exact sweetspot was hit
-					{
-						autoScale = currentAutoScale;
-						break;
+						currentAutoScale = lowerAutoScale + (upperAutoScale - lowerAutoScale) * 0.5f;
+						size.y = atres::renderer->getTextHeight(realFontName + ":" + hstr(fontScale * currentAutoScale), text, rect.w);
+						if (size.y > rect.h)
+						{
+							upperAutoScale = currentAutoScale;
+						}
+						else if (size.y < rect.h)
+						{
+							lowerAutoScale = autoScale = currentAutoScale;
+						}
+						else // however unlikely, the exact sweetspot was hit
+						{
+							autoScale = currentAutoScale;
+							break;
+						}
 					}
 				}
 			}
