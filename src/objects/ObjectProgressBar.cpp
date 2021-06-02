@@ -27,8 +27,8 @@ namespace aprilui
 		HL_ENUM_DEFINE_VALUE(ProgressBar::Direction, Left, 4);
 		HL_ENUM_DEFINE_VALUE(ProgressBar::Direction, Right, 6);
 		HL_ENUM_DEFINE_VALUE(ProgressBar::Direction, Up, 8);
-		HL_ENUM_DEFINE_VALUE(ProgressBar::Direction, Horizontal, 98);
-		HL_ENUM_DEFINE_VALUE(ProgressBar::Direction, Vertical, 99);
+		HL_ENUM_DEFINE_VALUE(ProgressBar::Direction, Horizontal, 94);
+		HL_ENUM_DEFINE_VALUE(ProgressBar::Direction, Vertical, 98);
 
 		bool ProgressBar::Direction::isHorizontal() const
 		{

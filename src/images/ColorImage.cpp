@@ -60,10 +60,11 @@ namespace aprilui
 			return;
 		}
 		grectf drawRect = rect;
-		if (this->clipRect.w > 0.0f && this->clipRect.h > 0.0f)
+		grectf clipRect = (!this->useDrawClipRect ? this->clipRect : this->drawClipRect);
+		if (clipRect.w > 0.0f && clipRect.h > 0.0f)
 		{
-			drawRect += this->clipRect.getPosition();
-			drawRect.setSize(this->clipRect.getSize());
+			drawRect += clipRect.getPosition();
+			drawRect.setSize(clipRect.getSize());
 		}
 		this->vertices[0].x = this->vertices[2].x = this->vertices[4].x = drawRect.left();
 		this->vertices[0].y = this->vertices[1].y = this->vertices[3].y = drawRect.top();
