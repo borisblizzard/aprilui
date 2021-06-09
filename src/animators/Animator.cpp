@@ -26,6 +26,8 @@ namespace aprilui
 		HL_ENUM_DEFINE(Animator::AnimationFunction, Square);
 		HL_ENUM_DEFINE(Animator::AnimationFunction, Saw);
 		HL_ENUM_DEFINE(Animator::AnimationFunction, Triangle);
+		HL_ENUM_DEFINE(Animator::AnimationFunction, QuadraticWave);
+		HL_ENUM_DEFINE(Animator::AnimationFunction, QuadraticWaveAbs);
 		HL_ENUM_DEFINE(Animator::AnimationFunction, Noise);
 		HL_ENUM_DEFINE(Animator::AnimationFunction, Custom);
 	));
@@ -333,6 +335,40 @@ namespace aprilui
 				result = -(hmodd(time * this->speed - 0.25, 1.0) - 0.25) * 4 * this->amplitude;
 			}
 		}
+		else if (this->animationFunction == AnimationFunction::QuadraticWave)
+		{
+			result = hmodd(time * this->speed, 1.0);
+			if (hbetweenIE(result, 0.0, 0.25))
+			{
+				result = result * 4.0 - 1.0;
+			}
+			else if (hbetweenIE(result, 0.25, 0.5))
+			{
+				result = (result - 0.25) * 4.0;
+			}
+			else if (hbetweenIE(result, 0.5, 0.75))
+			{
+				result = (result - 0.5) * 4.0 - 1.0;
+			}
+			else
+			{
+				result = (result - 0.75) * 4.0;
+			}
+			result = (1.0 - result * result) * this->amplitude;
+		}
+		else if (this->animationFunction == AnimationFunction::QuadraticWaveAbs)
+		{
+			result = hmodd(time * this->speed, 0.5);
+			if (hbetweenIE(result, 0.0, 0.25))
+			{
+				result = result * 4.0 - 1.0;
+			}
+			else
+			{
+				result = (result - 0.25) * 4.0;
+			}
+			result = (1.0 - result * result) * this->amplitude;
+		}
 		else if (this->animationFunction == AnimationFunction::Noise)
 		{
 			result = hrandf(-this->speed * this->amplitude, this->speed * this->amplitude);
@@ -378,14 +414,16 @@ namespace aprilui
 	{
 		if (name == "function" || name == "func")
 		{
-			if (this->animationFunction == Animator::AnimationFunction::Linear)		return "linear";
-			if (this->animationFunction == Animator::AnimationFunction::Sine)		return "sine";
-			if (this->animationFunction == Animator::AnimationFunction::SineAbs)	return "sine_abs";
-			if (this->animationFunction == Animator::AnimationFunction::Square)		return "square";
-			if (this->animationFunction == Animator::AnimationFunction::Saw)		return "saw";
-			if (this->animationFunction == Animator::AnimationFunction::Triangle)	return "triangle";
-			if (this->animationFunction == Animator::AnimationFunction::Noise)		return "noise";
-			if (this->animationFunction == Animator::AnimationFunction::Custom)		return "custom";
+			if (this->animationFunction == Animator::AnimationFunction::Linear)				return "linear";
+			if (this->animationFunction == Animator::AnimationFunction::Sine)				return "sine";
+			if (this->animationFunction == Animator::AnimationFunction::SineAbs)			return "sine_abs";
+			if (this->animationFunction == Animator::AnimationFunction::Square)				return "square";
+			if (this->animationFunction == Animator::AnimationFunction::Saw)				return "saw";
+			if (this->animationFunction == Animator::AnimationFunction::Triangle)			return "triangle";
+			if (this->animationFunction == Animator::AnimationFunction::QuadraticWave)		return "quadratic_wave";
+			if (this->animationFunction == Animator::AnimationFunction::QuadraticWaveAbs)	return "quadratic_wave_abs";
+			if (this->animationFunction == Animator::AnimationFunction::Noise)				return "noise";
+			if (this->animationFunction == Animator::AnimationFunction::Custom)				return "custom";
 		}
 		if (name == "discrete_step_mode")
 		{
@@ -401,14 +439,16 @@ namespace aprilui
 	{
 		if (name == "function" || name == "func")
 		{
-			if (value == "linear")			this->setAnimationFunction(Animator::AnimationFunction::Linear);
-			else if (value == "sine")		this->setAnimationFunction(Animator::AnimationFunction::Sine);
-			else if (value == "sine_abs")	this->setAnimationFunction(Animator::AnimationFunction::SineAbs);
-			else if (value == "square")		this->setAnimationFunction(Animator::AnimationFunction::Square);
-			else if (value == "saw")		this->setAnimationFunction(Animator::AnimationFunction::Saw);
-			else if (value == "triangle")	this->setAnimationFunction(Animator::AnimationFunction::Triangle);
-			else if (value == "noise")		this->setAnimationFunction(Animator::AnimationFunction::Noise);
-			else if (value == "custom")		this->setAnimationFunction(Animator::AnimationFunction::Custom);
+			if (value == "linear")					this->setAnimationFunction(Animator::AnimationFunction::Linear);
+			else if (value == "sine")				this->setAnimationFunction(Animator::AnimationFunction::Sine);
+			else if (value == "sine_abs")			this->setAnimationFunction(Animator::AnimationFunction::SineAbs);
+			else if (value == "square")				this->setAnimationFunction(Animator::AnimationFunction::Square);
+			else if (value == "saw")				this->setAnimationFunction(Animator::AnimationFunction::Saw);
+			else if (value == "triangle")			this->setAnimationFunction(Animator::AnimationFunction::Triangle);
+			else if (value == "quadratic_wave")		this->setAnimationFunction(Animator::AnimationFunction::QuadraticWave);
+			else if (value == "quadratic_wave_abs")	this->setAnimationFunction(Animator::AnimationFunction::QuadraticWaveAbs);
+			else if (value == "noise")				this->setAnimationFunction(Animator::AnimationFunction::Noise);
+			else if (value == "custom")				this->setAnimationFunction(Animator::AnimationFunction::Custom);
 			else
 			{
 				hlog::warn(logTag, "'function=' does not support value '" + value + "'.");

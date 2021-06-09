@@ -103,6 +103,9 @@
 				<MoverX function="sine" amplitude="50"/>
 				<MoverY function="sine" amplitude="50" timer="0.25" enabled="false"/>
 			</ToggleButton>
+			<ImageBox name="image_box_quadratic" image="texture/test_blue" rect="60,596,16,16" z_order="100">
+				<MoverX function="quadratic_wave_abs" amplitude="50"/>
+			</ImageBox>
 			<Container name="slider_container" rect="10,618,800,600">
 				<ProgressBar name="progress_bar_slider" anti_progress_image="texture/test_blue" progress_image="texture/test_yellow" progress="0.5" direction="right" interactable="true" rect="0,0,128,24">
 					<ResizerX function="sine" amplitude="50"/>

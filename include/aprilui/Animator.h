@@ -39,6 +39,8 @@ namespace aprilui
 			HL_ENUM_DECLARE(AnimationFunction, Square);
 			HL_ENUM_DECLARE(AnimationFunction, Saw);
 			HL_ENUM_DECLARE(AnimationFunction, Triangle);
+			HL_ENUM_DECLARE(AnimationFunction, QuadraticWave);
+			HL_ENUM_DECLARE(AnimationFunction, QuadraticWaveAbs);
 			HL_ENUM_DECLARE(AnimationFunction, Noise);
 			HL_ENUM_DECLARE(AnimationFunction, Custom);
 		));
